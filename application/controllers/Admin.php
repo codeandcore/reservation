@@ -177,9 +177,6 @@ class Admin extends CI_Controller {
 								// $this->admin_model->update_pasword_foremail($email,$code); //Update password
 								$email_template = $this->admin_model->get_email_template('otp_for_creditcardinfo_download');
 								$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-								$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-								$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-								$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 								$email_template = str_replace('{{loginlink}}',site_url('admin'),$email_template);
 								$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 				
@@ -224,9 +221,6 @@ class Admin extends CI_Controller {
 								// $this->admin_model->update_pasword_foremail($email,$code); //Update password
 								$email_template = $this->admin_model->get_email_template('otp_for_update_admin_settings');
 								$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-								$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-								$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-								$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 								$email_template = str_replace('{{loginlink}}',site_url('admin'),$email_template);
 								$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 				
@@ -324,9 +318,6 @@ class Admin extends CI_Controller {
 				$this->admin_model->update_pasword_foremail($email,$code); //Update password
 				$email_template = $this->admin_model->get_email_template('reset_user_password');
 				$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-				$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-				$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-				$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 				$email_template = str_replace('{{loginlink}}',site_url('admin'),$email_template);
 				$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 
@@ -454,9 +445,6 @@ class Admin extends CI_Controller {
 				$this->admin_model->rest_user_pasword_foremail($email,$code);
 				$email_template = $this->admin_model->get_email_template('reset_user_password');
 				$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-				$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-				$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-				$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 				$email_template = str_replace('{{loginlink}}',site_url(),$email_template);
 				$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 				$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -718,9 +706,6 @@ class Admin extends CI_Controller {
 						$this->admin_model->rest_user_pasword_forId($id,$code);
 						$email_template = $this->admin_model->get_email_template('reset_user_password');
 						$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-						$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-						$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-						$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 						$email_template = str_replace('{{loginlink}}',site_url(),$email_template);
 						$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 						$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -805,7 +790,7 @@ class Admin extends CI_Controller {
 										$website_url = $data['D'];
 										$address = $data['E'];
 										$phone = $data['F'];
-										$amount = $data['H'];
+										$amount = $data['G'];
 										if(!empty($fir_ary)){
 											foreach($fir_ary as $clm => $fil_name){
 												if($data[$clm] != ''){
@@ -1446,9 +1431,6 @@ class Admin extends CI_Controller {
 							$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 							$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 							$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-							$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-							$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-							$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 							$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 							$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 							$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -1473,9 +1455,6 @@ class Admin extends CI_Controller {
 						$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 						$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 						$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-						$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-						$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-						$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 						$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 						$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 						$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -2650,10 +2629,6 @@ class Admin extends CI_Controller {
 			$data['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 			$data['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 			$data['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-
-			$data['color1'] = $this->settings['color1'];
-			$data['color2'] = $this->settings['color2'];
-			$data['color3'] = $this->settings['color3'];
 			$this->load->view('admin/header');
 			$this->load->view('admin/booking_list/view_booking_detail',$data);
 			$this->load->view('admin/footer');
@@ -2754,9 +2729,6 @@ class Admin extends CI_Controller {
 					$email_template = str_replace('{{user_name}}',$user_name,$email_template['email_body']);
 					$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					$data['hide_hotel_contact'] = $this->settings['restaurant_contact_hide'];
@@ -2770,9 +2742,6 @@ class Admin extends CI_Controller {
 					$data['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 					$data['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 					$data['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-					$data['color1'] = $this->settings['color1'];
-					$data['color2'] = $this->settings['color2'];
-					$data['color3'] = $this->settings['color3'];
 					$list = '';
 					$data['date_list'] = $this->user_model->get_booking_datelist_byid($booking_id);
 					$list .= $this->load->view('emails/book_restaurants_list',$data,TRUE);
@@ -2826,9 +2795,6 @@ class Admin extends CI_Controller {
 			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 			$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 			$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -2852,9 +2818,6 @@ class Admin extends CI_Controller {
 			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 			$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 			$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -3033,10 +2996,9 @@ class Admin extends CI_Controller {
 				</thead>
 				<tbody>
 					<?php foreach($list as $data){
-						
-						$content_after = '<span class="tag-host"> <img src="https://reservation.2024canadapremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
+						$content_after = '<span class="tag-host"> <img src="https://reservation.2024vaccinespremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
 						if($data['guests'] != ''){
-							$content_after = '<span class="tag-host"> <img src="https://reservation.2024internalmedicinepremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
+							$content_after = '<span class="tag-host"> <img src="https://reservation.2024vaccinespremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
 						}
 						else if($data['ref_id'] != ''){
 							
@@ -3044,14 +3006,14 @@ class Admin extends CI_Controller {
 							if(!empty($booking_list_data)){
 								$user_id = $booking_list_data['user_id'];
 								$user_name = $this->admin_model->get_user_name_byid($user_id);
-								$content_after = '<span class="tag-guest"> <img src="https://reservation.2024canadapremier.com/uploads/assets/images/star.png" alt=""> GUEST OF '.$user_name.'</span>';
+								$content_after = '<span class="tag-guest"> <img src="https://reservation.2024internalmedicinepremier.com/uploads/assets/images/star.png" alt=""> GUEST OF '.$user_name.'</span>';
 								// $content_after = '(GUEST OF '.$user_name.')';
 							}
-						}
-						?>
+						}	
+					?>
 					<tr>
 						<td><a href="<?php echo site_url('admin/view_booking_detail/').$data['booking_id'];?>">#<?php echo $data['booking_id'];?></td>
-						<td><?php echo $this->admin_model->get_user_name_byid($data['user_id']).' '.$content_after;;?></td>
+						<td><?php echo $this->admin_model->get_user_name_byid($data['user_id']).' '.$content_after;?></td>
 					</tr>
 					<?php } ?>
 				</tbody>

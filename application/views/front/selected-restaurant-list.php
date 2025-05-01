@@ -47,13 +47,28 @@
                 <div class="modifyRestaurant">
                     <a href="javascript:void(0)" data-date="<?php echo date('d-m-Y',strtotime($booking_date[$key]));?>"
                         class="modify_back_btn btn">Modify</a>
-                    <?php if($hotel['deposite'] == 'yes' && $hotel['deposite_amount'] > 0){?>
-                    <div class="depositCharge">
-                        <input type="checkbox" name="charge[]" class="charge" id="charge<?php echo $key;?>">
-                        <label class="chargelabel" for="charge<?php echo $key;?>">I acknowledge the Late Cancel/No-Show Fee is $<?php echo round($hotel['deposite_amount']);?>
-                        for this restaurant.</label>
+                    <div class="checkboxes">
+                        <?php if($hotel['deposite'] == 'yes' && $hotel['deposite_amount'] > 0){?>
+                        
+                            <div class="depositCharge">
+                                <input type="checkbox" name="charge[]" class="charge" id="charge<?php echo $key;?>">
+                                <label class="chargelabel" for="charge<?php echo $key;?>">I acknowledge the Late Cancel/No-Show Fee is $<?php echo round($hotel['deposite_amount']);?>
+                                for this restaurant.</label>
+                            </div>
+                            
+                        
+                        <?php } ?>
+                            <div class="depositCharge">
+                                <input type="checkbox" name="confirm[]" class="confirm" id="confirm<?php echo $key;?>">
+                                <label class="chargelabel" for="confirm<?php echo $key;?>">I acknowledge that if I choose to dine at a restaurant outside of the options provided on the
+                                Restaurant Booking Portal, the cost will not be covered by the trip budget.</label>
+                            </div>
+                            <div class="depositCharge">
+                                <input type="checkbox" name="confirm1[]" class="confirm1" id="confirm1<?php echo $key;?>">
+                                <label class="chargelabel" for="confirm1<?php echo $key;?>">My guest and I agree to stay within reasonable expenses during our dinners, <b> under €120 per
+                                person. </b></label>
+                            </div>
                     </div>
-                    <?php } ?>
                 </div>
             </div>
             <?php 

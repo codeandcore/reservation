@@ -37,21 +37,16 @@ if (!empty($date_list)):
                                     <tr>
                                         <td style="height: 6px;" colspan="2"></td>
                                     </tr>
-                                    <?php 
-                                        if ($restaurant_address_hide != 'yes'): 
-                                            if($hotel['address']!= ''){    
-                                    ?>
-                                                <tr>
-                                                    <td width="30px" valign="top">
-                                                        <img src="<?php echo base_url(); ?>/uploads/emails/map.png" alt="">
-                                                    </td>
-                                                    <td width="500px" valign="top" style="padding-left: 5px;">
-                                                        <p style="color: <?php echo $color1; ?>;font-size: 10px;line-height: 16px;font-weight: 500;margin: 0px; word-wrap: break-all;"><?php echo $hotel['address']; ?></p>
-                                                    </td>
-                                                </tr>
-                                    <?php 
-                                            }
-                                        endif; ?>
+                                    <?php if ($restaurant_address_hide != 'yes'): ?>
+                                        <tr>
+                                            <td width="30px" valign="top">
+                                                <img src="<?php echo base_url(); ?>/uploads/emails/map.png" alt="">
+                                            </td>
+                                            <td width="500px" valign="top" style="padding-left: 5px;">
+                                                <p style="color: #70016a;font-size: 10px;line-height: 16px;font-weight: 500;margin: 0px; word-wrap: break-all;"><?php echo $hotel['address']; ?></p>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                         <tr>
                                             <td style="height: 10px;" colspan="2"></td>
                                         </tr>
@@ -80,7 +75,7 @@ if (!empty($date_list)):
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                                 <tr>
                                                     <td colspan="2">
-                                                        <h2 style="color: <?php echo $color1; ?>;font-size: 20px;line-height: 24px;font-weight: 600; margin: 0; text-transform: uppercase"><?php echo $hotel['restaurant_name']; ?></h2>
+                                                        <h2 style="color: #70016a;font-size: 20px;line-height: 24px;font-weight: 600; margin: 0; text-transform: uppercase"><?php echo $hotel['restaurant_name']; ?></h2>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -91,7 +86,7 @@ if (!empty($date_list)):
                                                         <img src="<?php echo base_url(); ?>/uploads/emails/way1.png" alt="">
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo date('D, M d, Y', strtotime($list['booking_date'])); ?></p>
+                                                        <p style="color:#70016a;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo date('D, M d, Y', strtotime($list['booking_date'])); ?></p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -102,7 +97,7 @@ if (!empty($date_list)):
                                                         <img src="<?php echo base_url(); ?>/uploads/emails/way2.png" alt="">
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;">Table for <?php echo $list['booking_pax']; ?></p>
+                                                        <p style="color:#70016a;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;">Table for <?php echo $list['booking_pax']; ?></p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -113,7 +108,7 @@ if (!empty($date_list)):
                                                         <img src="<?php echo base_url(); ?>/uploads/emails/way3.png" alt="">
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;">
+                                                        <p style="color:#70016a;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;">
                                                             <?php echo $this->admin_model->get_property_type_text($hotel['property_type']); ?> </p>
                                                     </td>
                                                 </tr>
@@ -125,7 +120,7 @@ if (!empty($date_list)):
                                                         <img src="<?php echo base_url(); ?>/uploads/emails/way4.png" alt="">
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo $list['booking_time']; ?>
+                                                        <p style="color:#70016a;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo $list['booking_time']; ?>
                                                         </p>
                                                     </td>
                                                 </tr>
@@ -143,20 +138,20 @@ if (!empty($date_list)):
                                                 <?php if ($user_data['full_name'] != ''): ?>
                                                     <tr>
                                                         <td width="50%" style="padding: 5px 0;">
-                                                            <p style="color: <?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Name:</p>
+                                                            <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Name:</p>
                                                         </td>
                                                         <td width="50%">
-                                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0; text-transform: capitalize;"><?php echo $user_data['full_name']; ?></p>
+                                                            <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0; text-transform: capitalize;"><?php echo $user_data['full_name']; ?></p>
                                                         </td>
                                                     </tr>
                                                 <?php endif; ?>
                                                 <?php if ($user_data['email'] != ''): ?>
                                                     <tr>
                                                         <td width="50%" style="padding: 5px 0;">
-                                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Email:</p>
+                                                            <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Email:</p>
                                                         </td>
                                                         <td width="50%">
-                                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php echo $user_data['email']; ?>
+                                                            <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0"><?php echo $user_data['email']; ?>
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -165,11 +160,11 @@ if (!empty($date_list)):
                                                 <?php if ($user_data['mobile_number'] != ''): ?>
                                                     <tr>
                                                         <td width="50%" style="padding: 5px 0;">
-                                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">User contact:
+                                                            <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">User contact:
                                                             </p>
                                                         </td>
                                                         <td width="50%">
-                                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php echo $user_data['mobile_number']; ?></p>
+                                                            <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0"><?php echo $user_data['mobile_number']; ?></p>
                                                         </td>
                                                     </tr>
                                                 <?php endif; ?>
@@ -177,11 +172,11 @@ if (!empty($date_list)):
                                                     <?php if ($hotel['email'] != ''): ?>
                                                         <tr>
                                                             <td width="50%" style="padding: 5px 0;">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
+                                                                <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Restaurant
                                                                     email:</p>
                                                             </td>
                                                             <td width="50%">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php echo $hotel['email']; ?>
+                                                                <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0"><?php echo $hotel['email']; ?>
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -193,11 +188,11 @@ if (!empty($date_list)):
                                                         ?>
                                                         <tr>
                                                             <td width="50%" style="padding: 5px 0;">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
+                                                                <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Restaurant
                                                                     contact: </p>
                                                             </td>
                                                             <td width="50%">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php echo $hotel['contact']; ?>
+                                                                <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0"><?php echo $hotel['contact']; ?>
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -209,11 +204,11 @@ if (!empty($date_list)):
                                                         ?>
                                                         <tr>
                                                             <td width="50%" style="padding: 5px 0;">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
+                                                                <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Restaurant
                                                                     Website Url: </p>
                                                             </td>
                                                             <td width="50%">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><a href="<?php echo $hotel['website_link']; ?>">Click here</a>
+                                                                <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0"><a href="<?php echo $hotel['website_link']; ?>">Click here</a>
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -224,18 +219,18 @@ if (!empty($date_list)):
                                                     if ($hotel['deposite_amount'] != ''): ?>
                                                         <tr>
                                                             <td width="50%" style="padding: 5px 0;">
-                                                                <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Late Cancel/No-Show Fee:
+                                                                <p style="color:#70016a;font-size:12px;font-weight:900;margin: 0">Late Cancel/No-Show Fee:
                                                                 </p>
                                                             </td>
                                                             <td width="50%">
                                                                 <?php
                                                                     if(round($hotel['deposite_amount']) > 0){
                                                                 ?>
-                                                                        <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0">A $<?php echo round($hotel['deposite_amount']); ?> cancellation fee may be incurred if reservations are not cancelled within two weeks of your selected reservation date. Any changes made within two weeks prior to the program start must be made when you arrive onsite.</p>
+                                                                        <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0">A $<?php echo round($hotel['deposite_amount']); ?> cancellation fee may be incurred if reservations are not cancelled within two weeks of your selected reservation date. Any changes made within two weeks prior to the program start must be made when you arrive onsite.</p>
                                                                 <?php
                                                                     }else{
                                                                 ?>
-                                                                        <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0">$<?php echo round($hotel['deposite_amount']); ?></p>
+                                                                        <p style="color:#70016a;font-size:12px;font-weight:400;margin: 0">$<?php echo round($hotel['deposite_amount']); ?></p>
                                                                 <?php
                                                                     }
                                                                 ?>
@@ -277,7 +272,7 @@ if (!empty($date_list)):
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                                 <tr>
                                                     <td colspan="2">
-                                                        <h2 style="color: <?php echo $color1; ?>;font-size: 20px;line-height: 24px;font-weight: 600; margin: 0; text-transform: uppercase">Skipped Day</h2>
+                                                        <h2 style="color: #70016a;font-size: 20px;line-height: 24px;font-weight: 600; margin: 0; text-transform: uppercase">Skipped Day</h2>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -288,7 +283,7 @@ if (!empty($date_list)):
                                                         <img src="<?php echo base_url(); ?>/uploads/emails/way1.png" alt="">
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo date('D, M d, Y', strtotime($list['booking_date'])); ?></p>
+                                                        <p style="color:#70016a;font-size: 14px;line-height: 16px;font-weight: 600;margin: 0px;"><?php echo date('D, M d, Y', strtotime($list['booking_date'])); ?></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -299,10 +294,10 @@ if (!empty($date_list)):
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                                 <tr>
                                                     <td width="80px" style="padding: 5px 0;">
-                                                        <p style="color:<?php echo $color1; ?>;font-size:13px;font-weight:900;margin: 0">Reason:</p>
+                                                        <p style="color:#70016a;font-size:13px;font-weight:900;margin: 0">Reason:</p>
                                                     </td>
                                                     <td width="300px">
-                                                        <p style="color:<?php echo $color1; ?>;font-size:13px;font-weight:400;margin: 0"><?php echo $list['booking_reason']; ?></p>
+                                                        <p style="color:#70016a;font-size:13px;font-weight:400;margin: 0"><?php echo $list['booking_reason']; ?></p>
                                                     </td>
                                                 </tr>
                                             </table>

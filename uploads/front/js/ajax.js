@@ -18,8 +18,8 @@ jQuery(document).ready(function(){
         console.log(cardInfo);
         return cardInfo.card_type.name == 'amex' ? value.length == 4 : value.length == 3;
     });
-
     $.validator.addMethod('checkbox_all', function(value, element, param) {
+        console.log("sdfhjshdjkfhsjkdhfk");
         var err = 0;
         error_checkbox_valid();
         $('.confirmDetails .depositCharge').each(function(){
@@ -57,6 +57,13 @@ jQuery(document).ready(function(){
             "charge[]": {
                 checkbox_all: true
             },
+            "confirm[]": {
+                checkbox_all: true
+            },
+            "confirm1[]": {
+                checkbox_all: true
+            },
+
         },
         messages: {
             card_number : "Please enter a valid card number. It should be your personal credit card, not your Pfizer credit card."
@@ -101,9 +108,17 @@ jQuery(document).ready(function(){
             "charge[]": {
                 checkbox_all: true
             },
+            "confirm[]": {
+                checkbox_all: true
+            },
+            "confirm1[]": {
+                checkbox_all: true
+            },
         },
         messages: {
             "charge[]": "",
+            "confirm[]": "",
+            "confirm1[]": "",
             card_number : " Please enter a valid card number. It should be your personal credit card, not your Pfizer credit card."
         }
     });

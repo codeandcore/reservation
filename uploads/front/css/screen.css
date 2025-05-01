@@ -1116,7 +1116,6 @@ html ::-webkit-scrollbar:horizontal {
     padding: 0 50px;
     transition: 0.5s;
     background-color: var(--primary);
-    /* z-index: 1; */
 }
 
 .header .headerInner {
@@ -1659,7 +1658,9 @@ html ::-webkit-scrollbar:horizontal {
     display: none;
 }
 
-
+.swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(68%) saturate(7198%) hue-rotate(298deg) brightness(100%) contrast(108%);
+}
 
 .swiper-buttons .swiper-button-disabled {
     opacity: 1;
@@ -1990,7 +1991,7 @@ footer .copyRight {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--secondary);
+    background-color: var(--skyColor);
     top: -5px;
     right: -3px;
     background-image: url(../images/clock-icon.svg);
@@ -2068,7 +2069,7 @@ footer .copyRight {
 
 .availableDayList li.active .availablItem .restauranIcon {
     border-color: var(--primary);
-    box-shadow: 0 0 11px rgb(27 58 140 / 50%);
+    box-shadow: 0 0 11px rgb(112 1 106 / 50%);
     transform: scale(1.2);
 }
 
@@ -2189,8 +2190,8 @@ footer .copyRight {
     max-width: calc(100% - 186px);
 }
 
-.availableList .restaurantDetails .confirmTimePeople ul li:first-child i img , .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%) !important;
+.availableList .restaurantDetails .confirmTimePeople ul li:first-child i img {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(68%) saturate(7198%) hue-rotate(298deg) brightness(100%) contrast(108%) !important;
 }
 
 .availableList .restaurantDetails .restaurantName {
@@ -2209,7 +2210,7 @@ footer .copyRight {
     height: 18px;
     border-radius: 100%;
     background-color: var(--primary);
-    outline: 3px solid rgb(27 58 140 / 30%);
+    outline: 3px solid rgb(112 1 106 / 30%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2329,17 +2330,13 @@ footer .copyRight {
     filter: invert(1);
 }
 
-.availableList .availableItem .viewBtn:hover::before{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%);
-}
-
 .selectedRestaurant {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(27, 58, 140, 0.9);
+    background-color: rgba(112, 1, 106, 0.9);
     text-align: center;
     color: var(--white);
     padding: 20px;
@@ -2380,7 +2377,7 @@ footer .copyRight {
 }
 
 .selectedRestaurant .btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--red);
 }
 
 .selectedRestaurant.active {
@@ -2969,7 +2966,7 @@ span.filterIcon img {
 }
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailInput a:hover {
-    color: var(--black);
+    color: var(--secondary);
 }
 
 .inviteblock {

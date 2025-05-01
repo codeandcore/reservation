@@ -185,7 +185,6 @@ jQuery(document).ready(function(){
         if(!$(this).hasClass('confirmStep')){
             $(".skipButton").show();
             $('.topTitleRow').show();
-
         }
 
     })
@@ -232,6 +231,7 @@ jQuery(document).ready(function(){
         if($(this).parents('.setupContent').next().length > 0){  
             if(toConfirm == "toconfirmation"){
                 confirm_restaurant_list_form_divshow(true);
+                console.log("hello 1");
                 return false;
             } 
             var current_tab_number = $(this).parents('.setupContent').index() + 1;
@@ -247,8 +247,6 @@ jQuery(document).ready(function(){
             // $('#reservation_page_search_form').submit();
             if(_pax != ''){
                 // $("select#book_persons").val(_pax).trigger('change');
-                $("select#book_persons_inner").val(_pax).trigger('change');
-                $("select#book_persons").val(_pax).trigger('change');
             }
             $('#selected_date_string').html(_datetext);
             // console.log(current_tab_number);
@@ -260,9 +258,9 @@ jQuery(document).ready(function(){
             $(".skipButton").show();
             $('.topTitleRow').show();
 
-
         }else{
             confirm_restaurant_list_form_divshow();
+            console.log("hello 2");
             // console.log("dsfujksehfuihuisyhi");
             // var current_tab_number = $(this).parents('.setupContent').index() + 1;
             // $(this).parents('.setupContent').removeClass('active skinRestaurant');
@@ -274,7 +272,6 @@ jQuery(document).ready(function(){
         }
         var _time = '';
         $('#book_time_inner').val(_time).trigger('change');
-       
         //$('.availableDayList .availableDay.active').removeClass('active').addClass('completed').next('.availableDay').click().addClass('active').removeAttr('disabled');
     });
 
@@ -400,7 +397,6 @@ jQuery(document).ready(function(){
             $('#book_time').val(_time).trigger('change');
             if(_pax != ''){
                 $("select#book_persons").val(_pax).trigger('change');
-                $("select#book_persons_inner").val(_pax).trigger('change');
             }
             $('#selected_date_string').html(_datetext);
             //console.log(current_tab_number);
@@ -413,6 +409,7 @@ jQuery(document).ready(function(){
 
         }else{
             confirm_restaurant_list_form_divshow();
+            console.log("hello 3");
         }
     });
 
@@ -421,6 +418,7 @@ jQuery(document).ready(function(){
         // $('.availableStepListing').hide();   
         // $('.bookedRestaurant').show()
         confirm_restaurant_list_form_divshow();
+        console.log("hello 4");
 
     });
 
@@ -516,6 +514,8 @@ function assign_restaurant_to_perticular_date(book_date,book_time,book_pax,book_
 }
 
 function confirm_restaurant_list_form_divshow(toConfirmation=false){
+
+    console.log("sdfvhgsdvgjhsdcvshdbcvksdjkchkj");
     // console.log('toConfirmation',toConfirmation);
     $('.skipButton').hide();
     $('.topTitleRow').hide();

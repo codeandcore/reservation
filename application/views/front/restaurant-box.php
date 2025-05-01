@@ -66,9 +66,6 @@ if($incount == 1 || $booked == 'yes'):?>
                     if($key == 'meals' && $this->settings['restaurant_meals_hide'] == 'yes'){
                         continue;
                     }
-                    if ($key == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
-                        continue;
-                    }
                 ?>
                 <li><?php echo $dr;?></li>
                 <?php } ?>

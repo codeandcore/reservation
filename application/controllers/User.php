@@ -94,9 +94,6 @@ class User extends CI_Controller {
 				$email_subject = $email_template['email_subject'];
 				$email_template = str_replace('{{code}}',$code,$email_template['email_body']);
 				$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-				$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-				$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-				$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 				$email_template = str_replace('{{loginlink}}',site_url(),$email_template);
 				$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 				$email_template = str_replace('{{site_url}}',site_url(),$email_template);
@@ -413,9 +410,6 @@ class User extends CI_Controller {
             $email_template = str_replace('{{from_name}}',$from_name,$email_template['email_body']);
             $email_template = str_replace('{{to_name}}',$to_name,$email_template);
             $email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
             $email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 			$email_template = str_replace('{{site_url}}',site_url(),$email_template);
@@ -454,9 +448,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{user_name}}',$user_name,$email_template['email_body']);
 					$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					//$email_template = str_replace('{{site_url}}',site_url(),$admins);
@@ -468,9 +459,7 @@ class User extends CI_Controller {
 					$data['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 					$data['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 					$data['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-					$data['color1'] = $this->settings['color1'];
-					$data['color2'] = $this->settings['color2'];
-					$data['color3'] = $this->settings['color3'];
+					
 
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$list = '';
@@ -493,9 +482,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{user_name}}',$user_name,$email_template['email_body']);
 					$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(''),$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$data['hide_hotel_contact'] = $this->settings['restaurant_contact_hide'];
@@ -506,9 +492,6 @@ class User extends CI_Controller {
 					$data['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 					$data['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 					$data['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-					$data['color1'] = $this->settings['color1'];
-					$data['color2'] = $this->settings['color2'];
-					$data['color3'] = $this->settings['color3'];
 					$list = '';
 					$data['date_list'] = $this->admin_model->get_booking_dates_list($booking_id);
 					$list .= $this->load->view('emails/book_restaurants_list',$data,TRUE);
@@ -606,9 +589,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{user_name}}',$user_name,$email_template['email_body']);
 					$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
@@ -620,9 +600,6 @@ class User extends CI_Controller {
 					$data['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 					$data['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 					$data['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-					$data['color1'] = $this->settings['color1'];
-					$data['color2'] = $this->settings['color2'];
-					$data['color3'] = $this->settings['color3'];
 					$list = '';
 					$data['date_list'] = $this->admin_model->get_booking_dates_list($booking_id);
 					$list .= $this->load->view('emails/book_restaurants_list',$data,TRUE);
@@ -649,9 +626,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{user_name}}',$user_name,$email_template['email_body']);
 					$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 
@@ -750,17 +724,11 @@ class User extends CI_Controller {
 			$array['restaurant_website_url_hide'] = $this->settings['restaurant_website_url_hide'];
 			$array['restaurant_location_hide'] = $this->settings['restaurant_location_hide'];
 			$array['restaurant_email_hide'] = $this->settings['restaurant_email_hide'];
-			$array['color1'] = $this->settings['color1'];
-			$array['color2'] = $this->settings['color2'];
-			$array['color3'] = $this->settings['color3'];
 			$list = '';
 			$list .= $this->load->view('emails/cancel_restaurant', $array, TRUE);
 			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 			$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 			$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -784,9 +752,6 @@ class User extends CI_Controller {
 			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 			$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
 			$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -866,9 +831,6 @@ class User extends CI_Controller {
 					$array['booking'] = $booking;
 					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
 					$array['user'] = $to_user;
-					$array['color1'] = $this->settings['color1'];
-					$array['color2'] = $this->settings['color2'];
-					$array['color3'] = $this->settings['color3'];
 					$notify = $this->user_model->set_notification_guest($list_id,$user_id,$to_user['id']);
 					$email_template = $this->admin_model->get_email_template('user_invitation_received');
 					$subject = $email_template['email_subject'];
@@ -880,9 +842,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
 					$email_template = str_replace('{{trip_title}}',$this->settings['trip_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{notify_id}}',$notify['id'],$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
@@ -977,9 +936,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
 					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
 					$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -990,9 +946,6 @@ class User extends CI_Controller {
 					$rest_id = $booking['booking_restid'];
 					$array['booking'] = $booking;
 					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
-					$array['color1'] = $this->settings['color1'];
-					$array['color2'] = $this->settings['color2'];
-					$array['color3'] = $this->settings['color3'];
 					$list = '';
 					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
 					$email_template = str_replace('{{accepted_restaurant_list}}',$list,$email_template);
@@ -1018,9 +971,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
 					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -1046,9 +996,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
 					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{decline_reason}}',$decline_reason,$email_template);
 					$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
 					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
@@ -1058,9 +1005,6 @@ class User extends CI_Controller {
 					$rest_id = $booking['booking_restid'];
 					$array['booking'] = $booking;
 					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
-					$array['color1'] = $this->settings['color1'];
-					$array['color2'] = $this->settings['color2'];
-					$array['color3'] = $this->settings['color3'];
 					$list = '';
 					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
 					$email_template = str_replace('{{accepted_restaurant_list}}',$list,$email_template);
@@ -1087,9 +1031,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
 					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
 					$email_template = str_replace('{{decline_reason}}',$decline_reason,$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
@@ -1152,9 +1093,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{restaurant_name}}',$rest_data['restaurant_name'],$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
 					$this->email->set_newline("\r\n");
 					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
 					$this->email->to($from_user_data['email']);// change it to yours

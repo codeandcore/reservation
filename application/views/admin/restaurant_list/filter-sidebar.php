@@ -47,10 +47,6 @@ if(isset($selected_filters)){
         if ($slug == 'meals' && $this->settings['restaurant_meals_hide'] == 'yes') {
             continue;
         }
-        if ($slug == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
-            continue;
-        }
-        
         
         ?>
 <?php if(!empty($filter_value)){?>        

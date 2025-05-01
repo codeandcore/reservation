@@ -113,9 +113,6 @@
                                         if ($slug == 'meals' && $this->settings['restaurant_meals_hide'] == 'yes') {
                                             continue;
                                         }
-                                        if ($slug == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
-                                            continue;
-                                        }
                                         if($value != ''){?>
                                         <div class="filterItem">
                                             <div class="filterItemTitle"><?php echo ucfirst($title);?></div>

@@ -143,7 +143,7 @@ class User_model extends CI_Model {
     function get_pax_list_booking(){
         $this->db->select('size');
         $this->db->group_by('size');
-        $this->db->order_by('CAST(size AS UNSIGNED)', 'ASC'); // Cast size to integer for proper sorting
+        $this->db->order_by('size','ASC');
         $query = $this->db->get('ms-restaurant-tables');
         return $query->result_array();
     }
@@ -232,7 +232,6 @@ class User_model extends CI_Model {
                 $this->db->where('booking_status','booked');
                 $this->db->where('booking_pax',$size);
                 $this->db->where('ref_id','0');//To exclude invites
-
                 $query = $this->db->get('ms-booking-list');
                 $count = $query->num_rows();
                 if($capacity > $count){

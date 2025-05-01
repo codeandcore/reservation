@@ -137,18 +137,6 @@
                         </label>
                         (<sub>Press Entry Key after adding each reason</sub>)
                     </div>
-                    <div class="col-3 email-color" style="margin:10px 0">
-                        <label class="fluidLabel" for="color1">Color 1</label>
-                        <input type="text" name="color1" id="color1"  value="<?php echo $setting['color1'];?>">
-                    </div>
-                    <div class="col-3 email-color" style="margin:10px 0">
-                        <label class="fluidLabel" for="color2">Color 2</label>
-                        <input type="text" name="color2" id="color2"  value="<?php echo $setting['color2'];?>">
-                    </div>
-                    <div class="col-3 email-color" style="margin:10px 0">
-                        <label class="fluidLabel" for="color3">Color 3</label>
-                        <input type="text" name="color3" id="color3"  value="<?php echo $setting['color3'];?>">
-                    </div>
                 </div>
                 <h2 class="heading_title">Restaurant Settings (Hide/Show)</h2>
                 <div class="row" style="margin-top:30px">
