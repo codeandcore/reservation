@@ -1,3 +1,35 @@
 .htaccess
 index.php
-application/config/*
+/application/cache/*
+/application/logs/*
+/application/config/config.php
+/application/config/database.php
+
+# Composer (if used)
+vendor/
+composer.lock
+
+# Env vars
+.env
+.env.*
+
+# IDEs
+*.sublime-project
+*.sublime-workspace
+*.vscode
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Backup or temp files
+*.bak
+*.tmp
+*.log
+*.swp
+
+# Node (if using for assets)
+node_modules/
+dist/
+build/
