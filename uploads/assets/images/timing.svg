@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="timing" transform="translate(-1018 -797)">
+    <circle id="Ellipse_51" data-name="Ellipse 51" cx="15" cy="15" r="15" transform="translate(1018 797)" fill="#00434e"/>
+    <g id="_34-Time" data-name="34-Time" transform="translate(1027 805)">
+      <path id="Path_104" data-name="Path 104" d="M6.62,0a6.62,6.62,0,1,0,6.62,6.62A6.62,6.62,0,0,0,6.62,0Zm.414,12.392V10.758H6.206v1.634A5.793,5.793,0,0,1,.848,7.034H2.483V6.206H.848A5.793,5.793,0,0,1,6.206.848V2.483h.828V.848a5.793,5.793,0,0,1,5.358,5.358H10.758v.828h1.634A5.793,5.793,0,0,1,7.034,12.392Z" fill="#fff"/>
+      <path id="Path_105" data-name="Path 105" d="M15.828,9H15v2.9a.414.414,0,0,0,.12.294l2.069,2.069.583-.583-1.945-1.949Z" transform="translate(-8.794 -5.276)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

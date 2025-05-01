@@ -1,0 +1,30 @@
+:root{
+    --primary:#003FA6;
+    --secondary: #b6ebff;
+    --thirdary: #122223;
+    --skyColor: #b6ebff;
+    --gryColor: #ebd1ea;
+    --black:#000000;
+    --white:#ffffff;
+    --textColor: #434343;
+    --green:#003FA6;
+    --red:#003FA6;
+    
+    --primary-font:'Work Sans', sans-serif;
+    --secondary-font: 'Roboto Slab', sans-serif;
+    }
+    
+    
+    .btn{background-color: var(--primary); color: var(--white); border-color: var(--primary);}
+    .btn:hover{background-color:var(--secondary); color: var(--primary);border-color: var(--secondary);}
+    .loginPages .leftSide .leftbg::before{background-color: rgb(36 47 68 / 0.62);}
+  
+    
+    .selectedRestaurant{background-color: rgb(0 63 166 / 0.82);}
+    .dropdown-list ul li a img,.restaurantSlider .slideItem .itemView img,.modal-close img,.availableDayList .availablItem .restauranIcon img,.star-ratings .fill-ratings span img,.availableList .restaurantDetails .confirmTimePeople li img,.comfirmedDetails .reservationAddress .addressBox .hotelAddress .addr img,.invitationDetails .comfirmedDetails .finalTimePeople ul li i img,.invitationDetails .comfirmedDetails .addr img,.confirmDetails .confirmDay i img,.availableList .no-restaurant_found img,.cancelRestoDetails .rest_desc li i img,.modal-close img{
+        filter: brightness(0) saturate(100%) invert(19%) sepia(52%) saturate(4476%) hue-rotate(212deg) brightness(82%) contrast(104%);
+    }
+    /* .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {}*/
+
+    .accordionItem .toggle a:hover{color: var(--green);} 
+    /* .accordionItem .toggle .comfirmedDay i img{} */

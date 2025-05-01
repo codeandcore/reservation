@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^connector/ckfinder\.html$ - [L]
+    RewriteRule ^connector/(.*)$ ../../../../assets/ckfinder/core/connector/php/connector.php [QSA,L]
+</IfModule>
+
+<FilesMatch "\.(php|html|htm|xml|txt)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>

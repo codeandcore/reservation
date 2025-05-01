@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Allow access to CKFinder connector and assets
+#RewriteCond %{REQUEST_URI} ^/assets/ckfinder/core/connector/php/connector.php [NC]
+#RewriteRule .* - [L]
+
+# Allow access to the uploads_help_center directory
+RewriteCond %{REQUEST_URI} ^/application/uploads_help_center/ [NC]
+RewriteRule .* - [L]
+
+# Existing CodeIgniter rewrite rules
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]

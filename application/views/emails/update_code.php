@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" style="text-align: right;padding: 0;margin: 0;outline: 0;">
+    <head style="padding: 0;margin: 0;outline: 0;text-align: right;">
+        <meta charset="UTF-8" style="padding: 0;margin: 0;outline: 0;text-align: right;">
+        <!--<link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900&amp;subset=hebrew" rel="stylesheet">-->
+        <title style="padding: 0;margin: 0;outline: 0;text-align: right;">verification email template</title>       
+    </head>
+    <body style="text-align: right;direction: ltr;margin: 0 auto;padding: 0;outline: 0;">
+        <table cellpadding="0" width="600" cellspacing="0" border="0" dir="ltr" align="center" style="padding: 0;margin: 0;outline: 0;text-align: right;border-spacing: 0px;margin: 0 auto">
+            <tbody style="padding: 0;margin: 0;outline: 0;text-align: center;">
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;">
+                    <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;">
+                        <img src="https://codeandcore.org/ourwork/user_newslatter/email1/banner_bg.jpg" alt="" style="padding: 0;margin: 0;outline: 0;display: block">
+                    </td>
+                </tr>
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;background-color: #00434E">
+                    <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;padding:17px 0px">
+                        <h1 style="color:#fff;font-size:20px;font-weight:400;text-transform: uppercase">Verification code</h1>
+                    </td>
+                </tr>
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;">
+                    <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;padding: 59px 0px 34px">
+                        <img src="https://codeandcore.org/ourwork/user_newslatter/email1/pc.png" alt="" style="padding: 0;margin: 0;outline: 0;display: block;margin: 0 auto">
+                    </td>
+                </tr>
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;">
+                    <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;padding-bottom: 65px">
+                        <p style="display: block;max-width:370px;margin: 0 auto;font-size: 11px">Your verification code for Restaurant Reservation system is : <strong><?php echo $code;?></strong>
+                            <br>
+                            <br>
+                            Please note that this Password is valid till 15 min and will expire after this period 
+                            <br>
+                            <br>
+                            ** This is an auto-generated email. Please do not reply to this email.**
+                        </p>                        
+                    </td>
+                </tr>
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;">
+                    <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;padding:1px;background-color: #00434E"> </td>
+                </tr>
+                <tr style="padding:0px;margin: 0;outline: 0;text-align: center;">
+                    <td style="padding: 0;margin: 0;outline: 0;text-align: center;background-color: #00434E;width: 100%;display: block">
+                        <table  width="100%" >
+                            <tr height="30px" style="padding: 0;margin: 0;outline: 0;text-align: center;"></tr>
+                            <tr width="100%" >
+                                <td width="100%" style="padding: 0;margin: 0;outline: 0;text-align: center;">
+                                    <a href="#" class="slocial"><img src="https://codeandcore.org/ourwork/user_newslatter/email1/ss1.png" alt=""></a>
+                                    <a href="#" class="slocial"><img src="https://codeandcore.org/ourwork/user_newslatter/email1/ss2.png" alt=""></a>
+                                    <a href="#" class="slocial"><img src="https://codeandcore.org/ourwork/user_newslatter/email1/ss3.png" alt=""></a>
+                                    <a href="#" class="slocial"><img src="https://codeandcore.org/ourwork/user_newslatter/email1/ss4.png" alt=""></a>
+                                </td>
+                            </tr>
+                            <tr style="padding: 0;margin: 0;outline: 0;text-align: center;">
+                                <td>
+                                    <p style="color: #fff;font-size: 12px;font-weight: bold;">19 West 44th Street N.Y. 10036 • <a href="#" style="color: #fff;font-size: 12px;font-weight: bold;">Privacy policy</a></p>
+                                </td>
+                            </tr>  
+                             <tr height="24px" style="padding: 0;margin: 0;outline: 0;text-align: center;"></tr>                      
+                        </table>
+                    </td>
+                    <td  style="padding: 0;margin: 0;outline: 0;text-align: center;padding:1px;background-color: #86BDC6;width: 100%l;display: block;">
+                        <p style="color: #000;font-size: 12px;font-style:normal;">© 2025 Madison Travel Group All Rights Reserved</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

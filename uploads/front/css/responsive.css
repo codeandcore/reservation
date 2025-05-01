@@ -1,0 +1,252 @@
+@media (max-width: 1600px){
+
+}
+
+@media (max-width: 1460px){
+    h1,.h1{font-size:45px;}
+    h2, .h2{font-size: 40px;}
+    .booking-section h3{font-size: 30px;}
+    .loginPages .siteTitle{max-width: 450px; font-size: 20px;}
+    .relevantRestaurant { padding-bottom: 50px; }
+    .restaurantSlider .slideItem .itemImg{height: 250px;}
+    .restaurantSlider .slideItem .itemDetails{padding: 25px;}
+    .loginPages .rightSide{    padding: 10vw 90px;}
+
+    .main-content h2.heading_title{font-size: 22px;}
+}
+
+@media (max-width: 1366px){
+    .header{padding: 0 15px;}
+    .header .logoBox{width: 180px; height: 110px;}
+    .innerSearchForm{padding: 30px 20px;}
+    .topSiteTitle{font-size: 20px;}
+    .bookingForm .inputlabel, .select2-container--default .select2-selection--single .select2-selection__rendered{font-size: 18px;}
+    .comfirmedDetails, .inviteblock{padding: 20px;}
+    .comfirmedDetails .reservationAddress .userDetailsBox ul{padding: 10px; border-radius: 10px;}
+    .comfirmedDetails .reservationAddress .addressBox .hotelAddress h6{font-size: 13px;}
+}
+
+@media (max-width: 1199px){
+    h1,.h1{font-size:40px;}
+    h2, .h2{font-size: 30px;}
+    h3, .h3, .booking-section h3{font-size: 24px;}
+    h4, .h4 { font-size: 20px; }
+    h5, .h5 { font-size: 18px;}
+    section{padding-top: 20px; padding-bottom: 20px;}
+    .btn{font-size: 16px;}
+    
+
+    .loginPages{font-size: 16px;}
+    .loginPages .leftSide, .loginPages .rightSide{padding: 13vw 30px;}
+    .logoIcon{top: 30px; left: 30px;}
+    .innerSearchForm{padding: 30px;}
+    .header .logoBox{height: 110px;}
+    .siteTitle{font-size: 20px; max-width: 460px;}
+    .header .logoCol, .userSetting{max-width: 25%;}
+    .header .headerInner{height: 60px;}
+    .userDropdown .userProfile{width: 30px; height: 30px;}
+    .topSiteTitle{font-size: 16px;}
+    .restaurantSlider .slideItem .itemImg{height: 200px;}
+    .restaurantSlider .slideItem .itemDetails{padding: 15px;}
+    .restaurantSlider, .booked-slider{padding: 15px 15px 30px;}
+    .banner-lg{min-height: 300px;}
+    .innerSearchForm{padding: 20px;}
+    .booking-section h3{margin-bottom: 15px;}
+    .bookingForm .inputlabel, .select2-container--default .select2-selection--single .select2-selection__rendered{font-size: 15px;}
+    .bookingForm .findInput .select2-container--default .select2-selection--single .select2-selection__rendered{background-size: 16px;}
+    .relevantRestaurant{padding-bottom: 30px;}
+    footer .footerInner{padding: 30px 0;}
+    footer .copyRight{font-size: 16px;}
+    .comfirmedDetails .finalTimePeople ul li i{min-width: 23px;width: 23px; height: 23px;}
+    .comfirmedDetails .reservationAddress .addressBox{padding-right: 10px; margin-right: 10px;}
+    .comfirmedDetails .finalTimePeople ul li:not(:last-child){margin-right: 6px;}
+    .comfirmedDetails .finalTimePeople ul li{font-size: 12px;}
+    .availableRestaurant{padding: 15px;}
+    .availableRestaurant > .row { margin-left: -15px; margin-right: -15px; }
+    .availableRestaurant > .row > [class*="col-"] { padding-left: 15px; padding-right: 15px; }
+    .availableList .availableItem{padding: 15px 15px 35px; border-radius: 15px;}
+    .availableProgress .topTitleRow{padding: 20px;}
+    .availableProgress .skipButton .btn{letter-spacing: normal;}
+    .modifyNotice{margin-top: 30px;}
+    .bannerContent .bannerTitle{padding: 10px;}
+    .bannerContent .bannerTitle h2{font-size: 20px; display: flex; align-items: center;}
+    .bannerContent .bannerTitle h2 i{width: 40px; height: 40px; margin-right: 5px;}
+    .availableBooking { padding-bottom: 40px; }
+    .availableDayList li{max-width: 140px; min-width: 140px;}
+    .availableDayList .availablItem .restauranIcon{width: 65px; height: 65px;}
+    .selectedRestaurant{padding: 10px;}
+    .comfirmedDetails .reservationAddress .userDetailsBox ul li{font-size: 12px;}
+}
+
+@media only screen and (min-width:992px){
+    span.filterIcon{display: none;}
+}
+
+@media (max-width: 991px){
+    h1,.h1{font-size:35px;}
+    h2, .h2{font-size: 25px;}
+    h3, .h3, .booking-section h3{font-size: 20px;}
+    h4, .h4 { font-size: 18px;}
+    h5, .h5 {font-size: 16px;}
+    h6, .h6 {font-size: 16px;}
+    .btn{font-size: 14px; padding: 10px 15px;}
+    .loginPages .leftSide, .loginPages .rightSide{max-width: 100%; height: auto; min-height: 50vh;}
+    .loginPages.animated .leftSide{max-width: 100%;}
+    .topSiteTitle{font-size:14px;}
+    .userDropdown{font-size: 14px;}
+    .header .logoCol{margin-top: 20px;}
+    .header .logoBox{width: 150px; height: 80px;}
+    .relevantRestaurant .sliderTitle{margin-bottom: 0;}
+    .restaurantSlider .slideItem .itemDetails{padding: 10px;}
+    .bookingForm .inputlabel, .select2-container--default .select2-selection--single .select2-selection__rendered{font-size: 14px;}
+    .dropdown-list{right: 0; transform: translate(0, 0);}
+    .dropdown.active .dropdown-list{transform: translate(0, 0);}
+    .dropdown-list ul li{padding: 5px 0;}
+    .availableDayList li{max-width: 130px; min-width: 130px;}
+    .availableDayList .availablItem .restauranIcon{    width: 60px; height: 60px;}
+    .availableDayList .availablItem .restauranIcon img{width: 24px;}
+    .availableDayList .availablItem { min-width: 120px; }
+    .availableDayList li:not(:last-child) .availablItem .restauranDayBlock:before, .availableDayList li:not(:last-child) .availablItem .restauranDayBlock:after{width: calc(100% - 56px); left: calc(100% - 27px); }
+    .availableProgress .topTitleRow .titleText{width: 100%; max-width: 60%; margin-right: 10px;} 
+    .filterApply{border-right: 0; position: absolute; top: -50px; z-index: 1; left: -15px; max-width: 300px;}
+    .filterBlock{background:#fff;padding:10px;box-shadow:0 0 10px rgb(0 0 0 / 25%); width: 100%; height: 355px; overflow: auto; transition: 0.5s; left: 15px; position: absolute; transform: translateX(-110%);}
+    .availableCol{max-width: 100%;}
+    .filterTitle{padding-bottom: 15px;}
+    .filterItem {padding-top:15px;padding-bottom:15px;}
+    .open-filter .filterBlock{transform: translateX(0);}
+    .availableProgress .skipButton .btn{font-size: 14px;}
+    .bannerContent .bannerTitle h2{font-size: 16px;}
+    .bannerContent .bannerTitle h2 i{width: 30px; height: 30px;}
+    .accordionItem .inner .row > .col-6{max-width: 100%;}
+    .comfirmedDetails{margin-bottom: 20px;}
+
+    .main-content h2.heading_title{font-size: 18px;}
+}
+
+@media (max-width: 767px){
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{margin-bottom: 10px;}
+    p{margin-bottom: 15px;}
+    h1,.h1{font-size:30px;}
+    h2, .h2{font-size: 24px;}
+    h3, .h3, .booking-section h3{font-size: 18px;}
+    h4, .h4 { font-size: 16px;}
+    .col-12,.col-11,.col-10,.col-9,.col-8,.col-7,.col-6,.col-5,.col-4,.col-3,.col-2,.col-1{max-width: 100%;}
+    .btn:not(:last-child){margin-bottom: 5px;}
+    .availableList .availableItem .viewBtn{margin-bottom: 0;}
+    .form-control{font-size: 14px;}
+    .cmn-scroll{padding-right: 10px;}
+
+    section{padding-top: 15px;padding-bottom: 15px;}
+    .reveal img{max-width: 100vw;}
+    .m-column-reverse .row{flex-direction: column-reverse;}
+    .shedule_iframe{padding: 0;}
+    .select2-container .select2-selection--single{height: 40px;}
+    .select2-container--default .select2-selection--single .select2-selection__rendered{line-height: 40px;}
+    .swiper-buttons{width: 66px;}
+    .swiper-buttons .swiper-button-next, .swiper-buttons .swiper-button-prev{height: 20px; width: 20px;}
+    .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img{width: 20px;}
+
+    .loginPages{height: auto;}
+    .titleIcon{margin-bottom: 0;}
+    .loginPages .leftSide, .loginPages .rightSide{padding: 20px;}
+    .loginPages .leftSide .logoIcon{top:20px;left:20px;width:60px;}
+    .loginPages .rightSide{height: auto; min-height: 50vh;}
+    .siteTitle{position: static; z-index: 1; font-size: 13px; border-radius: 10px; margin-bottom: 40px;}
+    .loginForm{padding-top: 0;}
+    .loginPages .siteTitle{font-size: 16px;}
+    .loginPages .rightSide .rightContent .form-inline .btn{letter-spacing:normal;padding:13px 15px;}
+    .header .logoCol, .userSetting{max-width: 50%;}
+    .topSiteTitle{display: none;}
+    .dropdown-list{min-width: 160px;}
+    .dropdown-list ul{font-size: 15px;}
+    .dropdown-list ul li{padding: 7px 0; display: flex; align-items: center;}
+    .dropdown-list::before{display: none;}
+    .relevantRestaurant { padding-bottom: 20px; }
+    .restaurantSlider .slideItem .itemImg { height: 170px; }
+    .restaurantSlider:before, .booked-slider:before{height: 274px;}
+    .restaurantSlider,.booked-slider{padding:10px 10px 15px;}
+    .restaurantSlider .slideItem .itemView{width: 40px; height: 40px; top: 14px; right: 14px;}
+    .restaurantSlider .slideItem .itemView img{width: 22px;}
+    .restaurantSlider:before, .booked-slider:before{border-radius: 15px;}
+    .booking-section h3 br{display: none;}
+    .bookingForm .row{flex-wrap: wrap;}
+    .bookingForm .col{width: 50%; margin-bottom: 15px;}
+    .bookingForm .btn{width: 100%;}
+    .bookingForm .inputlabel{margin-bottom: 5px;}
+    .bookingForm .findInput .select2-container--default .select2-selection--single .select2-selection__rendered{background-size: 14px;}
+    .bookingForm .findInput .select2-container--default .select2-selection--single .select2-selection__rendered{padding-left: 22px;}
+    .innerSearchForm{padding: 15px; border-radius: 15px;}
+    footer{padding-bottom: 10px; }
+    footer .footer-logo{margin-bottom: 10px;}
+    footer .footer-menu a{font-size: 16px;}
+    footer .footerInner{padding: 15px 0;}
+    footer .copyRight{font-size: 14px;}
+    .comfirmedDetails, .inviteblock{padding: 12px; border-radius: 10px;}
+    .comfirmedDetails .finalTimePeople ul{flex-wrap: wrap;}
+    .comfirmedDetails .finalTimePeople ul li{width: 100%; margin-right: 0; margin-bottom: 5px;}
+    .comfirmedDetails .reservationAddress{flex-wrap: wrap;}
+    .comfirmedDetails .reservationAddress .addressBox{max-width: 100%; margin-right: 0; padding-right: 0; border-right: none; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 68, 78, 0.30);}
+    .comfirmedDetails .reservationAddress .userDetailsBox ul li{font-size: 13px;}
+    .availableList .availableItem .restaurantImg{max-width: 100%; margin-right: 0; margin-bottom: 15px;}
+    .availableList .restaurantDetails{max-width: 100%;}
+    .selectedRestaurant ul{flex-wrap: wrap;}
+    .selectedRestaurant ul li{width: 100%; margin-bottom: 10px;}
+    .availableProgress .topTitleRow{flex-wrap: wrap;}
+    .availableProgress .topTitleRow .titleText{max-width: 100%; margin-right: 0; margin-bottom: 10px;}
+    .availableDayList{flex-wrap: wrap;     padding: 30px 20px 30px;}
+    .availableDayList li{min-width: 100%; margin-bottom: 30px;  }
+    .availableDayList .availablItem{display: flex; align-items: center; text-align: left;}
+    .availableDayList .availablItem .restauranIcon{margin-bottom: 0; margin-right: 20px;}
+    .availableDayList li:not(:last-child) .availablItem .restauranDayBlock:before, .availableDayList li:not(:last-child) .availablItem .restauranDayBlock:after{width: 70%; left: 3px; transform: rotate(92deg); top: 80px;}
+    .head_top_reservation h4, .accordionItem .toggle .comfirmedName{font-size: 16px; margin-bottom: 5px;}
+    .head_top_reservation h6{font-size: 14px;}
+    .accordionItem .toggle .comfirmedDay{font-size: 12px;}
+    .accordionItem .toggle{padding: 18px 0; padding-left: 25px;}
+    .accordionItem .toggle::before, .accordionItem .toggle::after{width: 16px;height: 2px; top: 28px;}
+    .accordionItem .toggle .comfirmedDay i{width: 13px;}
+    .comfirmedPages{padding: 20px 0;}
+    .pageTitle img{width: 90px;}
+    .pageTitle h2{font-size: 18px; margin-bottom: 5px;}
+    .pageTitle .subTitle{font-size: 14px;}
+    .head_top_reservation{flex-wrap: wrap;}
+    .head_top_reservation h6{font-size: 12px;}
+    .inviteblock .personList ul li{max-width: 33.3%; margin-bottom: 15px;}
+    .inviteLink{margin-top: 10px; font-size: 14px;}
+    .modal{padding: 10px;}
+    .modal .modal-body, #viewDetails.modal .modal-body, #reservationCancel .modal-body{padding: 15px;}
+    .modal .modal-body .popupIcon img{width: 70px;}
+    .modal .modal-body h4{font-size: 16px;}
+    .modal-close{width: 20px; top: 10px; right: 10px;}
+    .tabs .tabs-nav{font-size: 14px;}
+    .tabs .tabs-nav li a{padding: 10px;}
+    .overviewSlider{height: 140px; margin-bottom: 15px;}
+    #viewDetails .modal-wrapper{height: 700px;}
+    .overview-content{font-size: 12px;}
+    .cancelRestoDetails{padding: 10px;}
+    #reservationCancel textarea{border-radius: 10px;}
+}
+
+@media (max-width: 575px){
+    .header .headerInner{height: 40px;}
+    .header .logoBox{width: 100px; height: 60px; padding: 5px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
+    .loginPages .siteTitle{font-size: 13px;}
+    .userDropdown .userProfile{margin-right: 0;}
+    .userFullName{display: none;}
+    .userDropdown .userProfile{width: 26px;height: 26px;}
+    .bookingForm .col{width: 100%;}
+    .bookingForm .select2-container{width: 100% !important;}
+    .bookingForm .col:last-child{margin-bottom: 0;}
+    .booking-section{margin-top: -80px !important;}
+    footer .copyRight{font-size: 12px;}
+    .accordionItem .toggle{flex-wrap: wrap;}
+    .inviteblock .personList ul li{max-width: 50%;}
+    .cancelRestoDetails{flex-wrap: wrap;}
+    .cancelRestoDetails .feature_img{margin-bottom: 15px;}
+    .cancelRestoDetails .rest_desc ul li{width: 100%;}
+}
+
+@media (max-width: 375px){
+    h2, .h2{font-size: 22px;}
+    h3, .h3, .booking-section h3{font-size: 16px;}
+}
+

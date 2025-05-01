@@ -1,0 +1,8 @@
+<svg id="_392513_compass_direction_navigation_icon" data-name="392513_compass_direction_navigation_icon" xmlns="http://www.w3.org/2000/svg" width="17.008" height="17" viewBox="0 0 17.008 17">
+  <g id="Group_171" data-name="Group 171">
+    <path id="Path_127" data-name="Path 127" d="M10.495,19A8.5,8.5,0,0,1,2.934,6.611a.607.607,0,1,1,1.08.556A7.3,7.3,0,1,0,5.343,5.348a.607.607,0,0,1-.859-.858,8.5,8.5,0,1,1,12.02,12.02A8.44,8.44,0,0,1,10.495,19Z" transform="translate(-1.987 -2)" fill="#fff"/>
+  </g>
+  <g id="Group_172" data-name="Group 172" transform="translate(4.467 4.457)">
+    <path id="Path_128" data-name="Path 128" d="M9.95,17.425a.607.607,0,0,1-.58-.785l1.613-5.256a.609.609,0,0,1,.4-.4l5.257-1.613a.607.607,0,0,1,.758.758l-1.613,5.256a.61.61,0,0,1-.4.4L10.129,17.4A.592.592,0,0,1,9.95,17.425Zm2.1-5.377L10.866,15.9l3.854-1.183L15.9,10.866Z" transform="translate(-9.343 -9.341)" fill="#fff"/>
+  </g>
+</svg>

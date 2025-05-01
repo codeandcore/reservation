@@ -1,0 +1,498 @@
+@media (max-width:1750px) {
+    .main-wrap .banner-section.inner-banner.user-management .user-icon{width: 90px;height: 90px;}
+}
+@media (max-width: 1620px) {
+    .main-wrap .banner-section.inner-banner.user-management .user-icon {
+        width: 55px;
+        height: 55px;
+    }
+}
+@media (max-width:1600px){
+    h1, .h1{font-size: 60px;}
+    h2, .h2{font-size: 26px;}
+    h3, .h3{font-size: 24px;}
+    h5, .h5{font-size: 16px;}
+    .reports-step{align-items: flex-start;}
+
+    .wrap_table .table_class tbody td span{position: relative;}
+
+    .custom-radio .radioLabel, .custom-checkbox .checkboxLabel{font-size: 14px;padding-left: 25px;}
+
+    .auth_screen .bg_wrap .float_element .star_img{width:49%;right:-190px;}
+    .app-menu ul li a{padding: 12px 20px 12px 20px; font-size: 18px;}
+
+    .wrap_reservation .head_top_reservation{padding: 25px 20px 25px 20px;}
+    .wrap_reservation .wrap_reservation_list{padding: 20px;}
+
+    .filterLeft, .restroBookRight{padding: 0;}
+    .restroBookProgress{padding-bottom: 30px;}
+    .filterBlock h3{font-size: 24px; margin-bottom: 10px;}
+    .filter-body{padding: 15px;}
+    .filterItem .filterItemTitle{font-size: 16px; margin-bottom: 15px;}
+    .filter-header{padding: 10px 15px;}
+    .dash_top_wrapp .activity_box_wrapper .activity_box #activity_chart{min-height: 12vw;}
+
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col{width: 50%;}
+    
+
+    table#complete_reports,#complete_reports thead,#complete_reports tbody,#complete_reports th,#complete_reports td,#complete_reports tr { display: block; }
+	#complete_reports thead tr { position: absolute; top: -9999px; left: -9999px; }
+	#complete_reports tr { border-top:2px solid #000 !important; }
+	#complete_reports td { border: none; border-bottom: none; position: relative; padding-left: 50%;    text-align: left;     word-break: break-all;display: flex; justify-content: flex-start; align-items: center;}
+    #complete_reports td:before { position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; z-index: 22;color: #fff;    font-size: 12px;}
+    #complete_reports td::after{content: '';position: absolute;left: 0;top: 0;width: 45%;height: 100%;background-color: var(--green);}
+	
+	#complete_reports td:nth-of-type(1):before { content: "ID"; }
+	#complete_reports td:nth-of-type(2):before { content: "ID"; }
+	#complete_reports td:nth-of-type(3):before { content: "Email Name"; }
+	#complete_reports td:nth-of-type(4):before { content: "Email Subject"; }
+	#complete_reports td:nth-of-type(5):before { content: "Action"; }
+
+
+    .reports-step .left-col, .reports-step .right-col{padding: 0 35px;}
+    .page-content .notice{margin-bottom: 15px;}
+    /* #all_restaurants_wrapper #top_filter{position: initial;} */
+
+    .main-content h2.heading_title{font-size: 22px;}
+    .withLeftButtons.wrap_table #top_filter{top: 30px;}
+
+
+    .input-group-text{right: 28%;}
+    .inviteblock{width: calc(100% - 53%);}
+    input, select, optgroup, textarea{font-size: 14px; padding: 13px 15px;}
+    .wrap_table .table_class thead th:last-child, .wrap_table .table_class tbody td:last-child, .commonTable thead th:last-child,.commonTable tbody td:last-child{padding-right: 10px;}
+    .pagination, .wrap_table #bottom_page {margin-bottom: 5px;}
+    /* .fluidLabel span{display: block;} */
+    .col-3{max-width: 33.33%;}
+    .admin_setting_skip_reasons .tag{font-size: 14px !important;}
+
+    .wrap_table .table_class tbody td span{position: relative;}
+    .recent_booking_table #recent_booking tbody tr td ul.action_drop.active{top:0;width:140px;right:65px;}
+    .dash_top_wrapp .recent_booking .wrap_table .defaultDataTable{overflow-x:auto;overflow-y:clip;padding-bottom: 20px;}
+
+    div#all_user_list_filter{position: relative;}
+
+    .no-report-found .rt-content h2{font-size: 28px;}
+    /* .main-wrap { padding-top: 45px; } */
+    .faq-section .col-3{max-width: 22%;}
+    .faq-section .col-9{max-width: 78%;}
+    .menubar-section .col-3{width: 25%;}
+}
+
+@media (max-width:1550px){
+    .main-content h2.heading_title{font-size: 20px;}
+    .wrap_table .dataTables_filter label input{width: 210px !important;font-size: 14px;}
+    .input-group-text{right: 30%;}
+    .wrap_reservation_list .reservation_box{padding: 40px 30px 48px;}
+    input, select, optgroup, textarea{font-size: 13px;}
+    .admin_setting_skip_reasons .tag{font-size: 13px !important;}
+}
+
+@media (max-width:1460px){
+    h1,.h1{font-size:40px;}
+    h2,.h2{font-size: 24px;}
+    .btn, .auth_screen .form_group .btn, input.btn{font-size: 14px; letter-spacing: 1px;}
+    .form-group{margin-bottom: 20px;}
+    /* Login Screen */
+    .auth_screen .logo{width: 120px;}
+    .auth_screen .logoRow{left: 65px;}
+    .auth_screen .siteTitle{margin-left: 20px;}
+    .siteTitle{font-size: 14px; padding: 10px 15px;}
+    .auth_screen h1{margin-bottom: 10px;}
+    .auth_screen .auth_box{padding: 15vw 50px;}
+    .auth_screen .form_group input[type='email'], .auth_screen .form_group input[type='text'], .auth_screen .form_group input[type='password']{font-size: 16px; padding: 15px 20px;}
+    .auth_screen .copyright{font-size: 15px;bottom: 0;}
+
+    header .logoBlock .logo{width: 100px;}
+    header .right_top_bar .topbar-head-dropdown .rounded-circle, header .right_top_bar .topbar-user .user_dropdown .header-profile-user img{width: 30px; height: 30px;}
+    header .right_top_bar .topbar-user .user_dropdown{font-size: 15px;}
+    header .wrap_container{padding: 15px 25px 15px 25px;}
+    
+    .main-content{margin-left: 200px;}
+    .main-content .page-content{padding-top: 62px;}
+    .main-content .container-fluid{padding: 30px;}
+    
+    .app-menu{width: 200px;}
+    .app-menu{padding-top: 85px;}
+    .app-menu ul li a span.icon{margin-right: 10px; width: 18px;}
+    .app-menu ul li a{font-size: 15px; padding: 10px 15px 10px 15px;}
+    
+    .addReservationForm .col-9{max-width: 70%;}
+    .addReservationForm .col-3{max-width: 30%;}
+    
+    .booking_list_wrapper .booking_list_box h4{font-size: 25px;}
+    .booking_list_wrapper .booking_list_box .eye_button{width:50px;height:50px;}
+    .booking_list_wrapper .booking_list_box .eye_button svg{width:25px;height:25px;}
+    .withLeftButtons .leftButtonsRow a { height: 43px; font-size: 12px; padding: 10px 12px; }
+    .withLeftButtons.wrap_table #top_filter .dataTables_length { margin-right: 10px; }
+
+    .withLeftButtons.wrap_table #top_filter{top: 30px;}
+    .wrap_table .dataTables_length label select{width: 110px !important;font-size: 13px;}
+
+    .input-group-text{right: 28% !important;}
+    input, select, optgroup, textarea{font-size: 11px;}
+    table.dataTable tr.child ul li{white-space: normal;}
+
+    .admin_setting_skip_reasons .tag{font-size: 11px !important;}
+
+    .wrap_table #total_master_reservation .pagination{width: calc(100% - 259px);}
+
+    #time_input, .time_select .select2-container--default .select2-selection--single{background-size: 16px; background-position: left 5px center;padding-left: 30px;}
+    .restro_time_info .row{row-gap: 10px;}
+    .restro_time_info .col { max-width: 31.5% !important; }
+    .restro_info_row.restro_time_info{overflow: auto;overflow-y: clip;padding-bottom: 20px;}
+    .wrap_table .dataTables_length label, .startToendSearch .innerSearchDate .searchDate .searchDateTitle, .wrap_table .dataTables_filter label{font-size: 14px;}
+    .wrap_table .dataTables_filter input{padding-right: 35px;background-position: right 10px center;padding-left: 10px;}
+    #all_restaurants_bookingList_wrapper #top_filter #all_restaurants_bookingList_filter{padding-bottom: 45px;position: absolute;}
+
+    .select2-container--default .select2-results>.select2-results__options{margin-bottom: -10px;max-height: 190px;padding-bottom: 20px;}
+    .reports-step .right-col .add_restro .restroBookRight .step-body .form-group .form-info-list .select2-container--default .select2-selection--multiple{border-radius: 15px;padding: 10px 40px 10px 10px;}
+    .wrap_table.final-report-view .data-wraper{padding: 60px 25px 30px;}
+    .wrap_table.final-report-view .data-wraper .defaultDataTable #all_report_list_wrapper #top_filter{top: 25px;right: 25px;}
+    .wrap_table.final-report-view .data-wraper .defaultDataTable #all_report_list_wrapper #bottom_page{width: calc(100% - 50px);}
+    .wrap_table.final-report-view .btn-group{right: 25px;}
+    .reports-step .right-col h5{font-size: 20px;}
+    .reports-step .right-col .start-step ul li{font-size: 18px;}
+
+    /* .wrap_table.withLeftButtons.action_class .leftButtonsRow{margin-bottom: 0;} */
+    /* #all_user_list_wrapper #top_filter{position: absolute !important;right: 0;top: -19px;} */
+    .main-wrap { padding-top: 60px; }
+    .main-wrap .banner-section{padding: 100px 0;}
+    .main-wrap section { padding: 80px 0; }
+    .report-section .report-info {padding: 50px;}
+
+}
+
+@media (max-width:1366px){
+    .addReservationForm .restroBookRight .restro_info_row.restro_info_1 .col-4{max-width: 50%;}
+    .wrap_reservation_list .reservation_box{ padding: 30px 15px 30px 15px; }
+    .wrap_reservation_list .reservation_box .res_info { padding-right: 15px; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col .user_info label,.wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col .user_info span { width: 50%; }
+    .wrap_reservation_list .reservation_box .res_details .res_available .res_available_box { margin-right: 10px; }
+
+    .availableRestaurant .filterBlock { padding: 20px; }
+    .wrapContentContainer { padding: 30px 20px; }
+    .wrap_table .dataTables_filter input { width: 280px; }
+
+    .auth_screen .input-group-text{right: 30px;}
+    .reports-step .right-col h2{font-size: 30px;}
+
+    .wrap_table .dataTables_length label select{width: 120px !important;font-size: 12px;}
+    .btn, .auth_screen .form_group .btn, input.btn{font-size: 13px;}
+    .startToendSearch .innerSearchDate .searchDate .searchDateInput{max-width: 125px;}
+    .startToendSearch .innerSearchDate .searchDate .searchDateInput input{}
+
+    .wrap_table .dataTables_filter label input{width: 165px !important;font-size: 12px;}
+    /* .wrap_reservation_list .reservation_box{padding: 40px 20px 48px;} */
+    
+    .reports-step .right-col .add_restro .restroBookRight .step-body .form-group .ul-check-list li:not(:last-child){margin: 0 0 10px;}
+    .reports-step .right-col .add_restro .restroBookRight .step-body .form-group .ul-check-list li{width: 100%;}
+    .reports-step .right-col .add_restro .restroBookRight .step-body .form-group .ul-check-list li .checkbox-label{font-size: 12px;}
+
+    .main-content .container-fluid{padding: 30px 20px;}
+    .wrap_table #total_master_reservation .pagination {width: calc(100% - 239px);}
+    .wrap_table #bottom_page{width: 100%;}
+    .select2-container--default .select2-selection--multiple .select2-selection__clear{margin-right: 20px;margin-left: 20px;}
+
+    .no-report-found .rt-content h2{font-size: 26px;}
+    .no-report-found{padding: 40px;}
+    .menubar-section .col-3{width: 33.33%;}
+    .menubar-section .col-9{width: 66.66%;}
+}
+
+@media (max-width:1300px){
+    .input-group-text{right:30% !important;}
+    .auth_screen .form_group input[type='email'],.auth_screen .form_group input[type='text'],.auth_screen .form_group input[type='password']{font-size:20px;}
+
+}
+
+@media (min-width:1200px){
+    .filterIcon{display: none;}
+}
+
+@media (max-width:1199px){
+    h1,.h1,.main-wrap .banner-section .banner-main-info h1 {font-size:30px;}
+    h2,.h2{font-size:20px;}
+
+    .custom-radio .radioLabel:before{width: 17px; height: 17px;}
+    .custom-radio .radioLabel:after{width:13px;height:13px;left:2px;top:2px;}
+
+
+    /* Login Screen */
+    .siteTitle{padding: 15px;}
+    .auth_screen .logo { width: 80px; }
+    .auth_screen .logoRow { left: 35px; }
+    .auth_screen .auth_box{padding: 15vw 20px;}
+    .auth_screen .siteTitle{margin-left: 15px;}
+    .auth_screen .fit_content:after{width: 80px; height: 80px; right: -40px;}
+    .auth_screen .form_group .btn{min-width: 100px;}
+
+    .addReservationForm .col-9{max-width: 100%;}
+    .restroBookRight::after{display: none;}
+    .filterLeft{padding-top: 10px; box-shadow: 0 0 10px rgb(0 0 0 / 15%);}
+    .addReservationForm .filterCol{position: absolute; max-width: 300px; top: 0; right: 0; transform: translateX(110%); transition: all 0.5s;}
+    .addReservationForm .filterCol.active{transform: translateX(0);}
+    .filterBlock h3{font-size: 20px; padding-left: 15px;}
+    .filterList{margin-top: 10px; height: 300px; overflow: auto;}
+    .filterItem{margin-bottom: 15px; padding-bottom: 15px;}
+    .filterItem .filterItemTitle{margin-bottom: 10px;}
+    .filter-body .addFilterLink{padding-top: 10px;}
+    .dash_top_wrapp .recent_booking{margin-bottom: 30px;}
+    .dash_top_wrapp .recent_booking,.dash_top_wrapp .activity_box_wrapper{width:100%;}
+    .dash_top_wrapp .activity_box_wrapper .activity_box #activity_chart{min-height:35vw;}
+    .wrap_reservation .wrap_reservation_list{overflow: hidden; height: auto;} 
+
+
+    .wrap_reservation_list .reservation_box .res_details .res_available .res_available_box{margin-bottom: 7px;}
+    .wrap_reservation_list .reservation_box .res_info h4 { font-size: 18px; }
+    .wrap_reservation_list .reservation_box .get_direction_btn { font-size: 9px; width: 100px; }
+    .head_top_reservation h3 { font-size: 20px; }
+    .modifyForm { padding: 20px 20px; }
+    .modifyForm form label { font-size: 20px; }      
+    .filterTitle { flex-wrap: wrap; }
+    .filterTitle .filterTitleText { width: 100%; margin-bottom: 5px; }
+    .modal{padding: 20px;}
+   /* .withLeftButtons.wrap_table #top_filter { margin-top: 50px; } */
+    
+   .withLeftButtons.wrap_table #top_filter{top: 85px;}
+   .wrap_table .table_class, .commonTable{margin-top: 85px;}
+   .reports-step{display: block;}
+   .reports-step .left-col, .reports-step .right-col{width: 100%;padding:0 39px 40px;}
+   #report-step-form .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{width: 100%;}
+   .reports-step .right-col .file-icon svg{width: 120px;height: 120px;}
+
+
+   .btn, .auth_screen .form_group .btn, input.btn{font-size: 12px;}
+   header .right_top_bar .topbar-user .user_dropdown{font-size: 15px;}
+   /* .main-wrap { padding-top: 14px; } */
+   .main-wrap section { padding: 70px 0; }
+   .portal-section .portal-card span {width: 75px;height: 75px;}
+   .portal-section .portal-card { padding: 30px 65px 50px 30px;}
+   .report-section .report-info {padding: 40px;}
+   .report-section .report-info .report-top { padding-bottom: 12px; margin-bottom: 36px;}
+}
+
+@media (max-width:991px) {
+    h1, .h1{font-size: 28px;}
+    .siteTitle{font-size: 14px; text-align: center; padding: 11px;}
+    .auth_screen .logo{padding: 0;}
+    .auth_screen .logoRow{left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; justify-content: center;}
+    /* Login Screen */
+    .auth_screen .fit_content:after{display: none;}
+    .auth_screen .auth_box{z-index: -1; width: 100%; max-width: 500px; margin: 0 auto;}
+    .auth_screen .bg_wrap .row > .fit_content{overflow: hidden;justify-content: center; max-width: 100%;}
+    .auth_screen h1,.auth_screen .verify_section h1{margin-top: 30px;}
+    .auth_screen .copyright{background-color:var(--white); padding:0;margin-bottom:20px;}
+    .auth_screen .form_group{margin-bottom:30px;}
+    .auth_screen .form_group input[type='email'], .auth_screen .form_group input[type='text'], .auth_screen .form_group input[type='password']{font-size: 14px;}
+     
+    .auth_screen .bg_wrap .float_element .top_img{top:-8px;width:50%;right:-90px;}
+    .auth_screen .bg_wrap .float_element .bottom_img{z-index:-1;bottom:-58px;left:-38px;}
+    .auth_screen .bg_wrap-mobile{display: block;filter: brightness(0.6);z-index: -1;position: relative;margin: 0 -15px;}
+    .auth_screen .bg_wrap-mobile img{object-fit:cover;object-position:center;}
+    .booking_list_wrapper .booking_list_box{width: 100%; margin-right: 0;}
+    #top_filter .dataTables_length{margin-bottom: 10px;}
+
+    
+    header .right_top_bar { max-width: 28%; }
+    .wrap_reservation_list .reservation_box .res_info { padding-right: 0; width: 100%; margin-bottom: 20px; border: none; }
+    .wrap_reservation_list .reservation_box { padding: 20px; margin-bottom: 20px;}
+    .wrap_reservation_list .reservation_box .res_details { width: 100%; padding-left: 0; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col ,.wrap_reservation_list .inviteblock{ width: 100%; }
+    .wrap_reservation_list .reservation_box:last-child{margin-bottom: 0px;}
+    .wrap_reservation_list .reservation_box .location_pin{max-width: 100%;}
+    .modifyForm .form-group { flex-wrap: wrap; }
+    .modifyForm .form-group .col{margin-bottom: 15px;}
+    .availableRestaurant .row>div{max-width:100% !important;}
+    .filterList { height: auto; }
+    .availableRestaurant .filterBlock { margin-bottom: 20px; }
+    .availableList .availableItem:last-child{margin-bottom: 0px;}
+    .wrap_table .dataTables_filter input { width: 226px; }
+    #top_filter .dataTables_length { margin-bottom: 0; }
+
+
+    .main-content h2.heading_title{font-size: 20px;}
+    .wrap_table .table_class, .commonTable{margin-top: 145px;}
+    .wrap_table .dataTables_filter{margin-top: 15px;}
+    .wrap_table #bottom_page .dataTables_info {font-size: 13px;}
+    .reports-step .right-col .start-step{padding: 50px 25px;}
+    .reports-step .right-col .file-icon svg{width: 70px;height: 70px;}
+
+}
+@media (max-width:767px) {
+    [class*="col-"]{max-width: 100%;}
+
+    header .right_top_bar .topbar-user .user_dropdown .header-profile-user-name{display: none;}
+
+    .auth_screen .auth_box{padding: 0; margin-top: 30px;}
+    .loginForm .input-group-text{right: 90px;}
+    header .siteTitle{display: none;}
+    .dropdown-list{min-width: auto;}
+    .dropdown-list::before{margin-left: 10px;top: -10px;border-left-width: 10px;border-right-width: 10px;border-bottom-width: 10px;}
+    .dropdown-list ul{font-size: 14px;}
+    .dropdown-list ul li a{white-space: nowrap;}
+    .dropdown-list ul li i{width:12px;}
+
+    .app-menu{width:50px;}
+    .app-menu ul li a span.icon{margin-right: 0;}
+    .app-menu ul li a span.navbar-title{display: none;}
+    .main-content{margin-left: 50px;}
+    .main-content .container-fluid{padding:30px 15px;}
+    .main-content h2.heading_title{font-size:20px;}
+
+    .wrap_reservation{border-radius: 10px;}
+    .wrap_reservation .wrap_reservation_list{padding:10px;}
+    .restroBookProgress .progressStep .stepItem .stepText h5{font-size: 12px; word-break: break-all;}
+    .restroBookProgress .progressStep .stepItem .stepText h5 .tooltipBtn{width:15px;height:15px;}
+    .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{ width:calc(100% + 30px);height: 1px;background-color: #707070;}
+    .addReservationForm .restroBookRight .restro_info_row.restro_info_1 .col-4{max-width: 100%;}
+    .addReservationForm .restroBookRight .restro_info_row.restro_info_1 .form-group{margin-bottom:10px;}
+    input, select, optgroup,textarea{font-size:14px;}
+    .head_top_reservation .close_btn{width: 18px; height: 18px;}
+    .add_restro .restro_info_row{margin-bottom:20px;min-height: 45vh;}
+    .add_fillter .addNewFilter{padding:25px 5px 15px;}
+    .addFilterItem{padding: 0 5px;}
+    .addFilterItem [class*="col-"]:first-child{margin-bottom: 15px;}
+    .addFilterItem .file_upload{margin-bottom: 10px;}
+    .add_fillter .addNewFilter .addFilterItem_buttons{flex-wrap: wrap;}
+    .add_fillter .addNewFilter .addFilterItem_buttons .form-item1{margin-bottom: 10px;}
+    .add_fillter .footer_reservation{position:static;text-align: center;}
+    .addFilterItem .addFilterItem_inputs{ flex-wrap: wrap;}
+    .addFilterItem .addFilterItem_inputs input[type="button"]{min-width: auto; width: 50%;font-size: 12px;}
+    .submitForm{display: flex; justify-content: space-between;padding-top: 20px;}
+    .submitForm .btn{font-size: 12px; min-width: 100px;}
+    .swal2-container #swal2-title{font-size: 20px;}
+    .swal2-container .swal2-styled.swal2-confirm,.swal2-container .swal2-styled.swal2-deny{font-size: 12px;}
+    .wrap_table #top_filter .dataTables_length{ margin-bottom: 15px;}
+    .wrap_table .dataTables_filter input{width: 100%;}
+    .wrap_table #bottom_page .dataTables_info{font-size: 12px;}
+    .restro_time_info .col{max-width: 50%; margin-bottom: 5px;}
+    .restro_time_info .col input{padding: 13px 10px;}
+    .restro_time_info .col.addCol{max-width: 100%;}
+    .restro_time_info .col.addCol .btn{width: 100%;}
+    .btn, .auth_screen .form_group .btn, input.btn{font-size: 12px;}
+    #time_input, .time_select .select2-container--default .select2-selection--single{padding-left: 35px;background-position: left 10px center;}
+    .restro_time_info .col .datepicker{padding-left: 32px;background-position: left 13px center;}
+    .profilePicture{margin-top: 30px;}
+    .file_upload_section .form-group.file_upload [class*="col-"]:first-child{margin-bottom: 20px;}
+    .withLeftButtons .leftButtonsRow{margin: 0 0 15px;}
+    .withLeftButtons.wrap_table #top_filter{justify-content: flex-start;}
+    .wrap_table .table_class thead tr th:nth-child(2),.wrap_table .table_class tbody tr td:nth-child(2){white-space:normal; font-size: 14px;}
+    table.dataTable tr.child td.child>ul{padding: 15px;}
+    .action_class .drop_dots{display: none;}
+    .action_class .action_drop{position: static;opacity:1;visibility:visible; transform: none;}
+    .wrap_reservation .head_top_reservation{padding:15px;}
+    .head_top_reservation h3{font-size: 20px;}
+    .wrap_reservation_list .reservation_box{border-radius:10px;}
+    #all_restaurants tbody tr td:nth-child(3){word-break: break-all !important; padding-right: 5px;}
+
+    .wrapContentContainer { padding: 20px; }
+    .modifyForm { border-radius: 10px; }
+    .modifyForm form label { font-size: 16px; }
+    .selectInput .select2-container--default .select2-selection--single { padding: 5px 20px; }
+    .modifyForm .form-group .col:last-child{margin-bottom: 0px;}
+    .availableList .availableItem { padding: 20px; border-radius: 10px;flex-wrap: wrap;  padding-bottom: 40px;}
+    .availableList .restaurantDetails { max-width: 100%; margin-top: 10px;   }
+    .modal { padding: 10px; }
+    .modal .modal-header { padding: 15px 33px 15px 15px; }
+    .modal .modal-header h4 { font-size: 20px; }
+    .modal-close { top: 18px; right: 14px; width: 20px; }
+    #viewDetails.modal .modal-body { padding: 10px 10px; }
+    .tabs .tabs-nav li a { padding: 13px 20px; }
+    .restro_time_info .col { max-width: 50% !important; }
+    .popup .popup_wrap { width: calc(100% - 20px);     padding: 50px 30px;}
+    .popup .popup_header figcaption { font-size: 20px; }
+    .popup .popup_body .form-group input { padding: 12px 10px 12px 0; }
+    .popup .popup_body .form-group:not(:last-child) { margin-bottom: 0; }
+    .popup_footer { margin-top: 20px; }
+    .popup_footer a,.popup_footer input{min-width: 103px;}
+    .popup .popup_body { margin-top: 15px; }
+    .withLeftButtons.wrap_table #top_filter { margin-top: 20px; }
+
+    table#all_email_list,#all_email_list thead,#all_email_list tbody,#all_email_list th,#all_email_list td,#all_email_list tr { display: block; }
+	#all_email_list thead tr { position: absolute; top: -9999px; left: -9999px; }
+	#all_email_list tr { border-top:2px solid #000 !important; }
+	#all_email_list td { border: none; border-bottom: none; position: relative; padding-left: 50%;    text-align: left;     word-break: break-all;display: flex; justify-content: flex-start; align-items: center;}
+    #all_email_list td:before { position: absolute; top: 50%; transform: translateY(-50%); left: 0; width: 45%; padding: 0 20px; white-space: nowrap; z-index: 22;color: #fff;    font-size: 12px;}
+    #all_email_list td::after{content: '';position: absolute;left: 0;top: 0;width: 45%;height: 100%;background-color: var(--green);}
+	
+	/* #all_email_list td:nth-of-type(1):before { content: ""; } */
+	#all_email_list td:nth-of-type(2):before { content: "ID"; }
+	#all_email_list td:nth-of-type(3):before { content: "Email Name"; }
+	#all_email_list td:nth-of-type(4):before { content: "Email Subject"; }
+	#all_email_list td:nth-of-type(5):before { content: "Action"; }
+	
+
+    .booking_list_wrapper .booking_list_box span{width: 40px;height: 40px;}
+    .booking_list_wrapper .booking_list_box span img{max-width: 40px;max-height: 40px;}
+
+    .reports-step .left-col, .reports-step .right-col{padding: 0 25px 40px;}
+    /* .reports-step .right-col{padding: 0 25px;} */
+    .reports-step .right-col .start-step{padding: 30px 20px 50px 20px;}
+    .reports-step{padding: 35px 0;}
+    .reports-step .right-col .file-icon{display: none;}
+    .reports-step .right-col .start-step ul li:not(:last-child){padding-bottom: 25px;}
+
+}
+@media (max-width:575px){
+    #table_booked_list_For_slot .table td{font-size: 17px;}
+
+
+    #table_booked_list_For_slot .table td .tag-host, #table_booked_list_For_slot .table td .tag-guest {margin-top: 10px;font-size: 14px;
+           display: flex;align-items: flex-start; width: max-content; }
+
+           
+    header .wrap_container{padding:10px 15px;}
+    .booking_list_wrapper .booking_list_box{padding: 20px 15px;min-height: auto;margin-bottom: 20px;}
+    .booking_list_wrapper .booking_list_box .eye_button{width:35px;height:35px;right:15px;top:30px;}
+    .booking_list_wrapper .booking_list_box .eye_button svg{width:17px;height:17px;}
+    .booking_list_wrapper .booking_list_box h4{font-size:20px;margin-top:15px;}
+    footer p{font-size: 14px;}
+    .dash_top_wrapp .activity_box_wrapper .activity_box #activity_chart{min-height:150px;}
+    #activity_chart > div{transform:scale(1);}
+    #activity_chart > div> div, #activity_chart canvas{width: 100% !important;}
+    #activity_chart canvas{height: 130px !important;}
+    
+    .restroBookProgress .progressStep .stepItem .stepImgbox .stepImg { width: 45px; height: 45px;}
+    .restroBookProgress .progressStep .stepItem .stepText h5 { font-size: 10px;}
+    .restroBookProgress .progressStep .stepItem .stepImgbox .stepImg:before { width: 35px; height: 35px; }
+    .restroBookProgress .progressStep .stepItem.active .stepImgbox .stepImg img, .restroBookProgress .progressStep .stepItem.completed .stepImgbox .stepImg img { max-width: 18px; }
+    /* .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before { width: calc(100% - 40px); left: calc(50% + 18px); } */
+    .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before { width: calc(100% + 40px); left: calc(50% + 18px); }
+    .restroBookProgress { padding-bottom: 10px; }
+    input, select, optgroup, textarea { font-size: 12px; }
+    .form-group { margin-bottom: 10px; }
+    .add_restro form h5 { font-size: 12px; margin-bottom: 5px; }
+    .radio-group { margin-left: 5px; margin-bottom: 7px; } 
+    .radio-group label { padding-left: 20px; margin-right: 10px; }
+    .radio-group label:before { width: 18px; height: 18px; }
+    .radio-group label:after { width: 12px; height: 12px; }
+    .head_top_reservation h2 { font-size: 18px; }
+    .head_top_reservation h3 { font-size: 18px; margin-top: 4px; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col { width: 100%; padding: 0; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col .user_info label, .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col .user_info span { width: 100%;font-size: 14px; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col .user_info { flex-wrap: wrap; }
+    .wrap_reservation_list .reservation_box .res_details .action .btn { min-width: 43px; margin-right: 5px; padding: 10px; font-size: 14px; }
+    .wrap_reservation_list .reservation_box .res_details .action .btn:last-child{margin-right: 0px;}
+    .wrap_reservation_list .reservation_box { padding: 10px; margin-bottom: 10px; }
+    .wrap_table #bottom_page { flex-wrap: wrap; }
+    .wrap_table #bottom_page .dataTables_info { margin-bottom: 10px; }
+    .wrap_table .table_class tbody td span { box-sizing: border-box; word-break: break-word; width: 100%; white-space: break-spaces; }
+    .wrap_table .table_class tbody td li:last-child span{white-space: initial !important;}
+    .withLeftButtons .leftButtonsRow a+a { font-size: 0; width: 43px; padding: 0; display: flex; justify-content: center; align-items: center; letter-spacing: 0; padding: 0; }
+    .withLeftButtons .leftButtonsRow a+a img{margin: 0;}
+    .btn_add{padding: 10px 15px;}
+    .btn_wrapper .btn_add{margin-right: 5px;}
+
+    .reports-step .right-col h2{font-size: 20px;margin-bottom: 22px;}
+    .reports-step .right-col h5{font-size: 18px;}
+    .reports-step .right-col .start-step ul li{font-size: 16px;}
+}
+@media (max-width:360px){
+    #all_restaurants thead tr th:nth-child(2),#all_restaurants tbody tr td:nth-child(2){min-width:75px !important; width:75px !important;font-size: 12px;word-break:break-all; text-align: center;}
+    /* #all_restaurants thead tr th:nth-child(3),#all_restaurants tbody tr td:nth-child(3){width: 180px !important;word-break: break-all;} */
+    .reports-step .right-col .start-step ul li{font-size: 14px;}
+}   
+@media (max-width:359px){
+    
+}
