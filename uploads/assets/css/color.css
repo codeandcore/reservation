@@ -1,23 +1,23 @@
 
 :root{
     /* Colors */
-    --primary:#003fa6;
-    --secondary: #b6ebff;
+    --primary:#1b3a8c;
+    --secondary: #cfebff;
     --thirdary: #122223;
-    --gryColor: #b6ebff;
-    --black-shade : #003fa6;
-    --grey-shade : #b6ebff;
-    --grey-shade-light : #b6ebff;
+    --gryColor: #cfebff;
+    --black-shade : #1b3a8c;
+    --grey-shade : #cfebff;
+    --grey-shade-light : #cfebff;
     --black:#000000;
     --white:#ffffff;
     --textColor: #434343;
-    --green:#003fa6;
-    --red:#b6ebff;
+    --green:#1b3a8c;
+    --red:#cfebff;
     --defaultColor :#757575;
     --bg-white : #F3F3F3;
     --input-bg: #F0F0F0;
     --errorColor: #E35858;
-    --btn-color:#003fa6;
+    --btn-color:#1b3a8c;
     /* Fonts */
     --primary-font : 'Work Sans', sans-serif;
     --heading-font : 'Roboto Slab', serif;
@@ -30,12 +30,12 @@
 
 .booking_list_wrapper .booking_list_box:after{
     /* background: var(--green);     */
-    background: linear-gradient(145deg, rgb(45 134 205) 0%, rgb(0, 63, 166) 60%, rgb(0, 63, 166) 59%, rgb(0, 63, 166) 183%);
+    background: linear-gradient(145deg, rgb(45 134 205) 0%, rgb(27 58 140) 60%, rgb(27 58 140) 59%, rgb(27 58 140) 183%);
 }
 
 
 .action_class .drop_dots img,.booking_list_wrapper .booking_list_box span img,.dropdown-list ul li a img,.action_class .action_drop a img,.wrap_table .table_class .view_btn img,.popup .popup_wrap:after,.auth_screen .bg_wrap .float_element .star_img img,.auth_screen .bg_wrap .float_element .bottom_img img,.auth_screen .bg_wrap .float_element .top_img img,.viewGridButton .btn:not(.active) img,.swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img,.modal-close img,.addFilterItem .file_upload .fileinput-button img, .close_btn img,.fileinput-button > img{
-    filter: brightness(0) saturate(100%) invert(14%) sepia(42%) saturate(6842%) hue-rotate(212deg) brightness(98%) contrast(102%);
+    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%);
 }
 /* .popup .popup_header img{} */
 

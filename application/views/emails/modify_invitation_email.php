@@ -15,8 +15,9 @@
                             <tr>
                                 <td style="height: 6px;" colspan="2"></td>
                             </tr>
-                            <?php if($restaurant_address_hide != 'yes'): 
-                                    if($hotel['address']!= ''){
+                            <?php 
+                                if($restaurant_address_hide != 'yes'): 
+                                    if($hotel['address']!= ''){    
                             ?>
                                         <tr>
                                             <td width="30px" valign="top">
@@ -28,7 +29,8 @@
                                         </tr>
                             <?php  
                                     }
-                                endif; ?>
+                                endif; 
+                            ?>
                                 <tr>
                                     <td style="height: 10px;" colspan="2"></td>
                                 </tr>

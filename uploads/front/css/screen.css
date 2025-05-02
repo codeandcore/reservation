@@ -2969,7 +2969,7 @@ span.filterIcon img {
 }
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailInput a:hover {
-    color: var(--black);
+    color: var(--secondary);
 }
 
 .inviteblock {
