@@ -3818,3 +3818,25 @@ body .swal2-title {
 .overflow-hidden .inner-time-and-people-section {
     z-index: 1;
 }
+
+
+.loginForm .nots {
+    color: #707070;
+}
+
+.loginForm a {
+    border-bottom: 1px solid;
+}
+
+.loginPages .small-text{
+    font-size: 14px;
+}   
+.loginPages .small-notes{
+    background-color: var(--white);
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border-left: 5px solid var(--primary);
+}
+.creditInformation .form-group label.error {
+    display: none !important;
+}
