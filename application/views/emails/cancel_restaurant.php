@@ -116,8 +116,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                    
                                     <?php 
-                                    // $user_id = $this->session->userdata('mes_user_id');
-                                    $user_id = $booking['user_id'];
+                                    $user_id = $this->session->userdata('mes_user_id');
                                     $user_data = $this->user_model->get_user_detail_byuserid($user_id);
                                     ?>
                                     <?php if($user_data['full_name'] != ''):?>

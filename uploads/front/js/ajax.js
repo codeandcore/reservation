@@ -18,7 +18,6 @@ jQuery(document).ready(function(){
         console.log(cardInfo);
         return cardInfo.card_type.name == 'amex' ? value.length == 4 : value.length == 3;
     });
-
     $.validator.addMethod('checkbox_all', function(value, element, param) {
         var err = 0;
         error_checkbox_valid();

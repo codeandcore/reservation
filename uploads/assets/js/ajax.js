@@ -13,12 +13,11 @@ jQuery(document).ready(function(){
             return false;    
         }
     });
-	$.validator.addMethod('cvv_number_validate', function(value, element, param) {
+    $.validator.addMethod('cvv_number_validate', function(value, element, param) {
         var cardInfo = $('#card_number').validateCreditCard();
         console.log(cardInfo);
         return cardInfo.card_type.name == 'amex' ? value.length == 4 : value.length == 3;
     });
-
     $.validator.addMethod('checkbox_all', function(value, element, param) {
         var err = 0;
         error_checkbox_valid();

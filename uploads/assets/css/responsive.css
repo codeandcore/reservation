@@ -436,12 +436,10 @@
 }
 @media (max-width:575px){
     #table_booked_list_For_slot .table td{font-size: 17px;}
-
-
     #table_booked_list_For_slot .table td .tag-host, #table_booked_list_For_slot .table td .tag-guest {margin-top: 10px;font-size: 14px;
            display: flex;align-items: flex-start; width: max-content; }
 
-           
+
     header .wrap_container{padding:10px 15px;}
     .booking_list_wrapper .booking_list_box{padding: 20px 15px;min-height: auto;margin-bottom: 20px;}
     .booking_list_wrapper .booking_list_box .eye_button{width:35px;height:35px;right:15px;top:30px;}
@@ -496,3 +494,19 @@
 @media (max-width:359px){
     
 }
+
+#table_booked_list_For_slot .table td .tag-host{font-size: 12px;
+    background-color: var(--primary);
+    color: var(--white); border-radius: 25px; display: inline-flex; align-items: center; margin-left: 7px;
+    padding: 5px 10px;}
+  
+  #table_booked_list_For_slot .table td .tag-host img{width: 15px;height: 15px;filter: invert(1); margin-right: 5px;}
+  
+  #table_booked_list_For_slot .table td .tag-guest{    font-size: 12px;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 25px; display: inline-flex; align-items: center; margin-left: 7px;
+    padding: 5px 10px;}
+  
+  #table_booked_list_For_slot .table td .tag-guest img{width: 15px;height: 15px; margin-right: 5px;
+    filter: brightness(0) saturate(100%) invert(58%) sepia(16%) saturate(1948%) hue-rotate(167deg) brightness(81%) contrast(93%);}

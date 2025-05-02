@@ -3034,9 +3034,9 @@ class Admin extends CI_Controller {
 				<tbody>
 					<?php foreach($list as $data){
 						
-						$content_after = '<span class="tag-host"> <img src="https://reservation.2024canadapremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
+						$content_after = '<span class="tag-host"> <img src="https://reservation.2024premiermalta.com/uploads/assets/images/star1.png" alt=""> PRIMARY</span>';
 						if($data['guests'] != ''){
-							$content_after = '<span class="tag-host"> <img src="https://reservation.2024internalmedicinepremier.com/uploads/assets/images/star.png" alt=""> PRIMARY</span>';
+							$content_after = '<span class="tag-host"> <img src="https://reservation.2024premiermalta.com/uploads/assets/images/star1.png" alt=""> PRIMARY</span>';
 						}
 						else if($data['ref_id'] != ''){
 							
@@ -3044,14 +3044,14 @@ class Admin extends CI_Controller {
 							if(!empty($booking_list_data)){
 								$user_id = $booking_list_data['user_id'];
 								$user_name = $this->admin_model->get_user_name_byid($user_id);
-								$content_after = '<span class="tag-guest"> <img src="https://reservation.2024canadapremier.com/uploads/assets/images/star.png" alt=""> GUEST OF '.$user_name.'</span>';
+								$content_after = '<span class="tag-guest"> <img src="https://reservation.2024internalmedicinepremier.com/uploads/assets/images/star1.png" alt=""> GUEST OF '.$user_name.'</span>';
 								// $content_after = '(GUEST OF '.$user_name.')';
 							}
 						}
 						?>
 					<tr>
 						<td><a href="<?php echo site_url('admin/view_booking_detail/').$data['booking_id'];?>">#<?php echo $data['booking_id'];?></td>
-						<td><?php echo $this->admin_model->get_user_name_byid($data['user_id']).' '.$content_after;;?></td>
+						<td><?php echo $this->admin_model->get_user_name_byid($data['user_id']).' '.$content_after;?></td>
 					</tr>
 					<?php } ?>
 				</tbody>
