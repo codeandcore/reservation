@@ -15,20 +15,16 @@
                             <tr>
                                 <td style="height: 6px;" colspan="2"></td>
                             </tr>
-                            <?php if($restaurant_address_hide != 'yes'): 
-                                    if($hotel['address']!= ''){
-                            ?>
-                                        <tr>
-                                            <td width="30px" valign="top">
-                                                <img src="<?php echo base_url(); ?>/uploads/emails/map.png" alt="">
-                                            </td>
-                                            <td width="500px" valign="top" style="padding-left: 5px;">
-                                                <p style="color: <?php echo $color1; ?>;font-size: 10px;line-height: 16px;font-weight: 500;margin: 0px; word-wrap: break-all;"><?php echo $hotel['address'];?></p>
-                                            </td>
-                                        </tr>
-                            <?php  
-                                    }
-                                endif; ?>
+                            <?php if($restaurant_address_hide != 'yes'): ?>
+                                <tr>
+                                    <td width="30px" valign="top">
+                                        <img src="<?php echo base_url(); ?>/uploads/emails/map.png" alt="">
+                                    </td>
+                                    <td width="500px" valign="top" style="padding-left: 5px;">
+                                        <p style="color: <?php echo $color1; ?>;font-size: 10px;line-height: 16px;font-weight: 500;margin: 0px; word-wrap: break-all;"><?php echo $hotel['address'];?></p>
+                                    </td>
+                                </tr>
+                            <?php  endif; ?>
                                 <tr>
                                     <td style="height: 10px;" colspan="2"></td>
                                 </tr>

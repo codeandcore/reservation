@@ -2170,7 +2170,6 @@ class Admin_model extends CI_Model {
                 $this->db->where('booking_status','booked');
                 $this->db->where('booking_pax',$size);
                 $this->db->where('ref_id','0');//To exclude invites
-
                 $query = $this->db->get('ms-booking-list');
                 $count = $query->num_rows();
                 if($capacity > $count){
