@@ -86,12 +86,12 @@
                                                     <label class="radioLabel" for="property_type_radio1">All
                                                         Restaurants</label>
                                                 </div>
-                                                <div class="custom-radio">
+                                                <!-- <div class="custom-radio">
                                                     <input type="radio" id="property_type_radio2" name="property_type"
                                                         value="on" class="radioInput">
                                                     <label class="radioLabel" for="property_type_radio2">On - Property
                                                         Restaurant</label>
-                                                </div>
+                                                </div> -->
                                                 <div class="custom-radio">
                                                     <input type="radio" id="property_type_radio3" name="property_type"
                                                         value="off" class="radioInput">

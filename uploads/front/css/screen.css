@@ -1435,7 +1435,7 @@ html ::-webkit-scrollbar:horizontal {
     top: 0;
     background-color: var(--primary);
     color: var(--white);
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 900;
     text-align: center;
     text-transform: uppercase;
@@ -2189,9 +2189,7 @@ footer .copyRight {
     max-width: calc(100% - 186px);
 }
 
-.availableList .restaurantDetails .confirmTimePeople ul li:first-child i img , .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%) !important;
-}
+
 
 .availableList .restaurantDetails .restaurantName {
     margin-bottom: 10px;
@@ -2209,7 +2207,7 @@ footer .copyRight {
     height: 18px;
     border-radius: 100%;
     background-color: var(--primary);
-    outline: 3px solid rgb(27 58 140 / 30%);
+    outline: 3px solid rgb(9 30 59 / 30%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2291,6 +2289,7 @@ footer .copyRight {
 
 .availableList .restaurantDetails :is(.timeing, .booked_time) ul li:not(:last-child) {
     margin-right: 15px;
+    margin-bottom: 5px;
 }
 
 .availableList .restaurantDetails :is(.timeing, .booked_time) ul li a {
@@ -2339,7 +2338,6 @@ footer .copyRight {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(27, 58, 140, 0.9);
     text-align: center;
     color: var(--white);
     padding: 20px;
@@ -2610,7 +2608,9 @@ footer .copyRight {
     margin-right: 10px;
     color: var(--white);
 }
-
+.filterTitle .filterButtons .filterBtn:hover{
+    background-color: var(--green);
+}
 .filterItem {
     padding-top: 20px;
     padding-bottom: 20px;

@@ -758,6 +758,7 @@ class User extends CI_Controller {
 			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
 			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
 			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
+			$email_template = str_replace('{{trip_title}}',$this->settings['trip_title'],$email_template);
 			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
 			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
 			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
@@ -879,7 +880,6 @@ class User extends CI_Controller {
 					$email_template = str_replace('{{book_restaurants_list}}',$list,$email_template);
 					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
 					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{trip_title}}',$this->settings['trip_title'],$email_template);
 					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
 					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
 					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);

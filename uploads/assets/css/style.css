@@ -78,7 +78,7 @@ a {color: var(--black); text-decoration:none;transition: 0.5s ease all; display:
 a:not(.btn, .app-menu ul li a, .action_class .action_drop a, .dropdown-list ul li a, .wrap_table #bottom_page .dataTables_paginate span a.paginate_button,
 .ui-datepicker-calendar tbody td a,.pagination ul li .page-link,.wrap_reservation_list .reservation_box .get_direction_btn,
 .availableList .restaurantDetails :is(.timeing, .booked_time) ul li a){text-decoration: underline;}
-a.current,a:active,a:hover {color: var(--btn-color);}
+a.current,a:active,a:hover {color: var(--primary);}
 a:focus {outline: none;}
 
 
@@ -199,7 +199,7 @@ h4,.h4 {font-size:24px;}
 h5,.h5 {font-size: 20px;}
 h6,.h6 {font-size: 12px;}
 
-.btn, .auth_screen .form_group .btn, input.btn{background-color:var(--black-shade);color:var(--white);text-transform:uppercase;letter-spacing:2.1px;font-size:20px;border:2px solid var(--black-shade);font-weight:400;padding:11px 14px;min-width:139px;display:inline-block;text-align: center; width: auto; cursor: pointer; position: relative;font-family: var(--primary-font);}
+.btn, .auth_screen .form_group .btn, input.btn{background-color:var(--btn-color);color:var(--white);text-transform:uppercase;letter-spacing:2.1px;font-size:20px;border:2px solid var(--btn-color);font-weight:400;padding:11px 14px;min-width:139px;display:inline-block;text-align: center; width: auto; cursor: pointer; position: relative;font-family: var(--primary-font);}
 .btn:hover,.auth_screen .form_group .btn:hover{background-color: rgba(0, 67, 78, 0.6); color: var(--white);}
 .btn.btn-dark{background-color:var(--secondary);border-color:var(--secondary);color: var(--green);}
 .btn.btn-dark:hover{color:var(--white);background-color:var(--green);border-color: var(--green);color: var(--white);}
@@ -720,8 +720,8 @@ padding: 0 10px;margin-left: 15px;}
 .restroBookProgress .progressStep .stepItem.active .stepText h5, .restroBookProgress .progressStep .stepItem.completed .stepText h5{color: var(--green); font-weight: bold;}
 .restroBookProgress .progressStep .stepItem.completed .stepImgbox::before{background-image: none; background-color: var(--green);}
 .submitForm{text-align: right; padding-top: 40px; border-top: 1px solid #707070;}
-.submitForm .btn.btn-dark{background: #757575; border-color: #757575;}
-.submitForm .btn.btn-dark:hover{opacity: 0.8;}
+.submitForm .btn.btn-dark{background: #dddddd; border-color: #dddddd;}
+.submitForm .btn.btn-dark:hover{opacity: 0.8;color:var(--black);}
 .add_restro form input.error, .add_restro form textarea.error{background-color: #f7ecec;}
 .add_restro form label.error{display: none !important;}
 .radio-group label.label-selected{pointer-events: none;}
@@ -740,7 +740,7 @@ padding: 0 10px;margin-left: 15px;}
 .filter-header a{text-decoration: underline;}
 .filter-body{padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.09);}
 .filter-body .addFilterLink{color: var(--green); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 500;}
-.filter-body .addFilterLink:hover{color: var(--btn-color);;}
+.filter-body .addFilterLink:hover{color: var(--black);;}
 .filter-body > p{font-weight: 500; font-size: 14.8px;}
 /* Add Resturent Page end */
 
@@ -756,7 +756,7 @@ padding: 0 10px;margin-left: 15px;}
 .restro_time_info .dataTables_wrapper{margin-bottom: 30px;}
 .restro_time_info .row{margin-right: -5px; margin-left: -5px;}
 .restro_time_info .col{padding-left: 5px; padding-right: 5px; max-width: 21.5%; width: 100%;} 
-.restro_time_info .col.addCol{max-width: fit-content;} 
+.restro_time_info .col.addCol{max-width: fit-content;margin-top: 5px;} 
 .restro_time_info .slotBooking{margin-top: 20px;}
 .restro_time_info .slotBooking input{font-size: 13px;}
 
@@ -1115,7 +1115,7 @@ progress::-moz-progress-value { background-color: #00434E; }
 .master_reservation{overflow: auto; padding-bottom: 15px;}
 .not-found:hover td{background-color: inherit !important;}
 
-.viewGridButton .btn img{filter: invert(100);}
+
 .viewGridButton .btn:not(.active){background: transparent;color: var(--green);}
 .viewGridButton .btn:not(.active) img{ filter: brightness(0) saturate(100%) invert(21%) sepia(10%) saturate(5775%) hue-rotate(149deg) brightness(96%) contrast(104%); -webkit-filter: brightness(0) saturate(100%) invert(21%) sepia(10%) saturate(5775%) hue-rotate(149deg) brightness(96%) contrast(104%); }
 .popup[data-id="deleteInvite"] .popup_header figure>img{ filter:none ; -webkit-filter:none ; }
@@ -1209,7 +1209,7 @@ progress::-moz-progress-value { background-color: #00434E; }
 
 .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn:hover{background-color: var(--white);border-color: var(--white);}
 .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn img{transition: 0.1s;}
-.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn:hover img, .btn_add:hover img{filter: brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(1362%) hue-rotate(205deg) brightness(93%) contrast(97%);}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn:hover img, .btn_add:hover img{ filter: brightness(0) saturate(100%) invert(46%) sepia(76%) saturate(444%) hue-rotate(165deg) brightness(90%) contrast(90%);} 
 /* 04-03-2024 End */
 
 .mul-frm-sel-all {
@@ -1450,20 +1450,3 @@ html { scroll-behavior: smooth; }
   border-left: 5px solid var(--green);
 }
 
-#table_booked_list_For_slot .table td .tag-host{font-size: 12px;
-  background-color: var(--primary);
-  color: var(--white); border-radius: 25px; display: inline-flex; align-items: center; margin-left: 7px;
-  padding: 5px 10px;}
-
-#table_booked_list_For_slot .table td .tag-host img{width: 15px;height: 15px;filter: invert(1); margin-right: 5px;}
-
-#table_booked_list_For_slot .table td .tag-guest{    font-size: 12px;
-  background-color: var(--secondary);
-  color: var(--primary);
-  border-radius: 25px; display: inline-flex; align-items: center; margin-left: 7px;
-  padding: 5px 10px;}
-
-#table_booked_list_For_slot .table td .tag-guest img{width: 15px;height: 15px; margin-right: 5px;
-  filter: brightness(0) saturate(100%) invert(15%) sepia(96%) saturate(2034%) hue-rotate(215deg) brightness(89%) contrast(90%);}
-
-  
