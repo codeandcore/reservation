@@ -1,28 +1,28 @@
 :root{
-    --primary:#003FA6;
-    --secondary: #b6ebff;
+    --primary:#08312a;
+    --secondary: #000000;;
     --thirdary: #122223;
-    --skyColor: #b6ebff;
-    --gryColor: #ebd1ea;
+    --skyColor: #f6f5f3;
+    --gryColor: #f6f5f3;
     --black:#000000;
     --white:#ffffff;
     --textColor: #434343;
-    --green:#003FA6;
-    --red:#003FA6;
+    --green:#08312a;
+    --red:#00e47c;
     
     --primary-font:'Work Sans', sans-serif;
     --secondary-font: 'Roboto Slab', sans-serif;
     }
     
     
-    .btn{background-color: var(--primary); color: var(--white); border-color: var(--primary);}
-    .btn:hover{background-color:var(--secondary); color: var(--primary);border-color: var(--secondary);}
+    .btn{background-color: var(--red); color: var(--primary); border-color: var(--red);}
+    .btn:hover{background-color:var(--primary); color: var(--white);border-color: var(--primary);}
     .loginPages .leftSide .leftbg::before{background-color: rgb(36 47 68 / 0.62);}
   
     
-    .selectedRestaurant{background-color: rgb(0 63 166 / 0.82);}
+    .selectedRestaurant{background-color: rgb(8 49 42 / 0.82);}
     .dropdown-list ul li a img,.restaurantSlider .slideItem .itemView img,.modal-close img,.availableDayList .availablItem .restauranIcon img,.star-ratings .fill-ratings span img,.availableList .restaurantDetails .confirmTimePeople li img,.comfirmedDetails .reservationAddress .addressBox .hotelAddress .addr img,.invitationDetails .comfirmedDetails .finalTimePeople ul li i img,.invitationDetails .comfirmedDetails .addr img,.confirmDetails .confirmDay i img,.availableList .no-restaurant_found img,.cancelRestoDetails .rest_desc li i img,.modal-close img{
-        filter: brightness(0) saturate(100%) invert(19%) sepia(52%) saturate(4476%) hue-rotate(212deg) brightness(82%) contrast(104%);
+        filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(4645%) hue-rotate(125deg) brightness(93%) contrast(94%);
     }
     /* .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {}*/
 

@@ -21,16 +21,21 @@ if(isset($selected_filters)){
                 <input type="radio" id="radio1" name="property_type" class="radioInput" value="" <?php if($property_type == ''){ echo 'checked';}?>>
                 <label class="radioLabel" for="radio1">All Restaurants</label>
             </div>
+            <?php if($this->settings['on_property_hide'] != 'yes'){?>
             <div class="custom-radio">
                 <input type="radio" id="radio2" name="property_type" value="on" class="radioInput" <?php if($property_type == 'on'){ echo 'checked';}?>>
                 <label class="radioLabel" for="radio2">On - Property
                     Restaurant</label>
             </div>
+            <?php } ?>
+            <?php if($this->settings['off_property_hide'] != 'yes'){?>
             <div class="custom-radio">
                 <input type="radio" id="radio3" name="property_type" value="off" class="radioInput" <?php if($property_type == 'off'){ echo 'checked';}?>>
                 <label class="radioLabel" for="radio3">Off - Property
                     Restaurant</label>
             </div>
+            <?php } ?>
+            <p>You can hide/show above property types from <a href="<?php echo site_url('admin/theme_setting');?>" target="_blank">here.</a> </p>
         </div>
     </div>
     <?php if(!empty($filters)){
@@ -50,7 +55,6 @@ if(isset($selected_filters)){
         if ($slug == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
             continue;
         }
-        
         
         ?>
 <?php if(!empty($filter_value)){?>        

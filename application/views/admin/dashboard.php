@@ -141,18 +141,11 @@
         </div>
     </div>
 </div>
-<?php 
-    $color1 = $this->settings['color1'];
-    // $chart_color = $this->admin_model->get_setting_value('chart_color'); // Fetch color from settings
-    // $chart_color = $chart_color ? $chart_color : '#70016a'; // Fallback to default if not set
-?>
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Responsive.js"></script>
 <script>
-        var color1 = "<?php echo $color1; ?>";
-        
         var root = am5.Root.new("activity_chart");
         root.setThemes([
             am5themes_Animated.new(root)
@@ -176,7 +169,7 @@
             getStrokeFromSprite: true,
             autoTextColor: false,
             getLabelFillFromSprite: true,
-            labelText: "[bold "+color1+"]{category}[/]\n[#152850]{value}"
+            labelText: "[bold #08312A]{category}[/]\n[#152850]{value}"
         });
             tooltip.get("background").setAll({
             fill: am5.color(0xffffff),
@@ -210,10 +203,10 @@
 
         series.labels.template.setAll({
             fontSize: 14,
-            fill: am5.color(color1),
+            fill: am5.color("#08312A"),
             text: "{category}"
         });
-        series.labels.template.set("text", "[900 16 "+color1+"]{valuePercentTotal.formatNumber('0.00')}% \n  [400 13 "+color1+"]{category} ");
+        series.labels.template.set("text", "[900 16 #08312A]{valuePercentTotal.formatNumber('0.00')}% \n  [400 13 #08312A]{category} ");
 
         series.labels.template.setAll({
             maxWidth: 100,

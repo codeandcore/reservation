@@ -340,80 +340,243 @@ jQuery(document).ready(function(){
         var _id = $(this).attr('data-booking_listid');
         $('input#share_booking_listid').val(_id);
     });
-    $(document).on('click','[data-target="confirmSkipDay"]', function(e){
+    // $(document).on('click','[data-target="confirmSkipDay"]', function(e){
+    //     e.preventDefault();
+        
+    //     clear_filter_form_sidebar();
+    //     // $(this).parents('.modal').removeClass('modal-active');
+    //     $("body").removeClass('overflow-hidden');
+    //     var skip = $('.reason-to-skip-value').val();
+        
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_time').val('');
+    //     // $('.availableDayList .availableDay.active').find('input.input_booking_pax').val('');
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_pax').val($("#book_persons_inner").val());
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_restid').val('');
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_deposite').val('');
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_reason').val(skip);
+    //     $('.availableDayList .availableDay.active').find('input.input_booking_status').val('skip');
+
+    //     //Skip reason Drop Down validation
+    //     //console.log('front JS');
+    //     //console.log(jQuery('.reason_for_skip_booking').val());
+    //     if(jQuery('.reason_for_skip_booking').val()){
+    //         //console.log(jQuery('.reason_for_skip_booking').val());
+    //         //console.log('hidden value', $('.availableDayList .availableDay.active').find('input.input_booking_reason').val());
+    //     }else{
+    //         //console.log('please select reasin');
+    //         jQuery('.skipreason_error').html('Please select Skip Reason');
+    //         jQuery('.skipreason_error').show();
+    //         return false;
+    //     }
+    //     // return false;
+
+    //     //Skip reason Drop Down validation END
+
+    //     //Skip reason Text Area validation
+    //     if(!jQuery('.reason-to-skip-value').val()){
+    //         jQuery('.skipreason_error').html('Please provide a reason');
+    //         jQuery('.skipreason_error').show();
+    //         return false;
+    //     }
+
+    //     //Skip reason Text Area validation END
+
+
+    //     $(this).parents('.modal').removeClass('modal-active');
+
+    //     $('.availableDay.active').removeClass('active').addClass('skipDay completed');
+    //     $('.setupContent.active').find('.selectedRestaurant').removeClass('active');
+
+    //     if($('.setupContent.active').next().length > 0){   
+    //         var current_tab_number = $('.setupContent.active').index() + 1;
+    //         $('.setupContent.active .availableItem.booked').removeClass('booked');
+    //         $('.setupContent.active').removeClass('active').addClass('skinRestaurant').next().addClass('active');
+    //         $('.availableDayList li:nth-child('+current_tab_number+')').addClass('completed').removeAttr('disabled').removeClass('active').next('li').removeAttr('disabled').addClass('active');
+    //         var _date =  $('.setupContent.active').attr('data-date');
+    //         var _datetext =  $('.setupContent.active').attr('data-datetext');
+    //         var _pax =  $('.setupContent.active').attr('data-person');
+    //         var _time = $('.setupContent.active').attr('data-time');
+    //         $("select#book_date").val(_date).trigger('change');
+    //         $('#book_time').val(_time).trigger('change');
+    //         if(_pax != ''){
+    //             $("select#book_persons").val(_pax).trigger('change');
+    //             $("select#book_persons_inner").val(_pax).trigger('change');
+    //         }
+    //         $('#selected_date_string').html(_datetext);
+    //         //console.log(current_tab_number);
+    //         $('.availableStepListing').show();
+    //         $('.bookedRestaurant').hide()
+    //         innerLoader()
+    //         $(".skipButton").show();
+    //         $('.topTitleRow').show();
+            
+
+    //     }else{
+    //         confirm_restaurant_list_form_divshow();
+    //     }
+    // });
+    jQuery(document).on('click', '.skipButton a', function(e) {
         e.preventDefault();
+        console.log("Triggering skip form submit...");
+        handleSkipDayAction();
+        // const skipInput = document.querySelector('[data-target="confirmSkipDay"]');
+        // if (skipInput) {
+        //     skipInput.form.requestSubmit(); // submits the form programmatically
+        // } else {
+        //     console.warn("Skip input or form not found!");
+        // }
+    });
+    
+    
+
+    function handleSkipDayAction(e) {
         
         clear_filter_form_sidebar();
-        // $(this).parents('.modal').removeClass('modal-active');
         $("body").removeClass('overflow-hidden');
-        var skip = $('.reason-to-skip-value').val();
-        
+        var skip = 'Skipped';
+    
         $('.availableDayList .availableDay.active').find('input.input_booking_time').val('');
-        // $('.availableDayList .availableDay.active').find('input.input_booking_pax').val('');
         $('.availableDayList .availableDay.active').find('input.input_booking_pax').val($("#book_persons_inner").val());
         $('.availableDayList .availableDay.active').find('input.input_booking_restid').val('');
         $('.availableDayList .availableDay.active').find('input.input_booking_deposite').val('');
         $('.availableDayList .availableDay.active').find('input.input_booking_reason').val(skip);
         $('.availableDayList .availableDay.active').find('input.input_booking_status').val('skip');
-
-        //Skip reason Drop Down validation
-        //console.log('front JS');
-        //console.log(jQuery('.reason_for_skip_booking').val());
-        if(jQuery('.reason_for_skip_booking').val()){
-            //console.log(jQuery('.reason_for_skip_booking').val());
-            //console.log('hidden value', $('.availableDayList .availableDay.active').find('input.input_booking_reason').val());
-        }else{
-            //console.log('please select reasin');
+    
+        // Skip reason Drop Down validation
+        if (skip) {
+            // valid dropdown
+        } else {
             jQuery('.skipreason_error').html('Please select Skip Reason');
             jQuery('.skipreason_error').show();
             return false;
         }
-        // return false;
-
-        //Skip reason Drop Down validation END
-
-        //Skip reason Text Area validation
-        if(!jQuery('.reason-to-skip-value').val()){
+    
+        // Skip reason Text Area validation
+        if (!skip) {
             jQuery('.skipreason_error').html('Please provide a reason');
             jQuery('.skipreason_error').show();
             return false;
         }
-
-        //Skip reason Text Area validation END
-
-
-        $(this).parents('.modal').removeClass('modal-active');
-
+    
+        // $(e.target).parents('.modal').removeClass('modal-active');
+    
         $('.availableDay.active').removeClass('active').addClass('skipDay completed');
         $('.setupContent.active').find('.selectedRestaurant').removeClass('active');
-
-        if($('.setupContent.active').next().length > 0){   
+    
+        if ($('.setupContent.active').next().length > 0) {   
             var current_tab_number = $('.setupContent.active').index() + 1;
             $('.setupContent.active .availableItem.booked').removeClass('booked');
-            $('.setupContent.active').removeClass('active').addClass('skinRestaurant').next().addClass('active');
-            $('.availableDayList li:nth-child('+current_tab_number+')').addClass('completed').removeAttr('disabled').removeClass('active').next('li').removeAttr('disabled').addClass('active');
-            var _date =  $('.setupContent.active').attr('data-date');
-            var _datetext =  $('.setupContent.active').attr('data-datetext');
-            var _pax =  $('.setupContent.active').attr('data-person');
+            $('.setupContent.active').removeClass('active').addClass('skinRestaurant')
+                .next().addClass('active');
+            
+            $('.availableDayList li:nth-child(' + current_tab_number + ')')
+                .addClass('completed')
+                .removeAttr('disabled')
+                .removeClass('active')
+                .next('li')
+                .removeAttr('disabled')
+                .addClass('active');
+    
+            var _date = $('.setupContent.active').attr('data-date');
+            var _datetext = $('.setupContent.active').attr('data-datetext');
+            var _pax = $('.setupContent.active').attr('data-person');
             var _time = $('.setupContent.active').attr('data-time');
+    
             $("select#book_date").val(_date).trigger('change');
             $('#book_time').val(_time).trigger('change');
-            if(_pax != ''){
+    
+            if (_pax != '') {
                 $("select#book_persons").val(_pax).trigger('change');
                 $("select#book_persons_inner").val(_pax).trigger('change');
             }
+    
             $('#selected_date_string').html(_datetext);
-            //console.log(current_tab_number);
             $('.availableStepListing').show();
-            $('.bookedRestaurant').hide()
-            innerLoader()
+            $('.bookedRestaurant').hide();
+            innerLoader();
             $(".skipButton").show();
             $('.topTitleRow').show();
-            
-
-        }else{
+    
+        } else {
             confirm_restaurant_list_form_divshow();
         }
+    }
+    $(document).on('click','[data-target="confirmSkipDay"]', function(e){
+        e.preventDefault();
+        handleSkipDayAction(e);
+        // e.preventDefault();
+        
+        // clear_filter_form_sidebar();
+        // // $(this).parents('.modal').removeClass('modal-active');
+        // $("body").removeClass('overflow-hidden');
+        // var skip = 'Skip';
+        
+        // $('.availableDayList .availableDay.active').find('input.input_booking_time').val('');
+        // // $('.availableDayList .availableDay.active').find('input.input_booking_pax').val('');
+        // $('.availableDayList .availableDay.active').find('input.input_booking_pax').val($("#book_persons_inner").val());
+        // $('.availableDayList .availableDay.active').find('input.input_booking_restid').val('');
+        // $('.availableDayList .availableDay.active').find('input.input_booking_deposite').val('');
+        // $('.availableDayList .availableDay.active').find('input.input_booking_reason').val(skip);
+        // $('.availableDayList .availableDay.active').find('input.input_booking_status').val('skip');
+
+        // //Skip reason Drop Down validation
+        // //console.log('front JS');
+        // //console.log(jQuery('.reason_for_skip_booking').val());
+        // if(jQuery('.reason_for_skip_booking').val()){
+        //     //console.log(jQuery('.reason_for_skip_booking').val());
+        //     //console.log('hidden value', $('.availableDayList .availableDay.active').find('input.input_booking_reason').val());
+        // }else{
+        //     //console.log('please select reasin');
+        //     jQuery('.skipreason_error').html('Please select Skip Reason');
+        //     jQuery('.skipreason_error').show();
+        //     return false;
+        // }
+        // // return false;
+
+        // //Skip reason Drop Down validation END
+
+        // //Skip reason Text Area validation
+        // if(!jQuery('.reason-to-skip-value').val()){
+        //     jQuery('.skipreason_error').html('Please provide a reason');
+        //     jQuery('.skipreason_error').show();
+        //     return false;
+        // }
+
+        // //Skip reason Text Area validation END
+
+
+        // $(this).parents('.modal').removeClass('modal-active');
+
+        // $('.availableDay.active').removeClass('active').addClass('skipDay completed');
+        // $('.setupContent.active').find('.selectedRestaurant').removeClass('active');
+
+        // if($('.setupContent.active').next().length > 0){   
+        //     var current_tab_number = $('.setupContent.active').index() + 1;
+        //     $('.setupContent.active .availableItem.booked').removeClass('booked');
+        //     $('.setupContent.active').removeClass('active').addClass('skinRestaurant').next().addClass('active');
+        //     $('.availableDayList li:nth-child('+current_tab_number+')').addClass('completed').removeAttr('disabled').removeClass('active').next('li').removeAttr('disabled').addClass('active');
+        //     var _date =  $('.setupContent.active').attr('data-date');
+        //     var _datetext =  $('.setupContent.active').attr('data-datetext');
+        //     var _pax =  $('.setupContent.active').attr('data-person');
+        //     var _time = $('.setupContent.active').attr('data-time');
+        //     $("select#book_date").val(_date).trigger('change');
+        //     $('#book_time').val(_time).trigger('change');
+        //     if(_pax != ''){
+        //         $("select#book_persons").val(_pax).trigger('change');
+        //         $("select#book_persons_inner").val(_pax).trigger('change');
+        //     }
+        //     $('#selected_date_string').html(_datetext);
+        //     //console.log(current_tab_number);
+        //     $('.availableStepListing').show();
+        //     $('.bookedRestaurant').hide()
+        //     innerLoader()
+        //     $(".skipButton").show();
+        //     $('.topTitleRow').show();
+            
+
+        // }else{
+        //     confirm_restaurant_list_form_divshow();
+        // }
     });
 
     $(document).on('click','.confirmStep', function(e){

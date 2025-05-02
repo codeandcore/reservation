@@ -184,12 +184,12 @@ $selected_pax = '';
                                                         <label class="radioLabel" for="property_type_radio2">On - Property
                                                             Restaurant</label>
                                                     </div>
-                                                    <div class="custom-radio">
+                                                    <!-- <div class="custom-radio">
                                                         <input type="radio" id="property_type_radio3" name="property_type"
                                                             value="off" class="radioInput">
                                                         <label class="radioLabel" for="property_type_radio3">Off - Property
                                                             Restaurant</label>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <?php if(!empty($filters)):

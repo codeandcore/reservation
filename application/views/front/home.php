@@ -51,7 +51,7 @@ if(array_key_exists('trip_title',$this->settings) && $this->settings['trip_title
                         </div>
                         <div class="col">
                             <div class="findInput">
-                                <button type="submit" class="btn" data-target="findRestro">LET'S GO</button>
+                                <button type="submit" class="btn" data-target="findRestro">Reserve</button>
                             </div>
                         </div>
                     </div>

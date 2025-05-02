@@ -1,6 +1,6 @@
-@media (max-width: 1600px){
-
-}
+.availableDayList{padding-top: 65px;}
+.availableDayList li.active:before { content: "Select your reservation"; position: absolute; top: -60px; left: 0; color: #08312a; font-size: 16px; font-weight: 600; }
+.availableDayList li.confirmStep.active:before{display: none;}
 
 @media (max-width: 1460px){
     h1,.h1{font-size:45px;}
@@ -10,7 +10,7 @@
     .relevantRestaurant { padding-bottom: 50px; }
     .restaurantSlider .slideItem .itemImg{height: 250px;}
     .restaurantSlider .slideItem .itemDetails{padding: 25px;}
-    .loginPages .rightSide{    padding: 10vw 90px;}
+    .loginPages .rightSide{    padding: 8vw 90px;}
 
     .main-content h2.heading_title{font-size: 22px;}
 }
@@ -44,7 +44,8 @@
     .siteTitle{font-size: 20px; max-width: 460px;}
     .header .logoCol, .userSetting{max-width: 25%;}
     .header .headerInner{height: 60px;}
-    .userDropdown .userProfile{width: 30px; height: 30px;}
+    .header .logoBox .logo img{    max-height: 50px;}
+    .userDropdown .userProfile{width: 30px; height: 30px;min-width: 30px;}
     .topSiteTitle{font-size: 16px;}
     .restaurantSlider .slideItem .itemImg{height: 200px;}
     .restaurantSlider .slideItem .itemDetails{padding: 15px;}
@@ -121,6 +122,18 @@
     .comfirmedDetails{margin-bottom: 20px;}
 
     .main-content h2.heading_title{font-size: 18px;}
+    .availableDayList { flex-wrap: wrap; padding: 30px 20px 30px; padding-left: 40px; width: 100%; margin: 0; }
+    .availableDayList li.active:before { top: -10px; left: 92px; font-size: 11px; font-weight: 400; }
+    .availableDayList .availablItem .restauranIcon .skipCommment{display: none;}
+    .topSiteTitle { display: block !important; max-width: 90%; width: 100%; font-size: 10px; }
+    .inner-time-and-people-section .wrap-time-people{display: block;}
+    .inner-time-and-people-section .findInput { width: 100% !important; display: block; }
+    .inner-time-and-people-section .findInput { display: block; align-items: flex-start; width: 100%; }
+    .inner-time-and-people-section .findInput .select2-container{width: 100% !important; margin-bottom: 20px;}
+    .inner-time-and-people-section{padding: 30px 25px;}
+    .availableDayList{padding-bottom: 0;}
+    .inner-time-and-people-section .findInput { display: inline-block; width: 47% !important; vertical-align: top; }
+    .inner-time-and-people-section { padding: 10px 25px; top: 40px; }
 }
 
 @media (max-width: 767px){

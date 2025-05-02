@@ -1,0 +1,30 @@
+:root{
+    --primary:#70016a;
+    --secondary: #000000;;
+    --thirdary: #122223;
+    --skyColor: #ebd1ea;
+    --gryColor: #ebd1ea;
+    --black:#000000;
+    --white:#ffffff;
+    --textColor: #434343;
+    --green:#70016a;
+    --red:#f4001f;
+    
+    --primary-font:'Work Sans', sans-serif;
+    --secondary-font: 'Roboto Slab', sans-serif;
+    }
+    
+    
+    .btn{background-color: var(--red); color: var(--white); border-color: var(--red);}
+    .btn:hover{background-color:var(--black); color: var(--white);}
+    .loginPages .leftSide .leftbg::before{background-color: rgb(36 47 68 / 0.62);}
+  
+    
+    .selectedRestaurant{background-color: rgb(36 47 68 / 0.82);}
+    .dropdown-list ul li a img,.restaurantSlider .slideItem .itemView img,.modal-close img,.availableDayList .availablItem .restauranIcon img,.star-ratings .fill-ratings span img,.availableList .restaurantDetails .confirmTimePeople li img,.comfirmedDetails .reservationAddress .addressBox .hotelAddress .addr img,.invitationDetails .comfirmedDetails .finalTimePeople ul li i img,.invitationDetails .comfirmedDetails .addr img,.confirmDetails .confirmDay i img,.availableList .no-restaurant_found img,.cancelRestoDetails .rest_desc li i img,.modal-close img{
+        filter: brightness(0) saturate(100%) invert(16%) sepia(20%) saturate(1153%) hue-rotate(181deg) brightness(90%) contrast(92%);
+    }
+    /* .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {}*/
+
+    .accordionItem .toggle a:hover{color: var(--green);}
+    /* .accordionItem .toggle .comfirmedDay i img{} */

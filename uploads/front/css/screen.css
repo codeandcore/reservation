@@ -161,7 +161,7 @@ a:hover {
 /* button */
 .btn {
     background-color: var(--red);
-    color: var(--white);
+    color: var(--primary);
     padding: 13px 30px;
     border-radius: 0;
     font-size: 18px;
@@ -874,7 +874,7 @@ html ::-webkit-scrollbar:horizontal {
 }
 
 .dropdown-list ul {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -1116,7 +1116,6 @@ html ::-webkit-scrollbar:horizontal {
     padding: 0 50px;
     transition: 0.5s;
     background-color: var(--primary);
-    /* z-index: 1; */
 }
 
 .header .headerInner {
@@ -1125,19 +1124,22 @@ html ::-webkit-scrollbar:horizontal {
     justify-content: space-between;
     height: 80px;
     transition: 0.5s;
+    max-width: 1220px;
+    margin: 0 auto;
 }
 
 .header .logoCol {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 20%;
+    /* margin-top: 30px; */
+    /* width: 100%;
+    max-width: 20%; */
+    max-width: 0; width: 0;
 }
 
 .header .logoBox {
-    width: 200px;
+    /* width: 200px;
     height: 150px;
     padding: 10px;
-    background-color: var(--white);
+    background-color: var(--white); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1145,15 +1147,26 @@ html ::-webkit-scrollbar:horizontal {
     border-bottom-right-radius: 15px;
     box-shadow: 0 0 10px rgb(0 0 0 / 15%);
 }
-
+.header .logoBox .logo img{max-height: 60px;}
 .topSiteTitle {
-    font-size: 24px;
+    font-size: 18px;
     font-family: var(--secondary-font);
     color: var(--white);
     text-transform: uppercase;
     font-weight: 900;
+    display: flex;
+    align-items: center;
+    width: auto;
+    justify-content: flex-start;
+    background: #42e284;
+    padding: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+    top: -20px;
+    text-align: center;
+    color: #0e312a;
 }
-
 .userSetting {
     display: flex;
     align-items: center;
@@ -1181,12 +1194,11 @@ html ::-webkit-scrollbar:horizontal {
 .userNotification .notificationBtn .badge {
     background-color: #DC1780;
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 8px;
+    height: 8px;
     border-radius: 100%;
-    top: 10px;
-    right: 11px;
-    transition: 0.5s;
+    top: 7px;
+    right: 7px;
     transition: 0.5s;
 }
 
@@ -1218,6 +1230,7 @@ html ::-webkit-scrollbar:horizontal {
 .userDropdown .userProfile {
     width: 40px;
     height: 40px;
+    min-width: 40px;
     border-radius: 100%;
     overflow: hidden;
     display: block;
@@ -1234,7 +1247,7 @@ html ::-webkit-scrollbar:horizontal {
 .userNotification .dropdown-list {
     background-color: var(--skyColor);
     padding: 15px 30px;
-    min-width: 390px;
+    min-width: 350px;
     border-radius: 10px;
 }
 
@@ -1284,7 +1297,7 @@ html ::-webkit-scrollbar:horizontal {
 }
 
 .loginPages .leftSide {
-    padding: 50px;
+    padding: 0 50px 50px;
     max-width: 100%;
     background-color: var(--primary);
     transition: 0.5s;
@@ -1316,7 +1329,7 @@ html ::-webkit-scrollbar:horizontal {
 
 .loginPages .leftSide .logoIcon {
     position: absolute;
-    top: 50px;
+    top: 0px;
     left: 50px;
     opacity: 0;
     transition: 1.5s;
@@ -1351,7 +1364,15 @@ html ::-webkit-scrollbar:horizontal {
 .loginPages.animated .leftSide .logoIcon {
     opacity: 1;
     transition-delay: 1s;
-    transform: rotate(180deg);
+    background: var(--green);
+}
+
+.loginPages.animated .leftSide .logoIcon a {
+    padding: 20px;
+}
+
+.loginPages.animated .leftSide .logoIcon a img{
+    filter: brightness(0) saturate(100%) invert(99%) sepia(99%) saturate(0%) hue-rotate(246deg) brightness(108%) contrast(100%);
 }
 
 .loginPages.animated .leftSide .leftContent h2, .loginPages.animated .leftSide .leftContent p {
@@ -1428,6 +1449,16 @@ html ::-webkit-scrollbar:horizontal {
 
 .loginForm a {
     border-bottom: 1px solid;
+}
+
+.loginPages .small-text{
+    font-size: 14px;
+}   
+.loginPages .small-notes{
+    background-color: var(--white);
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border-left: 5px solid var(--primary);
 }
 
 .siteTitle {
@@ -1659,7 +1690,9 @@ html ::-webkit-scrollbar:horizontal {
     display: none;
 }
 
-
+.swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(4645%) hue-rotate(125deg) brightness(93%) contrast(94%);
+}
 
 .swiper-buttons .swiper-button-disabled {
     opacity: 1;
@@ -1907,6 +1940,11 @@ footer .copyRight {
     justify-content: center;
 }
 
+.availableStep .available-paragraph{padding-top: 30px;}
+
+.availableStep .available-paragraph p{color:#083029;font-size:16px;font-weight:600;max-width:160px;text-align:center;}
+
+
 .availableDayList {
     display: flex;
     align-items: flex-start;
@@ -1914,7 +1952,7 @@ footer .copyRight {
     margin-left: -10px;
     margin-right: -10px;
     overflow-x: auto;
-    padding: 50px 0 35px;
+    padding: 30px 0 35px;
 }
 
 .availableDayList li {
@@ -1990,7 +2028,7 @@ footer .copyRight {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--secondary);
+    background-color: var(--skyColor);
     top: -5px;
     right: -3px;
     background-image: url(../images/clock-icon.svg);
@@ -2050,7 +2088,6 @@ footer .copyRight {
 .availableDayList .cancelDay.skipDay .availablItem .availableDayText span.cancelledDay, .availableDayList .cancelDay.completed .availablItem .availableDayText span.cancelledDay {
     display: none;
 }
-
 .availableRestaurant {
     padding: 30px;
     position: relative;
@@ -2068,7 +2105,7 @@ footer .copyRight {
 
 .availableDayList li.active .availablItem .restauranIcon {
     border-color: var(--primary);
-    box-shadow: 0 0 11px rgb(27 58 140 / 50%);
+    box-shadow: 0 0 11px rgb(8 49 42 / 50%);
     transform: scale(1.2);
 }
 
@@ -2189,8 +2226,8 @@ footer .copyRight {
     max-width: calc(100% - 186px);
 }
 
-.availableList .restaurantDetails .confirmTimePeople ul li:first-child i img , .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%) !important;
+.availableList .restaurantDetails .confirmTimePeople ul li:first-child i img {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(4645%) hue-rotate(125deg) brightness(93%) contrast(94%) !important;
 }
 
 .availableList .restaurantDetails .restaurantName {
@@ -2209,7 +2246,7 @@ footer .copyRight {
     height: 18px;
     border-radius: 100%;
     background-color: var(--primary);
-    outline: 3px solid rgb(27 58 140 / 30%);
+    outline: 3px solid rgb(8 49 42 / 30%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2263,9 +2300,12 @@ footer .copyRight {
     background-image: url(../images/eat_restaurant_icon.svg);
     background-repeat: no-repeat;
     background-position: center left;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    filter: brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(2347%) hue-rotate(123deg) brightness(96%) contrast(94%);
 }
-
+.eatingType.restro_link {
+    margin-bottom: 15px !important;
+}
 .availableList .restaurantDetails .eatingType ul {
     display: flex;
     align-items: center;
@@ -2291,6 +2331,7 @@ footer .copyRight {
 
 .availableList .restaurantDetails :is(.timeing, .booked_time) ul li:not(:last-child) {
     margin-right: 15px;
+    margin-bottom: 5px;
 }
 
 .availableList .restaurantDetails :is(.timeing, .booked_time) ul li a {
@@ -2326,20 +2367,17 @@ footer .copyRight {
     display: inline-block;
     background-size: contain;
     margin-right: 5px;
+}
+.availableList .availableItem .viewBtn:hover::before{
     filter: invert(1);
 }
-
-.availableList .availableItem .viewBtn:hover::before{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%);
-}
-
 .selectedRestaurant {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(27, 58, 140, 0.9);
+    background-color: rgba(112, 1, 106, 0.9);
     text-align: center;
     color: var(--white);
     padding: 20px;
@@ -2380,7 +2418,8 @@ footer .copyRight {
 }
 
 .selectedRestaurant .btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--red);
+    color:var(--primary);
 }
 
 .selectedRestaurant.active {
@@ -2597,8 +2636,8 @@ footer .copyRight {
     font-size: 14px;
 }
 
-.filterTitle .filterButtons a {
-    color: #434343;
+.filterTitle .filterButtons a:hover {
+    color: var(--white);
 }
 
 .filterTitle .filterButtons .filterBtn {
@@ -2608,7 +2647,6 @@ footer .copyRight {
     padding: 5px 10px;
     line-height: 1;
     margin-right: 10px;
-    color: var(--white);
 }
 
 .filterItem {
@@ -2953,13 +2991,15 @@ span.filterIcon img {
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailLabel {
     font-weight: 600;
-    width: 55%;
+    width: auto;
     color: var(--primary);
+    text-align: left;
+    padding-right: 5px;
 }
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailInput {
     color: var(--black);
-    width: 45%;
+    /* width: 45%; */
     word-break: break-all;
 }
 
@@ -2969,7 +3009,7 @@ span.filterIcon img {
 }
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailInput a:hover {
-    color: var(--black);
+    color: var(--secondary);
 }
 
 .inviteblock {
@@ -3777,23 +3817,4 @@ body .swal2-title {
 
 .overflow-hidden .inner-time-and-people-section {
     z-index: 1;
-}
-
-
-.loginForm .nots {
-    color: #707070;
-}
-
-.loginForm a {
-    border-bottom: 1px solid;
-}
-
-.loginPages .small-text{
-    font-size: 14px;
-}   
-.loginPages .small-notes{
-    background-color: var(--white);
-    font-size: 15px;
-    padding: 5px 10px 5px 10px;
-    border-left: 5px solid var(--primary);
 }

@@ -58,6 +58,7 @@
 
 
     .input-group-text{right: 28%;}
+    #password-reset .input-group-text{right: 30px !important;}
     .inviteblock{width: calc(100% - 53%);}
     input, select, optgroup, textarea{font-size: 14px; padding: 13px 15px;}
     .wrap_table .table_class thead th:last-child, .wrap_table .table_class tbody td:last-child, .commonTable thead th:last-child,.commonTable tbody td:last-child{padding-right: 10px;}
@@ -298,7 +299,7 @@
     .wrap_reservation_list .reservation_box .res_info { padding-right: 0; width: 100%; margin-bottom: 20px; border: none; }
     .wrap_reservation_list .reservation_box { padding: 20px; margin-bottom: 20px;}
     .wrap_reservation_list .reservation_box .res_details { width: 100%; padding-left: 0; }
-    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col ,.wrap_reservation_list .inviteblock{ width: 100%; }
+    .wrap_reservation_list .reservation_box .res_details .res_person_info .user_info_col { width: 100%; }
     .wrap_reservation_list .reservation_box:last-child{margin-bottom: 0px;}
     .wrap_reservation_list .reservation_box .location_pin{max-width: 100%;}
     .modifyForm .form-group { flex-wrap: wrap; }

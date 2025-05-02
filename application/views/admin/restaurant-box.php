@@ -18,7 +18,7 @@ if($incount == 1 || $booked == 'yes'):?>
             alt="">
         <?php } ?>
     </div>
-    <div class="restaurantDetails">
+    <div class="restaurantDetails tttdd">
         <div class="restaurantName">
             <?php if($hotel['restaurant_name'] != ''){?>
             <h5><?php echo $hotel['restaurant_name'];?></h5>

@@ -29,7 +29,7 @@ if($incount == 1 || $booked == 'yes'):?>
             alt="">
         <?php } ?>
     </div>
-    <div class="restaurantDetails">
+    <div class="restaurantDetails frrrrr">
         <div class="restaurantName">
             <?php if($hotel['restaurant_name'] != ''){?>
             <h5><?php echo $hotel['restaurant_name'];?></h5>
@@ -60,12 +60,14 @@ if($incount == 1 || $booked == 'yes'):?>
             <?php if($icon != ''){ echo 'style="background-image: url('.base_url().'/uploads/assets/images/'.$icon.');"';}?>>
             <ul class="list-unstyled">
                 <?php foreach($val as $dr){ 
+            
                     if($key == 'establishment_type' && $this->settings['restaurant_establishment_hide'] == 'yes'){
                         continue;
                     }
                     if($key == 'meals' && $this->settings['restaurant_meals_hide'] == 'yes'){
                         continue;
                     }
+                    
                     if ($key == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
                         continue;
                     }
@@ -78,12 +80,13 @@ if($incount == 1 || $booked == 'yes'):?>
             }
         } ?>
         <?php if($hotel['website_link'] && $this->settings['restaurant_website_url_hide'] != 'yes'):?>
-        <!-- <div class="eatingType"
-            <?php //echo 'style="background-image: url('.base_url().'/uploads/assets/images/global-2.svg);"';?>>
-            <ul class="list-unstyled">
-                <li><a href="<?php //echo $hotel['website_link'];?>" target="_blank">Restaurant Portal</a></li>
-            </ul>
-        </div> -->
+        <div class="eatingType restro_link"
+            <?php echo 'style="background-image: url('.base_url().'/uploads/assets/images/global-2.svg);"';?>>
+            <!-- <ul class="list-unstyled"> -->
+                <!-- <li><a href="<?php //echo $hotel['website_link'];?>" target="_blank">Restaurant Portal</a></li> -->
+                <a href="<?php echo $hotel['website_link'];?>" target="_blank">Menu link</a>
+            <!-- </ul> -->
+        </div>
         <?php endif; ?>
         <?php $time_list = $this->user_model->time_list_table_restaurant($hotel['id'],$date,$selected_pax);
         if(!empty($time_list)){                                            

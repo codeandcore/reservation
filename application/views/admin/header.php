@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <meta name="robots" content="noindex, nofollow" />
+
         <meta charset="utf-8">
         <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">

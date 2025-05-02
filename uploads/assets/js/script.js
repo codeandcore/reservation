@@ -946,6 +946,7 @@ $(document).ready(function () {
     var _lname = $(this).attr('data-lastname');
     var _email = $(this).attr('data-email');
     var _phone = $(this).attr('data-phone');
+
     var altemail = $(this).attr('data-altemail');
     var user_code = $(this).attr('data-user_code');
     $('#edit_fname').val(_fname);
@@ -1610,7 +1611,6 @@ $(document).ready(function () {
         if(!$(this).hasClass('confirmStep')){
             $(".skipButton").show();
             $('.topTitleRow').show();
-
         }
 
     })
@@ -1668,7 +1668,6 @@ $(document).ready(function () {
             innerLoader()
             $(".skipButton").show();
             $('.topTitleRow').show();
-
         }else{
             confirm_restaurant_list_form_divshow();
             // var current_tab_number = $(this).parents('.setupContent').index() + 1;
@@ -1901,7 +1900,6 @@ $(document).ready(function () {
     $('.availableDayList .availableDay.active').find('input.input_booking_reason').val(skip);
     $('.availableDayList .availableDay.active').find('input.input_booking_status').val('skip');
 
-    
     $('.availableDay.active').removeClass('active').addClass('skipDay completed');
     $('.setupContent.active').find('.selectedRestaurant').removeClass('active');
 
@@ -1925,7 +1923,6 @@ $(document).ready(function () {
         innerLoader()
         $(".skipButton").show();
         $('.topTitleRow').show();
-
         
 
     }else{

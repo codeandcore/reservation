@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <meta name="robots" content="noindex, nofollow" />
+
     <!-- Required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
@@ -14,7 +16,6 @@
     <meta name="msapplication-navbutton-color" content="#000">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-
     <meta property="og:title" content="<?php echo $this->settings['site_title'];?>" >
     <meta property="og:site_name" content="<?php echo $this->settings['site_title'];?>" >
     <meta property="og:url" content="<?php echo base_url();?>" >
@@ -60,7 +61,7 @@
 <input type="hidden" name="global_base_url" id="global_base_url" value="<?php echo base_url();?>">
     <header class="header">
       <div class="headerInner">
-        <div class="logoCol"> 
+        <!-- <div class="logoCol"> 
           <div class="logoBox">
           <?php if(array_key_exists('theme_logo',$this->settings) && $this->settings['theme_logo'] != ''){ ?>
                     <a href="<?php echo base_url(); ?>" class="logo">
@@ -68,7 +69,7 @@
                     </a>
                     <?php } ?>
           </div>
-        </div>
+        </div> -->
         <?php if(array_key_exists('site_title',$this->settings) && $this->settings['site_title'] != ''){ ?>
                     <div class="topSiteTitle"><?php echo $this->settings['site_title'];?></div>
                     <?php } ?>

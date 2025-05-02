@@ -737,9 +737,11 @@ class Admin_model extends CI_Model {
         if (!isset($post['restaurant_website_url_hide'])) { $post['restaurant_website_url_hide'] = ''; }
         if (!isset($post['restaurant_location_hide'])) { $post['restaurant_location_hide'] = ''; }
         if (!isset($post['restaurant_email_hide'])) { $post['restaurant_email_hide'] = ''; }
+        if (!isset($post['on_property_hide'])) { $post['on_property_hide'] = ''; }
+        if (!isset($post['off_property_hide'])) { $post['off_property_hide'] = ''; }
         if($_FILES['theme_logo']['name'] != ''){
             $config['upload_path']="./uploads/assets/images";
-            $config['allowed_types']='gif|jpg|png';
+            $config['allowed_types']='gif|jpg|png|svg';
             $config['encrypt_name'] = TRUE;
             $image='';
             $this->load->library('upload',$config);
@@ -2170,7 +2172,6 @@ class Admin_model extends CI_Model {
                 $this->db->where('booking_status','booked');
                 $this->db->where('booking_pax',$size);
                 $this->db->where('ref_id','0');//To exclude invites
-
                 $query = $this->db->get('ms-booking-list');
                 $count = $query->num_rows();
                 if($capacity > $count){

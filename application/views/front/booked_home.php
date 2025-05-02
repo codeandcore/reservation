@@ -9,6 +9,11 @@ $modify_date = $this->settings['modify_end_date'];
 $modify_time = $this->settings['modify_end_time'];
 $booking_end = date('Y-m-d H:i:s', strtotime($modify_date . ' ' . $modify_time));
 ?>
+<?php $booking_id = $booking['id'];
+        $booking_list = $this->user_model->get_booking_datelist_byid($booking_id);
+        $settings = $this->admin_model->theme_setting();
+
+    ?>
 <main>
     <section class="banner"
         style="background-image: url(<?php echo base_url(); ?>/uploads/front/images/banner-bg.jpg);"></section>
@@ -23,30 +28,79 @@ $booking_end = date('Y-m-d H:i:s', strtotime($modify_date . ' ' . $modify_time))
             </div>
             <div class="innerSearchForm text-center">
                 <?php if(($today >= $booking_end)){?>
-                    <h3>Welcome to the <?php echo $trip_title;?> restaurant reservation request portal. <br>
-                    Please request your restaurant reservations below.</h3>
+                    <h3>Welcome to the <?php echo $trip_title;?> restaurant reservation request portal.</h3>
                 <?php                     
                 }
-                else{?>
-                <h3>Welcome to the <?php echo $trip_title;?> restaurant reservation request portal. <br>
-                    You have already completed your reservation request(s).</h3>
-                
-                <div class="btn-grp text-center">
-                    <a href="<?php echo site_url('reservation_confirmed');?>" title="" class="btn">
-                        View Reservation Request
-                    </a>
-                    <a href="<?php echo site_url('modify_reservation');?>" title="" class="btn">
-                        Modify Reservation Request
-                    </a>
-                </div>
+                else{
+                    $show_form = true;
+                    if(!empty($booking_list)){
+                        foreach($booking_list as $list){
+                            if($list['booking_status'] == 'booked'){
+                                $show_form = false;
+                            }
+                        }
+                    }
+                    ?>
+                    <h3>Welcome to the <?php echo $trip_title;?> restaurant reservation request portal. </h3>
+                    <?php if($show_form){?>
+                        <form action="<?php echo site_url('modify_reservation');?>" class="bookingForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="findInput dateInput">
+                                    <label class="inputlabel" for="book_date">Select Date</label>
+                                    <select name="book_date" id="book_date" class="form-control cmnSelect">
+                                        <?php foreach($dates_list as $list){?>
+                                        <option value="<?php echo date('d-m-Y',strtotime($list['date']));?>"><?php echo date('m-d-Y',strtotime($list['date']));?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="findInput timeInput">
+                                    <label class="inputlabel" for="book_time">Select Time</label>
+                                    <select name="book_time" id="book_time" class="form-control cmnSelect">
+                                    <option value="">Any Time</option>
+                                    <?php foreach($time_list as $list){?>
+                                        <option value="<?php echo $list['time'];?>"><?php echo $list['time'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="findInput personInput">
+                                <label class="inputlabel" for="book_persons">Select People</label>
+                                    <select name="book_persons" id="book_persons" class="form-control cmnSelect">
+                                    <?php foreach($pax_list as $list){?>
+                                        <option value="<?php echo $list['size'];?>"><?php echo $list['size'];?> People</option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="findInput">
+                                    <button type="submit" class="btn" data-target="findRestro">Reserve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <?php } else {?>
+                        <h3>You have already completed your reservation request(s).</h3>
+                    <?php } ?>
+                    <?php if(!$show_form){?>
+                    <div class="btn-grp text-center">
+                        <a href="<?php echo site_url('reservation_confirmed');?>" title="" class="btn">
+                            View Reservation Request
+                        </a>
+                        <a href="<?php echo site_url('modify_reservation');?>" title="" class="btn">
+                            Modify Reservation Request
+                        </a>
+                    </div>
+                    <?php } ?>
                 <?php } ?>
             </div>
         </div>
     </section>
-    <?php $booking_id = $booking['id'];
-        $booking_list = $this->user_model->get_booking_datelist_byid($booking_id);
-        $settings = $this->admin_model->theme_setting();
-    ?>
+    
     <?php if(!empty($booking_list)):?>
     <section class="relevantRestaurant">
         <div class="container">

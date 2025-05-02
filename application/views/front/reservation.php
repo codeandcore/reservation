@@ -58,7 +58,7 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                             </div>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn" data-target="findRestro">LET'S GO</button>
+                            <button type="submit" class="btn" data-target="findRestro">Reserve</button>
                         </div>
                     </div>
                 </form>
@@ -79,12 +79,14 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                             <p>You can skip today's reservation and still continue with other reservations.</p>
                         </div>
                         <div class="skipButton">
-                            <a href="#" class="btn modal-button" data-target="skipDay">Skip booking for this day</a>
+                            <!-- <a href="#" class="btn modal-button" data-target="skipDay">Skip booking for this day</a> -->
+                            <a href="javascript:void();" class="btn">Skip booking for this day</a>
                         </div>
                     </div>
 
                     <div class="availableStep">
-                        <ul class="availableDayList list-unstyled">
+                        <div  class="available-paragraph">
+                            <ul class="availableDayList list-unstyled">
                             <?php $dt = 1; foreach($dates_list as $list){?>
                             <li class="availableDay <?php if($selected_date == date('d-m-Y',strtotime($list['date']))){ echo 'active';}?>"
                                 data-step="step-<?php echo $dt;?>" data-time="<?php echo $selected_time;?>"
@@ -136,6 +138,9 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                                 </div>
                             </li>
                         </ul>
+                        </div>
+                       
+                       
                     </div>
 
                     <div class="availableRestaurant availableStepListing">
@@ -143,7 +148,32 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                             <div class="loaderBox"></div>
                         </div>
                         <div class="row">
-                            <div class="col-4 filterApply">
+                        <?php 
+                            $hide_filter = false;
+                                if($this->settings['on_property_hide'] == 'yes' || $this->settings['off_property_hide'] == 'yes'){
+                                    if (empty($filters)){
+                                        $hide_filter = true;
+                                    }
+                                    else{
+                                        foreach ($filters as $key => $filter) {
+                                            $slug = $filter['filter_name'];
+                                            if ($slug == 'establishment_type' && $this->settings['restaurant_establishment_hide'] == 'yes') {
+                                                $hide_filter = true;
+                                            }
+                                            else if ($slug == 'meals' && $this->settings['restaurant_meals_hide'] == 'yes') {
+                                                $hide_filter = true;
+                                            }
+                                            else if ($slug == 'fee' && $this->settings['restaurant_fee_hide'] == 'yes') {
+                                                $hide_filter = true;
+                                            }
+                                            else{
+                                                $hide_filter = false;
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
+                            <div class="col-4 filterApply" <?php if($hide_filter){?>style="display:none;"<?php }?>>
                                 <div class="filterBlock">
                                     <div class="filterTitle">
                                         <div class="filterTitleText">
@@ -164,18 +194,22 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                                                     <label class="radioLabel" for="property_type_radio1">All
                                                         Restaurants</label>
                                                 </div>
+                                                <?php if($this->settings['on_property_hide'] != 'yes'){?>
                                                 <div class="custom-radio">
                                                     <input type="radio" id="property_type_radio2" name="property_type"
                                                         value="on" class="radioInput">
                                                     <label class="radioLabel" for="property_type_radio2">On - Property
                                                         Restaurant</label>
                                                 </div>
+                                                <?php } ?>
+                                                <?php if($this->settings['off_property_hide'] != 'yes'){?>
                                                 <div class="custom-radio">
                                                     <input type="radio" id="property_type_radio3" name="property_type"
                                                         value="off" class="radioInput">
                                                     <label class="radioLabel" for="property_type_radio3">Off - Property
                                                         Restaurant</label>
                                                 </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <?php if(!empty($filters)):
@@ -216,7 +250,7 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 availableCol">
+                            <div class="<?php if($hide_filter){ echo "col-12"; } else{ echo "col-8";} ?> availableCol">
                                 <div class="inner-time-and-people-section">
                                         <!-- <h3>Select time Select people</h3> -->
                                         <div class="d-flex wrap-time-people">   
@@ -248,8 +282,8 @@ if($this->input->get('book_persons')){ $selected_pax = $this->input->get('book_p
                                             </div>
                                             
                                             <div class="button-inner">
-                                                <button type="button" class="btn inner-search-res-form">LET'S GO</button>
-                                                <!-- <button type="button" class="btn" data-target="findRestro">LET'S GO</button> -->
+                                                <button type="button" class="btn inner-search-res-form">Reserve</button>
+                                                <!-- <button type="button" class="btn" data-target="findRestro">Reserve</button> -->
                                             </div>
                                         </div>
                                     </div>
