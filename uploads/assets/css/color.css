@@ -1,23 +1,24 @@
-
 :root{
     /* Colors */
-    --primary:#003fa6;
-    --secondary: #b6ebff;
+    --primary:#021F3C;
+    --secondary: #F7F7F7;
     --thirdary: #122223;
-    --gryColor: #b6ebff;
-    --black-shade : #003fa6;
-    --grey-shade : #b6ebff;
-    --grey-shade-light : #b6ebff;
+    --gryColor: #F7F7F7;
+    --black-shade : #021F3C;
+    --grey-shade : #F7F7F7;
+    --grey-shade-light : #F7F7F7;
     --black:#000000;
     --white:#ffffff;
     --textColor: #434343;
-    --green:#003fa6;
-    --red:#b6ebff;
+    --green:#021F3C;
+    --red:#F7F7F7;
     --defaultColor :#757575;
     --bg-white : #F3F3F3;
     --input-bg: #F0F0F0;
-    --errorColor: #E35858;
-    --btn-color:#003fa6;
+    --errorColor: #dc3545;
+    --btn-color: #FDC40A;
+    --skyColor: color: rgb(2 31 60 / 70%);
+    
     /* Fonts */
     --primary-font : 'Work Sans', sans-serif;
     --heading-font : 'Roboto Slab', serif;
@@ -26,18 +27,17 @@
 }
 
 
-.btn:hover,.auth_screen .form_group .btn:hover{background-color: var(--secondary); color: var(--primary);}
+.btn:hover,.auth_screen .form_group .btn:hover{background-color:var(--black); color: var(--yellow);}
 
 .booking_list_wrapper .booking_list_box:after{
-    /* background: var(--green);     */
-    background: linear-gradient(145deg, rgb(45 134 205) 0%, rgb(0, 63, 166) 60%, rgb(0, 63, 166) 59%, rgb(0, 63, 166) 183%);
+    background: linear-gradient(145deg, rgb(42 90 157) 0%, rgb(9 30 59) 60%, rgb(9 30 59) 59%, rgb(9 30 59) 183%);
 }
 
 
 .action_class .drop_dots img,.booking_list_wrapper .booking_list_box span img,.dropdown-list ul li a img,.action_class .action_drop a img,.wrap_table .table_class .view_btn img,.popup .popup_wrap:after,.auth_screen .bg_wrap .float_element .star_img img,.auth_screen .bg_wrap .float_element .bottom_img img,.auth_screen .bg_wrap .float_element .top_img img,.viewGridButton .btn:not(.active) img,.swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img,.modal-close img,.addFilterItem .file_upload .fileinput-button img, .close_btn img,.fileinput-button > img{
-    filter: brightness(0) saturate(100%) invert(14%) sepia(42%) saturate(6842%) hue-rotate(212deg) brightness(98%) contrast(102%);
+
+    filter: brightness(0) saturate(100%) invert(9%) sepia(50%) saturate(2230%) hue-rotate(193deg) brightness(96%) contrast(102%);
 }
-/* .popup .popup_header img{} */
 
 .popup[data-id="send_creditcard_popup"] .popup_header img{filter: none !important;}
 .auth_screen .bg_wrap .float_element .bottom_img img,.auth_screen .bg_wrap .float_element .top_img img{opacity: 0.2;}
@@ -48,7 +48,7 @@
 
 
 /* .btn, .auth_screen .form_group .btn, input.btn{background-color:var(--btn-color);color:var(--white);border-color: var(--btn-color);} */
-.btn:hover,.auth_screen .form_group .btn:hover{background-color: var(--secondary);color: var(--primary);border-color: var(--secondary);}
+.btn:hover,.auth_screen .form_group .btn:hover{background-color: var(--black-shade);color: var(--btn-color);border-color: var(--black-shade);}
 
 .pagination ul li .page-link{background-color: var(--skyColor);}
 

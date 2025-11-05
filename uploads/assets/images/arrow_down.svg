@@ -1,3 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12.203" height="7.322" viewBox="0 0 12.203 7.322">
-  <path id="_211687_down_arrow_icon" data-name="211687_down_arrow_icon" d="M107.463,160l.74.789-6.1,6.533L96,160.789l.736-.789,5.366,5.739Z" transform="translate(-96 -160)" fill="#6b6b6b"/>
+<svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_900_4)">
+<path d="M9.41406 1.41406L5.41406 5.41406L1.41406 1.41406" stroke="#021F3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_900_4">
+<rect width="10.828" height="6.414" fill="white"/>
+</clipPath>
+</defs>
 </svg>

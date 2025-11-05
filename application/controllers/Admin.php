@@ -3461,6 +3461,9 @@ class Admin extends CI_Controller {
 				$body = str_replace('{{domain}}',$domain,$body);
 				$body = str_replace('{{date}}',date('m-d-Y'),$body);
 				$body = str_replace('{{admin_url}}',site_url('admin'),$body);
+				$body = str_replace('{{color1}}',$this->settings['color1'],$body);
+				$body = str_replace('{{color2}}',$this->settings['color2'],$body);
+				$body = str_replace('{{color3}}',$this->settings['color3'],$body);
 
 				$this->email->set_newline("\r\n");
 				$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours

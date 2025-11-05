@@ -1,28 +1,28 @@
 :root{
-    --primary:#003FA6;
-    --secondary: #b6ebff;
+    --primary:#021F3C;
+    --secondary: #F7F7F7;
     --thirdary: #122223;
-    --skyColor: #b6ebff;
-    --gryColor: #ebd1ea;
+    --skyColor: #F7F7F7;
+    --gryColor: #021f3c4d;
     --black:#000000;
     --white:#ffffff;
     --textColor: #434343;
-    --green:#003FA6;
-    --red:#003FA6;
-    
+    --green:#021F3C;
+    --red:#021F3C;
+    --yellow: #FDC40A;
     --primary-font:'Work Sans', sans-serif;
     --secondary-font: 'Roboto Slab', sans-serif;
     }
     
     
-    .btn{background-color: var(--primary); color: var(--white); border-color: var(--primary);}
-    .btn:hover{background-color:var(--secondary); color: var(--primary);border-color: var(--secondary);}
+    .btn{background-color: var(--yellow); color: var(--black); border-color: var(--yellow);}
+    .btn:hover{background-color:var(--black); color: var(--yellow);border-color: var(--black);}
     .loginPages .leftSide .leftbg::before{background-color: rgb(36 47 68 / 0.62);}
   
     
-    .selectedRestaurant{background-color: rgb(0 63 166 / 0.82);}
+    .selectedRestaurant{background-color: rgb(2 31 60 / 0.82);}
     .dropdown-list ul li a img,.restaurantSlider .slideItem .itemView img,.modal-close img,.availableDayList .availablItem .restauranIcon img,.star-ratings .fill-ratings span img,.availableList .restaurantDetails .confirmTimePeople li img,.comfirmedDetails .reservationAddress .addressBox .hotelAddress .addr img,.invitationDetails .comfirmedDetails .finalTimePeople ul li i img,.invitationDetails .comfirmedDetails .addr img,.confirmDetails .confirmDay i img,.availableList .no-restaurant_found img,.cancelRestoDetails .rest_desc li i img,.modal-close img{
-        filter: brightness(0) saturate(100%) invert(19%) sepia(52%) saturate(4476%) hue-rotate(212deg) brightness(82%) contrast(104%);
+        filter: brightness(0) saturate(100%) invert(11%) sepia(14%) saturate(6529%) hue-rotate(186deg) brightness(87%) contrast(102%);
     }
     /* .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img {}*/
 

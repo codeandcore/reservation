@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="IE=Edge">
     <meta name="description" content="Page Description" />
-    <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+    <!-- Chrome, Firefox OS, Opera and Vivaldi test-->
     <meta name="theme-color" content="#000">
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#000">
