@@ -7,6 +7,7 @@
         } ?>
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta http-equiv="x-ua-compatible" content="IE=Edge">

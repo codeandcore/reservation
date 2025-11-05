@@ -958,14 +958,17 @@ class Admin extends CI_Controller {
 					$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 					$spreadsheet 	= $reader->load($file_path);
 					$sheet_data 	= $spreadsheet->getActiveSheet()->toArray();
+				
 					foreach($sheet_data as $key => $val) {
 						if($key > 0){
 							$code = $val[0];
-							$email = $val[1];
-							$altemail = $val[2];
-							$name = $val[3];
+							$first_name = $val[1];
+							$last_name = $val[2];
+							$email = $val[3];
+							$altemail = $val[4];
+							$phone = $val[5];
+							$name = $first_name ." " .$last_name;
 							$user_name = str_replace(' ','_',$name);
-							$phone = $val[4];
 							$temp_password = $this->admin_model->random_strings(8);
 							if($email != ''){
 								$this->db->where('email',$email);
@@ -975,6 +978,8 @@ class Admin extends CI_Controller {
 									'user_code'=>$code,
 									'user_name'=>$user_name,
 									'full_name'=>$name,
+									'first_name'=>$first_name,
+									'last_name'=>$last_name,
 									'email'=>$email,
 									'alternate_email'=>$altemail,
 									'password'=>$temp_password,
@@ -985,6 +990,7 @@ class Admin extends CI_Controller {
 								);
 								if($count > 0){
 									$this->db->where('email',$email);
+									$this->db->where('role', 1);
 									$this->db->update('ms-admin',$indata);
 								}
 								else{
@@ -1112,7 +1118,7 @@ class Admin extends CI_Controller {
 			$mySpreadsheet->removeSheetByIndex(0);
 			$worksheet1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($mySpreadsheet, "Users List");
 			$mySpreadsheet->addSheet($worksheet1, 0);
-			$sheet1data[] = array('User Code','User Name','User Email','User Alternate Email','Contact','Temporary Password');
+			$sheet1data[] = array('User Code','First Name', 'Last Name','User Email','User Alternate Email','Contact','Temporary Password');
 			$password = '';
 			if(!empty($list)){
 
@@ -1123,7 +1129,7 @@ class Admin extends CI_Controller {
 						$password = $row1['password'];
 					}
 					$sheet1data[] = array(
-						$row1['user_code'],$row1['full_name'],$row1['email'],$row1['email'],$row1['mobile_number'],$password
+						$row1['user_code'],$row1['first_name'], $row1['last_name'],$row1['email'],$row1['email'],$row1['mobile_number'],$password
 					);
 				}
 			}
@@ -3439,7 +3445,7 @@ class Admin extends CI_Controller {
 				$sheet1data[] = $columns;
 				if(!empty($list)):
 						foreach ($list as $key => $data) {
-							$sheet1data[] = array($data['booking_code'],$data['user_code'],$data['full_name'],$data['email'],$data['alternate_email'],$data['mobile_number'],$data['card_number'],$data['card_type'],$data['expiry'],$data['cvv'],$data['card_holder']);
+							$sheet1data[] = array($data['booking_code'],$data['user_code'],$data['full_name'],$data['email'],$data['alternate_email'],$data['mobile_number'],(string)$data['card_number'],$data['card_type'],$data['expiry'],$data['cvv'],$data['card_holder']);
 						}
 				endif;
 				$worksheet1->fromArray($sheet1data);
@@ -3461,6 +3467,9 @@ class Admin extends CI_Controller {
 				$body = str_replace('{{domain}}',$domain,$body);
 				$body = str_replace('{{date}}',date('m-d-Y'),$body);
 				$body = str_replace('{{admin_url}}',site_url('admin'),$body);
+				$body = str_replace('{{color1}}',$this->settings['color1'],$body);
+				$body = str_replace('{{color2}}',$this->settings['color2'],$body);
+				$body = str_replace('{{color3}}',$this->settings['color3'],$body);
 
 				$this->email->set_newline("\r\n");
 				$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
