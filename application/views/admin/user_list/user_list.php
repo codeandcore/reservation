@@ -32,7 +32,8 @@
                                     </div>
                                 </th>
                                 <th>User Code</th>
-                                <th>User name</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                                 <th>User email</th>
                                 <th>Alternate email</th>
                                 <th>User contact</th>
@@ -92,7 +93,8 @@
                                 </div>
                             </td>
                             <td><?php echo $data['user_code'];?></td>
-                            <td><?php echo $data['full_name'];?> </td>
+                            <td><?php echo $data['first_name'];?> </td>
+                            <td><?php echo $data['last_name'];?> </td>
                             <td><?php echo $data['email'];?></td>
                             <td><?php echo $data['alternate_email'];?></td>
                             <td><?php echo $data['mobile_number'];?></td>
