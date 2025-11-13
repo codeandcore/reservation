@@ -822,6 +822,8 @@ class Admin_model extends CI_Model {
         }
         $data = array(
             'user_name' => $user_name,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
             'full_name' => $full_name,
             'email' => $admin_email,
             'user_code' => $user_code,
@@ -897,6 +899,8 @@ class Admin_model extends CI_Model {
             $temp_password = $this->admin_model->random_strings(8);
             $data = array(
                 'user_name' => $user_name,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
                 'full_name' => $full_name,
                 'email' => $admin_email,
                 'user_code' => $user_code,
