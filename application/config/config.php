@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://192.168.1.101:8003/reservation/';
-$config['base_url'] = 'https://phpstack-1129690-5964050.cloudwaysapps.com/';
+$config['base_url'] = 'https://reservation.2025canadapremier.com/';
 
 /*
 |--------------------------------------------------------------------------
