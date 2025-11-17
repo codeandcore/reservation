@@ -279,6 +279,7 @@ transition: 0.5s all ease;-webkit-transition: 0.5s all ease;-o-transition: 0.5s 
 
 .main-content{margin-left: 295px;}
 .main-content .page-content{padding: 140px 30px 50px;}
+.main-content .page-content.add_restro .container-fluid.bg_dark-white{background-color: transparent;} 
 .main-content .page-content h2.page-content-title{font-family: var(--primary-font);margin-bottom: 20px;}
 .main-content .page-content a.create-page{font-weight: 500;font-size: 24px;margin-bottom: 10px;text-decoration: none !important;line-height: 1.7;color: var(--green);}
 .main-content .page-content ul.page-name li{margin-bottom: 6px;}
@@ -299,7 +300,7 @@ transition: 0.5s all ease;-webkit-transition: 0.5s all ease;-o-transition: 0.5s 
 .main-content .page-content .crete-page-form input[type="file"]{font-size: 20px;}
 .main-content .page-content .crete-page-form input[type="submit"]{cursor: pointer;font-size: 22px;background-color: var(--green);color: var(--white);}
 .main-content .page-content .crete-page-form input[type="submit"]:hover{background-color: var(--black);}
-.main-content .container-fluid{padding: 47px 30px 30px 30px;}
+.main-content .container-fluid{padding: 0px 30px 30px 30px;}
 .main-content h2.heading_title{color: var(--green);font-size: 32px;font-weight: bold;text-transform: uppercase;} 
 .main-topic-wrapper{gap: 0 20px;}
 .main-topic-wrapper .topic-content{position: relative;padding: 0 0 0 50px;}
@@ -625,7 +626,7 @@ background-image: url(../images/checkbox_notactive.svg);background-repeat: no-re
 .head_top_reservation h3{font-weight: 600;font-family: var(--primary-font);text-transform: uppercase; font-size: 26px;}
 .head_top_reservation h3 span{font-weight: 300;}
 .wrap_reservation{border-radius: 20px; position: relative;}
-.wrap_reservation .head_top_reservation{border-bottom: 1px solid #D8D8D8;padding: 37px 50px 30px 50px;}
+.wrap_reservation .head_top_reservation{border-bottom: 1px solid #D8D8D8;padding: 0px 50px 30px 50px;}
 .wrap_reservation .wrap_reservation_list{padding: 42px 50px; position: relative; height: 100%; overflow: auto; padding-bottom: 140px;}
 .wrap_reservation .footer_reservation{border-top: 1px solid #D8D8D8;padding: 37px 50px 30px 50px; text-align: right;}
 
@@ -713,7 +714,7 @@ padding: 0 10px;margin-left: 15px;}
 /* .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{content:''; height:3px; width:calc(100% - 40px); position:absolute; left:calc(50% + 27px);  top:50%; background-image:linear-gradient(to right,#707070 50%,rgba(255,255,255,0) 0%);background-position:top;background-size:15px 1px;background-repeat: repeat-x;} */
 .page-content.add_restro #myForm .restroBookRight .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{width: calc(100% + 80px);}
 .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{content:''; height:3px; width:100%; position:absolute; left:calc(50% + 27px);  top:50%; background-image:linear-gradient(to right,#707070 50%,rgba(255,255,255,0) 0%);background-position:top;background-size:15px 1px;background-repeat: repeat-x;}
-.restroBookProgress .progressStep .stepItem .stepImgbox .stepImg{position: relative; width: 54px; height: 54px; margin: 0 auto 10px; border: 2px solid #F7F7F7; display: flex; align-items: center; justify-content: center; border-radius: 100%; background-color: var(--white);}
+.restroBookProgress .progressStep .stepItem .stepImgbox .stepImg{position: relative; width: 54px; height: 54px; margin: 0 auto 10px; border: 2px solid #F7F7F7; display: flex; align-items: center; justify-content: center; border-radius: 100%; background-color: #f0f0f0;}
 .restroBookProgress .progressStep .stepItem .stepImgbox .stepImg img{filter: invert(47%) sepia(0%) saturate(0%) hue-rotate(232deg) brightness(96%) contrast(83%);}
 .restroBookProgress .progressStep .stepItem .stepImgbox .stepImg:before { content: ''; width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--green); border-radius: 100%; opacity: 0; visibility: hidden; pointer-events: none;}
 .restroBookProgress .progressStep .stepItem .stepText h5{font-weight: 500; color: #a7a7a7; text-transform: uppercase; font-family: var(--primary-font);}
@@ -1138,7 +1139,7 @@ progress::-moz-progress-value { background-color: #00434E; }
 .master-toggle-custom-filter{margin-top:30px;}
 
 /* 04-03-2024 Start */
-.reports-step{background-color:var(--grey-shade);display:flex;align-items:center;border-radius:20px;overflow:hidden;padding: 55px 0 30px;}
+.reports-step{background-color:#021f3c14;display:flex;align-items:center;border-radius:20px;overflow:hidden;padding: 55px 0 30px;}
 /* .reports-home.reports-step .right-col {padding: 40px 55px 0 55px;}
 .reports-home.reports-step .right-col .start-step .white-bg{ } */
 .reports-step .text-capitalize{text-transform: capitalize;}
@@ -1164,7 +1165,7 @@ progress::-moz-progress-value { background-color: #00434E; }
 .reports-step .right-col .add_restro .restroBookProgress{padding-bottom: 10px;}
 .reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem{ max-width: 33.33%;}
 .reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem .stepImgbox::before {background-color: var(--green); background-image: none; height: 1px;}
-.reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem:not(.active) .stepImgbox .stepImg{border-width: 1px; border-color: var(--white);background-color:var(--grey-shade);z-index:1;}
+.reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem:not(.active) .stepImgbox .stepImg{border-width: 1px; border-color: var(--white);background-color:var(--ck-color-base-border);z-index:1;}
 .reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem:not(.active) .stepImgbox .stepImg::before{opacity:1;visibility:visible;background-color:var(--white);z-index:-1;}
 .reports-step .right-col .add_restro .restroBookProgress .progressStep .stepItem.active .stepImgbox .stepImg{border-width:3px;background-color:var(--grey-shade);z-index:1;}
 .reports-step .right-col .add_restro .restroBookRight::after{display: none;}
@@ -1216,6 +1217,13 @@ progress::-moz-progress-value { background-color: #00434E; }
 
 .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn:hover{background-color: var(--white);border-color: var(--white);}
 .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn img{transition: 0.1s;}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .prevBtn img, .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .nextBtn img {filter: brightness(0) saturate(100%) invert(11%) sepia(18%) saturate(4425%) hue-rotate(188deg) brightness(99%) contrast(106%);}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .prevBtn:hover, .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .nextBtn:hover{    background-color: var(--black-shade);
+    color: var(--bg-white);}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .prevBtn:hover img,  .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .nextBtn:hover img{filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(56deg) brightness(105%) contrast(102%) !important;}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .start-report-btn.btn img{filter: brightness(0) saturate(100%) invert(11%) sepia(24%) saturate(3803%) hue-rotate(188deg) brightness(90%) contrast(102%);}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .start-report-btn.btn:hover{    background-color: var(--black-shade); border: 2px solid transparent; color: var(--bg-white);}
+.reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .start-report-btn.btn:hover img{filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(15%) hue-rotate(269deg) brightness(104%) contrast(106%);}
 .reports-step .right-col .add_restro .restroBookRight .restro_info .submitForm .btn:hover img, .btn_add:hover img{
   filter: brightness(0) saturate(100%) invert(9%) sepia(50%) saturate(2230%) hue-rotate(193deg) brightness(96%) contrast(102%);
 }

@@ -1,5 +1,5 @@
 @media (max-width: 1600px){
-
+    .pageTitle img { width: 110px;}
 }
 
 @media (max-width: 1460px){
@@ -142,7 +142,6 @@
     .comfirmedDetails{margin-bottom: 20px;}
 
     .main-content h2.heading_title{font-size: 18px;}
-    
 }
 
 @media (max-width: 767px){
