@@ -11,6 +11,7 @@
     .restaurantSlider .slideItem .itemImg{height: 250px;}
     .restaurantSlider .slideItem .itemDetails{padding: 25px;}
     .loginPages .rightSide{    padding: 10vw 90px;}
+    .userNotification .dropdown-list{ width: 420px; }
 
     .main-content h2.heading_title{font-size: 22px;}
 }
@@ -34,6 +35,7 @@
     h5, .h5 { font-size: 18px;}
     section{padding-top: 20px; padding-bottom: 20px;}
     .btn{font-size: 16px;}
+    .userNotification .dropdown-list{ width: 400px; }
     
 
     .loginPages{font-size: 16px;}
@@ -100,7 +102,26 @@
     .restaurantSlider .slideItem .itemDetails{padding: 10px;}
     .bookingForm .inputlabel, .select2-container--default .select2-selection--single .select2-selection__rendered{font-size: 14px;}
     .dropdown-list{right: 0; transform: translate(0, 0);}
-    .dropdown.active .dropdown-list{transform: translate(0, 0);}
+    .dropdown.active .dropdown-list{transform: translate(44%, 0);}
+    .userNotification .dropdown-list {
+        width: 325px;
+    }
+    .userNotification .dropdown-list .list-unstyled {
+        max-height: 205px;
+    }
+    .userNotification .dropdown-list .two-column{
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .userNotification .dropdown-list .two-column.restaurant-data {
+        flex-direction: unset;
+        align-items: center;
+    }
+    .userNotification .dropdown-list .view-btn, .userNotification .dropdown-list .view-btn a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
     .dropdown-list ul li{padding: 5px 0;}
     .availableDayList li{max-width: 130px; min-width: 130px;}
     .availableDayList .availablItem .restauranIcon{    width: 60px; height: 60px;}
@@ -121,6 +142,7 @@
     .comfirmedDetails{margin-bottom: 20px;}
 
     .main-content h2.heading_title{font-size: 18px;}
+    
 }
 
 @media (max-width: 767px){
@@ -160,6 +182,7 @@
     .dropdown-list{min-width: 160px;}
     .dropdown-list ul{font-size: 15px;}
     .dropdown-list ul li{padding: 7px 0; display: flex; align-items: center;}
+    .userNotification .dropdown-list .list-unstyled li{ display: block;}
     .dropdown-list::before{display: none;}
     .relevantRestaurant { padding-bottom: 20px; }
     .restaurantSlider .slideItem .itemImg { height: 170px; }
@@ -243,6 +266,9 @@
     .cancelRestoDetails{flex-wrap: wrap;}
     .cancelRestoDetails .feature_img{margin-bottom: 15px;}
     .cancelRestoDetails .rest_desc ul li{width: 100%;}
+    .dropdown.active .dropdown-list {
+        transform: translate(22%, 0);
+    }
 }
 
 @media (max-width: 375px){

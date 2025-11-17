@@ -81,10 +81,11 @@
                                 <th>Day <?php echo $k;?> Status</th>
                                 <th>Day <?php echo $k;?> Role</th>
                                 <th>Day <?php echo $k;?> Date</th>
-                                <th>Day <?php echo $k;?> Time (EST)</th>
+                                <th>Day <?php echo $k;?> App Field</th>
+                                <!-- <th>Day <?php echo $k;?> Time (EST)</th>
                                 <th>Day <?php echo $k;?> Restaurant Name</th>
                                 <th>Day <?php echo $k;?> Property Type</th>
-                                <th>Day <?php echo $k;?> Pax</th>
+                                <th>Day <?php echo $k;?> Pax</th> -->
                                 <th>Day <?php echo $k;?> Guests</th>
                                 <th>Day <?php echo $k;?> Admin Note</th>
                                 <th>Day <?php echo $k;?> Last Updated</th>
@@ -212,10 +213,31 @@
                                 <td><?php echo $reservation_status;?></td>
                                 <td><?php echo $reservation_role;?></td>
                                 <td><?php echo $reservation_date;?></td>
-                                <td><?php echo $reservation_time;?></td>
+                                <td style="white-space: nowrap;">
+                                    <?php 
+                                        $day_field = '';
+                                        if(!empty($reservation_pax) || !empty($reservation_time) || !empty($reservation_restname) || !empty($reservation_resttype)){
+                                            $day_field .= 'Table for ';
+                                            if($reservation_pax){
+                                                $day_field .= $reservation_pax . " - ";
+                                            }
+                                            if($reservation_time){
+                                                $day_field .= $reservation_time . " at ";
+                                            }
+                                            if($reservation_restname){
+                                                $day_field .= $reservation_restname;
+                                            }
+                                            if($reservation_resttype){
+                                                $day_field .= " (" . $reservation_resttype .")";
+                                            }
+                                        }
+                                        echo $day_field;
+                                    ?>
+                                </td>
+                                <!-- <td><?php echo $reservation_time;?></td>
                                 <td><?php echo $reservation_restname;?></td>
                                 <td><?php echo $reservation_resttype;?></td>
-                                <td><?php echo $reservation_pax;?></td>
+                                <td><?php echo $reservation_pax;?></td> -->
                                 <td><?php echo $reservation_guests;?></td>
                                 <td><?php echo $reservation_admin_note;?></td>
                                 <td><?php echo $modify_date;?></td>

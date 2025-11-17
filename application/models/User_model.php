@@ -185,6 +185,43 @@ class User_model extends CI_Model {
         $query = $this->db->get('ms-restaurant');
         return (array)$query->row();
     }
+    function compact_time_ago($created_at)
+    {
+        // 1. Detect server's current timezone automatically
+        $serverTZ = new DateTimeZone(date_default_timezone_get());
+
+        // 2. Parse DB datetime (usually stored in UTC)
+        $dbTime = new DateTime($created_at, new DateTimeZone('UTC'));
+
+        // 3. Convert DB time → local server timezone
+        $dbTime->setTimezone($serverTZ);
+
+        // 4. Current local time
+        $now = new DateTime('now', $serverTZ);
+
+        // 5. Difference in seconds
+        $diffSeconds = max(0, $now->getTimestamp() - $dbTime->getTimestamp());
+
+        if ($diffSeconds < 5) {
+            return 'just now';
+        }
+
+        $minutes = floor($diffSeconds / 60);
+        $hours   = floor($diffSeconds / 3600);
+        $days    = floor($diffSeconds / 86400);
+
+        if ($minutes < 5) {
+            return 'just now';
+        }
+
+        if ($minutes < 60) {
+            return "{$minutes}min ago";
+        } elseif ($hours < 24) {
+            return "{$hours}h ago";
+        } else {
+            return "{$days}d ago";
+        }
+    }
     function get_property_type_text($type){
         if($type == 'on'){
             $text = 'On - Property Restaurant';

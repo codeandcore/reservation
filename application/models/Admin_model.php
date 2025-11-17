@@ -2360,6 +2360,31 @@ class Admin_model extends CI_Model {
         $query = $this->db->get('ms-admin');
         return (array)$query->row();
     }
+    // function compact_time_ago($created_at, $tz = 'UTC'): string {
+    //     $dt = new DateTime($created_at, new DateTimeZone($tz));
+    //     $now = new DateTime('now', new DateTimeZone($tz));
+    //     $diffSeconds = $now->getTimestamp() - $dt->getTimestamp();
+    
+    //     if ($diffSeconds < 5) {
+    //         return 'time: just now';
+    //     }
+    
+    //     $minutes = (int) floor($diffSeconds / 60);
+    //     $hours   = (int) floor($diffSeconds / 3600);
+    //     $days    = (int) floor($diffSeconds / 86400);
+    //     $months  = (int) floor($diffSeconds / (86400 * 30)); // approx 30-day month
+    
+    //     if ($minutes < 60) {
+    //         // show minutes
+    //         return "{$minutes}min ago";
+    //     } elseif ($hours < 24) {
+    //         // show hours
+    //         return "{$hours}h ago";
+    //     } else {
+    //         // show days
+    //         return "{$days}d ago";
+    //     }
+    // }
     public function modify_invited_guests_list($id){
         $this->db->where('id',$id);
         $query = $this->db->get('ms-booking-list');
