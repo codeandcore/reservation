@@ -1688,10 +1688,11 @@ class Admin extends CI_Controller {
 					array_push($columns,'Day '.$k.' Status');
 					array_push($columns,'Day '.$k.' Role');
 					array_push($columns,'Day '.$k.' Date');
-					array_push($columns,'Day '.$k.' Time');
-					array_push($columns,'Day '.$k.' Restaurant Name');
-					array_push($columns,'Day '.$k.' Property Type');
-					array_push($columns,'Day '.$k.' Pax');
+					array_push($columns,'Day '.$k.' App Field');
+					// array_push($columns,'Day '.$k.' Time');
+					// array_push($columns,'Day '.$k.' Restaurant Name');
+					// array_push($columns,'Day '.$k.' Property Type');
+					// array_push($columns,'Day '.$k.' Pax');
 					array_push($columns,'Day '.$k.' Guests');
 					array_push($columns,'Day '.$k.' Admin Note');
 					array_push($columns,'Day '.$k.' Last Updated');
@@ -1811,10 +1812,27 @@ class Admin extends CI_Controller {
 							array_push($row, $reservation_status);
 							array_push($row, $reservation_role);
 							array_push($row, $reservation_date);
-							array_push($row, $reservation_time);
-							array_push($row, $reservation_restname);
-							array_push($row, $reservation_resttype);
-							array_push($row, $reservation_pax);
+							$day_field = '';
+							if (!empty($reservation_pax) || !empty($reservation_time) || !empty($reservation_restname) || !empty($reservation_resttype)) {
+								$day_field .= 'Table for ';
+								if ($reservation_pax) {
+									$day_field .= $reservation_pax . " - ";
+								}
+								if ($reservation_time) {
+									$day_field .= $reservation_time . " at ";
+								}
+								if ($reservation_restname) {
+									$day_field .= $reservation_restname;
+								}
+								if ($reservation_resttype) {
+									$day_field .= " (" . $reservation_resttype . ")";
+								}
+							}
+							array_push($row, $day_field);
+							// array_push($row, $reservation_time);
+							// array_push($row, $reservation_restname);
+							// array_push($row, $reservation_resttype);
+							// array_push($row, $reservation_pax);
 							array_push($row, $reservation_guests);
 							array_push($row, $reservation_admin_note);
 							array_push($row, $modify_date);

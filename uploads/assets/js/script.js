@@ -1043,7 +1043,7 @@ $(document).ready(function () {
       // }
 
 
-      if (firstDateObj < secondDateObj){
+      // if (firstDateObj < secondDateObj){
         // this.submit();
         // if(jQuery('.update_settings_otp_status').val()=='true'){
 
@@ -1053,18 +1053,18 @@ $(document).ready(function () {
         //   send_otp_to_update_admin_settings();
         // }
         
-      }else{
-        // console.log('In vlaide END date');
-        // Parse the date string using JavaScript's Date object
-        var parsedDatemaxAllowedDate = new Date(maxAllowedDate);
+      // }else{
+      //   // console.log('In vlaide END date');
+      //   // Parse the date string using JavaScript's Date object
+      //   var parsedDatemaxAllowedDate = new Date(maxAllowedDate);
 
-        // Format the date to "mm-dd-yyyy" format
-        var formattedDatemaxAllowedDate = ('0' + (parsedDatemaxAllowedDate.getMonth() + 1)).slice(-2) + "-" + 
-                            ('0' + parsedDatemaxAllowedDate.getDate()).slice(-2) + "-" + 
-                            parsedDatemaxAllowedDate.getFullYear();
-        // Swal.fire('Invalide Booking End Date! Should be later than:'+formattedDatemaxAllowedDate, '', 'error');
-        Swal.fire('reservation dates should not be greater than end date', '', 'error');
-      }
+      //   // Format the date to "mm-dd-yyyy" format
+      //   var formattedDatemaxAllowedDate = ('0' + (parsedDatemaxAllowedDate.getMonth() + 1)).slice(-2) + "-" + 
+      //                       ('0' + parsedDatemaxAllowedDate.getDate()).slice(-2) + "-" + 
+      //                       parsedDatemaxAllowedDate.getFullYear();
+      //   // Swal.fire('Invalide Booking End Date! Should be later than:'+formattedDatemaxAllowedDate, '', 'error');
+      //   Swal.fire('reservation dates should not be greater than end date', '', 'error');
+      // }
 
     }else{
       //this.submit(); // Programmatically submit the form
