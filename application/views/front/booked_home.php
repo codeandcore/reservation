@@ -170,10 +170,10 @@ $booking_end = date('Y-m-d H:i:s', strtotime($modify_date . ' ' . $modify_time))
                                                         <?php endif; ?>
                                                     <?php endif; ?>
                                                     <?php if($settings['restaurant_contact_hide'] != 'yes'):?>
-                                                    <li>
+                                                    <!-- <li>
                                                         <div class="detailLabel">Restaurant contact:</div>
                                                         <div class="detailInput"><a href="tel:<?php echo preg_replace('/(\W*)/', '', $hotel['contact'] ); ?>"><?php echo $hotel['contact'];?></a></div>
-                                                    </li>
+                                                    </li> -->
                                                     <?php endif; ?>
                                                     <?php if($settings['restaurant_website_url_hide'] != 'yes'):?>
                                                     <li>

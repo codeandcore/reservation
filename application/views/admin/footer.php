@@ -380,7 +380,7 @@
         </button>
         <div class="modal-body cmn-scroll">
             <h4>Invite your colleagues to join you!</h4>
-            <p>Enter their email to send an invitation:</p>
+            <p>Enter their Pfizer email to send an invitation:</p>
             <form action="#" class="form-inline" id="share_invite_form">
                 <input type="email" class="form-control" name="email" placeholder="Enter e-mail" required>
                 <input type="hidden" name="share_booking_listid" id="share_booking_listid">                
@@ -399,8 +399,8 @@
             <img src="<?php echo base_url(); ?>uploads/front/images/cross-icon.svg" alt="Close Icon">
         </button>
         <div class="modal-body cmn-scroll">
-            <h4>Reason For Skip Day!</h4>
-            <textarea class="form-control" name="reason_skip" id="reason_text_input" placeholder="Reason For Skip Day"
+            <h4>Reason for skipping!</h4>
+            <textarea class="form-control" name="reason_skip" id="reason_text_input" placeholder="Reason for skipping"
                 readonly></textarea>
         </div>
     </div>
@@ -420,12 +420,12 @@
             </a>
             <figure>
                 <img src="<?php echo base_url(); ?>uploads/assets/images/skipDay.svg" alt="skipDay">
-                <figcaption>Reason for skip day</figcaption>
+                <figcaption>Reason for skipping</figcaption>
             </figure>
         </div>
         <div class="popup_body">
             <div class="content">
-                <textarea class="form-control" name="reason_skip" id="reason_text_input" placeholder="Reason For Skip Day"
+                <textarea class="form-control" name="reason_skip" id="reason_text_input" placeholder="Reason for skipping"
             readonly></textarea>
             </div>
         </div>
@@ -615,7 +615,7 @@
             </a>
             <figure>
                 <img src="<?php echo base_url(); ?>uploads/front/images/circle-check.svg" alt="">
-                <figcaption>Reason for skip day</figcaption>
+                <figcaption>Reason for skipping</figcaption>
             </figure>
         </div>
         <div class="popup_body cmn-scroll text-center">

@@ -434,25 +434,6 @@ jQuery(document).ready(function(){
         jQuery('.skipreason_error').hide(); 
     })
 
-    // ---- SET COOKIE ON CLICK ----
-    $('.notificationBtn.dropdownClick').on('click', function () {
-        document.cookie = "notificationflag=1; path=/; max-age=" + (60 * 60 * 24 * 30); // valid 7 days
-        $('.notificationBtn.dropdownClick').addClass('noti-clicked');
-        // console.log("Cookie saved!");
-    });
-
-    // ---- FUNCTION TO READ COOKIE ----
-    function getCookie(name) {
-        let value = `; ${document.cookie}`;
-        let parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';')[0];
-    }
-
-    // ---- CHECK COOKIE ON PAGE LOAD ----
-    if (getCookie("notificationflag")) {
-        $('.notificationBtn.dropdownClick').addClass('noti-clicked');
-        // console.log("Class added from cookie!");
-    }
 
 });
 
@@ -695,4 +676,12 @@ $(document).ready(function() {
         o.value = arrbook_persons_inner[i].v;
         $(o).text(arrbook_persons_inner[i].t);
     });
+
+    $(".header .topSiteTitle").html(function (_, html) {
+        return html.replace(
+            "Restaurant Reservation Request Portal",
+            "<span>Restaurant Reservation Request Portal</span>"
+        );
+    });
+    
   });

@@ -220,6 +220,7 @@ a:hover {
     border-radius: 50%;
     animation: button-loading-spinner 1s ease infinite;
     font-size: 0;
+    filter: brightness(0) saturate(100%) invert(9%) sepia(23%) saturate(4768%) hue-rotate(192deg) brightness(97%) contrast(102%);
 }
 
 @keyframes button-loading-spinner {
@@ -1055,6 +1056,7 @@ html ::-webkit-scrollbar:horizontal {
     overflow: hidden;
     display: none;
 }
+.accordionItem .inner.show{padding-top: 15px;}
 
 .accordionItem.active .toggle::after {
     opacity: 0;
@@ -1123,7 +1125,7 @@ html ::-webkit-scrollbar:horizontal {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 90px;
     transition: 0.5s;
 }
 
@@ -1135,7 +1137,7 @@ html ::-webkit-scrollbar:horizontal {
 
 .header .logoBox {
     width: 200px;
-    height: 150px;
+    height: 120px;
     padding: 10px;
     background-color: var(--white);
     display: flex;
@@ -1152,6 +1154,10 @@ html ::-webkit-scrollbar:horizontal {
     color: var(--white);
     text-transform: uppercase;
     font-weight: 900;
+    text-align: center;
+}
+.topSiteTitle span{
+    display: block;
 }
 
 .userSetting {
@@ -1347,6 +1353,10 @@ html ::-webkit-scrollbar:horizontal {
     text-transform: capitalize;
 }
 
+.userNotification .dropdown-list ul li a:hover, .dropdown-list ul li a:hover{
+    color: rgb(2 31 60 / 80%);
+}
+
 .userNotification .dropdown-list::before {
     border-bottom-color: var(--skyColor);
 }
@@ -1498,6 +1508,9 @@ html ::-webkit-scrollbar:horizontal {
     letter-spacing: 1.68px;
     padding: 13px 38px;
 }
+.loginPages .rightSide .rightContent .form-inline .btn:hover{
+    background-color: var(--green);
+}
 
 .loginPages.animated .rightSide .rightbg {
     opacity: 0.4;
@@ -1529,7 +1542,7 @@ html ::-webkit-scrollbar:horizontal {
 }
 
 .loginForm a {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid transparent;
 }
 
 .siteTitle {
@@ -1755,6 +1768,12 @@ html ::-webkit-scrollbar:horizontal {
     position: inherit;
     margin-top: 0;
     height: 37px;
+}
+.relevantRestaurant .sliderTitle .swiper-buttons .swiper-button-next:hover img, .relevantRestaurant .sliderTitle .swiper-buttons .swiper-button-prev:hover img, .swiper-buttons .swiper-button-next:hover img, .swiper-buttons .swiper-button-prev:hover img{
+     filter: brightness(0) saturate(100%) invert(80%) sepia(57%) saturate(2328%) hue-rotate(352deg) brightness(104%) contrast(101%) !important;}
+
+.swiper-buttons .swiper-button-disabled:hover img{
+    filter: brightness(0) saturate(100%) invert(78%) sepia(8%) saturate(1806%) hue-rotate(8deg) brightness(104%) contrast(98%) !important;
 }
 
 .swiper-buttons .swiper-button-next::after, .swiper-buttons .swiper-button-prev::after {
@@ -2292,7 +2311,7 @@ footer .copyRight {
 }
 
 .availableList .restaurantDetails .confirmTimePeople ul li:first-child i img , .swiper-buttons .swiper-button-next img, .swiper-buttons .swiper-button-prev img{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%) !important;
+    filter: brightness(0) saturate(100%) invert(9%) sepia(50%) saturate(2230%) hue-rotate(193deg) brightness(96%) contrast(102%) !important;
 }
 
 .availableList .restaurantDetails .restaurantName {
@@ -2428,11 +2447,13 @@ footer .copyRight {
     display: inline-block;
     background-size: contain;
     margin-right: 5px;
-    filter: invert(1);
+    filter: brightness(0) saturate(100%) invert(11%) sepia(14%) saturate(6529%) hue-rotate(186deg) brightness(87%) contrast(102%);
 }
 
+.availableList .availableItem .viewBtn:hover{color: var(--white);}
 .availableList .availableItem .viewBtn:hover::before{
-    filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%);
+    /* filter: brightness(0) saturate(100%) invert(16%) sepia(49%) saturate(3064%) hue-rotate(211deg) brightness(103%) contrast(92%); */
+    filter: brightness(0) saturate(100%) invert(89%) sepia(89%) saturate(1%) hue-rotate(184deg) brightness(111%) contrast(97%);
 }
 
 .selectedRestaurant {
@@ -2483,6 +2504,7 @@ footer .copyRight {
 
 .selectedRestaurant .btn:hover {
     background-color: var(--secondary);
+    color: rgb(2 31 60 / 70%);
 }
 
 .selectedRestaurant.active {
@@ -2538,6 +2560,10 @@ footer .copyRight {
 .confirmDetails .modifyRestaurant .btn {
     padding: 7px 20px;
     font-size: 14px;
+}
+
+.confirmDetails .modifyRestaurant .btn:hover{
+    color: var(--white);
 }
 
 .error-arrow {
@@ -2650,7 +2676,8 @@ footer .copyRight {
 }
 
 .creditInformation .fieldLabel sup {
-    color: #F28178;
+    /* color: #F28178; */
+    color: #e4e1e1;
 }
 
 .creditInformation .form-control {
@@ -2710,8 +2737,10 @@ footer .copyRight {
     padding: 5px 10px;
     line-height: 1;
     margin-right: 10px;
-    color: var(--white);
+    color: var(--primary);
 }
+
+.filterTitle .filterButtons .filterBtn:hover{color: var(--white);}
 
 .filterItem {
     padding-top: 20px;
@@ -3472,7 +3501,7 @@ progress::-moz-progress-value {
 }
 
 .creditInformation input.error {
-    background: #ffdede !important;
+    background: #e4e1e1 !important;
 }
 
 .invitationDetails .comfirmedDetails {
@@ -3565,6 +3594,10 @@ progress::-moz-progress-value {
     border-radius: 50px 0 0 50px;
 }
 
+.invitationDetails .comfirmedDetails .btn_group .btn.invitation_approve_btn img, .invitationDetails .comfirmedDetails .btn_group .btn.invitation_decline_btn img{filter: brightness(0) saturate(100%) invert(8%) sepia(24%) saturate(6182%) hue-rotate(197deg) brightness(101%) contrast(98%);}
+
+.invitationDetails .comfirmedDetails .btn_group .btn.invitation_approve_btn:hover img, .invitationDetails .comfirmedDetails .btn_group .btn.invitation_decline_btn:hover img {filter: brightness(0) saturate(100%) invert(82%) sepia(44%) saturate(2142%) hue-rotate(353deg) brightness(100%) contrast(99%);}
+
 .invitationDetails .comfirmedDetails .btn_group .btn.invitation_decline_btn {
     border-radius: 0 50px 50px 0;
 }
@@ -3622,7 +3655,7 @@ progress::-moz-progress-value {
 }
 
 .resend_code_div a:hover,#password-reset a:hover {
-    color: var(--secondary);
+    color: rgb(2 31 60 / 70%);
 }
 
 #reservationCancel .modal-body {
@@ -3886,9 +3919,9 @@ body .swal2-title {
     color: #707070;
 }
 
-.loginForm a {
+/* .loginForm a {
     border-bottom: 1px solid;
-}
+} */
 
 .loginPages .small-text{
     font-size: 14px;
@@ -3982,6 +4015,7 @@ max-width: 340px;
     height: 46px;
 }
 .userNotification .dropdown-list .img img {
+
     width: 100%;
     height: 100%;
     object-fit: cover;

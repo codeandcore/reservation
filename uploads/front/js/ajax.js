@@ -137,6 +137,11 @@ jQuery(document).ready(function(){
 
     $(document).on('click','.filterBtn', function(e){
         e.preventDefault();
+        applyRestaurantFilter();
+        
+    })
+
+    function applyRestaurantFilter() {
         var _form = new FormData();
         var _type = $('input[name="property_type"]:checked').val();
         var _date = $('select#book_date').val();
@@ -186,7 +191,7 @@ jQuery(document).ready(function(){
                 $('.setupContent.active:not(.invited) #ajax-response-restaurants').html(response);
             }
         });
-    })
+    }
     $(document).on('click', '.selectRestaurant_btn', function(e) {
         var _time = $(this).text();
         $(this).parents('.availableItem').find('.selected_time_slot').text(_time);
@@ -246,6 +251,7 @@ jQuery(document).ready(function(){
     });
     $(document).on('click', '.clear_filter_btn', function(e) {
         clear_filter_form_sidebar();
+        applyRestaurantFilter();
     });
     $(document).on('submit', '#cancel_reservation_form', function(e) {
         e.preventDefault();

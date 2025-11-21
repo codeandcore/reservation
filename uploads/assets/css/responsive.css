@@ -1,18 +1,52 @@
 @media (max-width:1750px) {
     .main-wrap .banner-section.inner-banner.user-management .user-icon{width: 90px;height: 90px;}
+    .booking_list_wrapper .booking_list_box h4 {font-size: 26px;margin-top: 30px;}
+    .booking_list_wrapper .booking_list_box{padding: 33px 30px;min-height: auto;}
+    .booking_list_wrapper{margin-top: 35px;}
+       .reports-step .right-col .file-icon svg { width: 135px; height: 135px; }
+       .reports-step .right-col h2 {font-size: 36px;margin-bottom: 30px;}
+        .swal2-icon{width: 4em;height: 4em;}
+            .booking_list_wrapper .booking_list_box span{width: 68px;height: 68px;}
+    .booking_list_wrapper .booking_list_box .eye_button{width: 53px;height: 53px;}
+    .booking_list_wrapper .booking_list_box span img{width: 50px;height: 50px;}
+        input, select, optgroup, textarea { font-size: 15px; padding: 13px 20px;}
+
 }
 @media (max-width: 1620px) {
     .main-wrap .banner-section.inner-banner.user-management .user-icon {
         width: 55px;
         height: 55px;
     }
+  
+
+    .booking_list_wrapper .booking_list_box{min-height: auto;}
+    .booking_list_wrapper .booking_list_box h4{font-size: 24px;margin-top: 23px;}
+    .booking_list_wrapper .booking_list_box{padding: 32px 30px;}
+    .main-content .container-fluid{padding: 0 20px 30px;}
+
+    .booking_list_wrapper {margin-top: 30px;}
+
+     .addReservationForm .col-9{max-width: 70%;}
+    .addReservationForm .col-3{max-width: 30%;}
+    .wrap_reservation .wrap_reservation_list { padding: 42px 30px;}
+    .wrap_reservation .head_top_reservation{padding: 0 30px 30px 30px;}
+    input, select, optgroup, textarea { font-size: 14px; padding: 11px 20px;}
+    .add_restro .restro_info_row { margin-bottom: 20px; min-height: 48vh;}
+    textarea {min-height: 90px;}
+    .main-content h2.heading_title{font-size: 28px;}
+     .reports-step{align-items: flex-start;}
+    .reports-step .right-col .file-icon svg { width: 120px; height: 120px; }
+    .reports-step .right-col h2{font-size: 26px;}
+    .reports-step .right-col .start-step{padding: 60px 115px 60px 35px;}
+    .reports-step .right-col h5{font-size: 20px;}
+   
 }
 @media (max-width:1600px){
     h1, .h1{font-size: 60px;}
     h2, .h2{font-size: 26px;}
     h3, .h3{font-size: 24px;}
     h5, .h5{font-size: 16px;}
-    .reports-step{align-items: flex-start;}
+   
 
     .wrap_table .table_class tbody td span{position: relative;}
 
@@ -117,10 +151,7 @@
     .app-menu ul li a span.icon{margin-right: 10px; width: 18px;}
     .app-menu ul li a{font-size: 15px; padding: 10px 15px 10px 15px;}
     
-    .addReservationForm .col-9{max-width: 70%;}
-    .addReservationForm .col-3{max-width: 30%;}
     
-    .booking_list_wrapper .booking_list_box h4{font-size: 25px;}
     .booking_list_wrapper .booking_list_box .eye_button{width:50px;height:50px;}
     .booking_list_wrapper .booking_list_box .eye_button svg{width:25px;height:25px;}
     .withLeftButtons .leftButtonsRow a { height: 43px; font-size: 12px; padding: 10px 12px; }
@@ -259,7 +290,7 @@
    .reports-step{display: block;}
    .reports-step .left-col, .reports-step .right-col{width: 100%;padding:0 39px 40px;}
    #report-step-form .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{width: 100%;}
-   .reports-step .right-col .file-icon svg{width: 120px;height: 120px;}
+  
 
 
    .btn, .auth_screen .form_group .btn, input.btn{font-size: 12px;}

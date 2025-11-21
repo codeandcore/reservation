@@ -45,7 +45,7 @@
             <div class="popupIcon">
                 <img src="<?php echo base_url(); ?>uploads/front/images/circle-check.svg" alt="">
             </div>
-            <h4>Reason for skip day</h4>
+            <h4>Reason for skipping </h4>
             <div class="selectInput skip-reasons-container">
                 <p class="skipreason_error" style="display:none">Error Message</p>
                 <select name="reason_for_skip" class="form-control  reason_for_skip_booking">
@@ -60,7 +60,7 @@
                             }
                         }
                     ?>
-                    <option value="other">other</option>
+                    <option value="other">Other</option>
                 </select>
             </div>
             <input type="hidden" class="reason-to-skip-value" name="reason_skip_input">
@@ -82,7 +82,7 @@
         </button>
         <div class="modal-body cmn-scroll">
             <h4>Invite your colleagues to join you!</h4>
-            <p>Enter their email to send an invitation:</p>
+            <p>Enter their Pfizer email to send an invitation:</p>
             <form action="#" class="form-inline" id="share_invite_form">
                 <input type="email" class="form-control" name="email" placeholder="Enter e-mail" required>
                 <input type="hidden" name="share_booking_listid" id="share_booking_listid">                
@@ -168,8 +168,8 @@
             <div class="popupIcon">
                 <img src="<?php echo base_url(); ?>uploads/front/images/notCompleted-icon.svg" alt="">
             </div>
-            <h4>Reservation not completed </h4>
-            <p>Your restaurant reservation's are still pending please confirm <br> all your reservation on the last step before leaving.</p>
+            <h4>Reservations Not Complete </h4>
+            <p>Your restaurant reservations are still pending. Please confirm all your reservations before leaving.</p>
             <div class="modalButtonRow">
                 <a href="#" class="btn btn-black" data-target="modalClose">Close</a>                
             </div>

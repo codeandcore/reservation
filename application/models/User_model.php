@@ -209,7 +209,7 @@ class User_model extends CI_Model {
         $minutes = floor($diffSeconds / 60);
         $hours   = floor($diffSeconds / 3600);
         $days    = floor($diffSeconds / 86400);
-
+        
         if ($minutes < 5) {
             return 'just now';
         }

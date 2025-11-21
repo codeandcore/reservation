@@ -141,7 +141,7 @@ if (!empty($date_list)):
                                                 $user_data = $this->user_model->get_user_detail_byuserid($user_id);
                                                 ?>
                                                 <?php if ($user_data['full_name'] != ''): ?>
-                                                    <tr>
+                                                    <tr style="vertical-align: baseline;">
                                                         <td width="50%" style="padding: 5px 0;">
                                                             <p style="color: <?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Name:</p>
                                                         </td>
@@ -151,7 +151,7 @@ if (!empty($date_list)):
                                                     </tr>
                                                 <?php endif; ?>
                                                 <?php if ($user_data['email'] != ''): ?>
-                                                    <tr>
+                                                    <tr style="vertical-align: baseline;">
                                                         <td width="50%" style="padding: 5px 0;">
                                                             <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Email:</p>
                                                         </td>
@@ -163,7 +163,7 @@ if (!empty($date_list)):
                                                 <?php endif; ?>
 
                                                 <?php if ($user_data['mobile_number'] != ''): ?>
-                                                    <tr>
+                                                    <tr style="vertical-align: baseline;">
                                                         <td width="50%" style="padding: 5px 0;">
                                                             <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">User contact:
                                                             </p>
@@ -175,7 +175,7 @@ if (!empty($date_list)):
                                                 <?php endif; ?>
                                                 <?php if ($restaurant_email_hide != 'yes'): ?>
                                                     <?php if ($hotel['email'] != ''): ?>
-                                                        <tr>
+                                                        <tr style="vertical-align: baseline;">
                                                             <td width="50%" style="padding: 5px 0;">
                                                                 <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
                                                                     email:</p>
@@ -191,7 +191,7 @@ if (!empty($date_list)):
                                                     <?php if ($hotel['contact'] != ''): ?>
                                                         <?php //if($hotel['contact'] == 'hideit_on_client_request'):
                                                         ?>
-                                                        <tr>
+                                                        <tr style="vertical-align: baseline;">
                                                             <td width="50%" style="padding: 5px 0;">
                                                                 <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
                                                                     contact: </p>
@@ -207,10 +207,10 @@ if (!empty($date_list)):
                                                     <?php if ($hotel['website_link'] != ''): ?>
                                                         <?php //if($hotel['contact'] == 'hideit_on_client_request'):
                                                         ?>
-                                                        <tr>
+                                                        <tr style="vertical-align: baseline;">
                                                             <td width="50%" style="padding: 5px 0;">
                                                                 <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Restaurant
-                                                                    Website Url: </p>
+                                                                    Website: </p>
                                                             </td>
                                                             <td width="50%">
                                                                 <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><a href="<?php echo $hotel['website_link']; ?>">Click here</a>
@@ -222,7 +222,7 @@ if (!empty($date_list)):
                                                 <?php
                                                 if ($restaurant_fee_hide != 'yes'):
                                                     if ($hotel['deposite_amount'] != ''): ?>
-                                                        <tr>
+                                                        <tr style="vertical-align: baseline;">
                                                             <td width="50%" style="padding: 5px 0;">
                                                                 <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">Late Cancel/No-Show Fee:
                                                                 </p>
