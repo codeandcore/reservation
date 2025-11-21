@@ -1,11 +1,18 @@
+<?php $status = $this->input->get('book_status');
+$link = '';
+if($status = "Partial"){
+    $link = '/?book_status='.$status;
+}
+
+?>
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
             <div class="d-flex align-items-center justify-between">
                 <h2 class="heading_title">View All Booking List(<?php echo $total_rows;?>)</h2>
                 <div class="viewGridButton">
-                    <a href="<?php echo site_url('admin/all_booking_list');?>" class="btn btn_add active"><img src="<?php echo base_url(); ?>/uploads/assets/images/list.svg">List View</a>
-                    <a href="<?php echo site_url('admin/all_booking_detail_list');?>" class="btn btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/grid.svg">Detail View</a>
+                    <a href="<?php echo site_url('admin/all_booking_list'.$link);?>" class="btn btn_add active"><img src="<?php echo base_url(); ?>/uploads/assets/images/list.svg">List View</a>
+                    <a href="<?php echo site_url('admin/all_booking_detail_list'.$link);?>" class="btn btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/grid.svg">Detail View</a>
                 </div>
             </div>
             <div class="wrap_table withLeftButtons action_class">

@@ -1123,10 +1123,11 @@ progress::-moz-progress-value { background-color: #00434E; }
 .master_reservation{overflow: auto; padding-bottom: 15px;}
 .not-found:hover td{background-color: inherit !important;}
 
-.viewGridButton .btn img{filter: invert(100);}
+/* .viewGridButton .btn img{filter: invert(100);} */
 .viewGridButton .btn:not(.active){background: transparent;color: var(--green);}
 .viewGridButton .btn:not(.active) img{ filter: brightness(0) saturate(100%) invert(21%) sepia(10%) saturate(5775%) hue-rotate(149deg) brightness(96%) contrast(104%); -webkit-filter: brightness(0) saturate(100%) invert(21%) sepia(10%) saturate(5775%) hue-rotate(149deg) brightness(96%) contrast(104%); }
 .popup[data-id="deleteInvite"] .popup_header figure>img{ filter:none ; -webkit-filter:none ; }
+.viewGridButton .btn:not(.active):hover{background: var(--green);}
 
 .ui-state-highlight { background-color: var(--green) !important; }
 .column-fields-filter-tbl input{-webkit-appearance:auto;width:auto;}

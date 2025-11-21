@@ -1,6 +1,11 @@
 <?php $status = $this->input->get('book_status');
+$link = '';
 if($status){
     $head = $status;
+    if($status = "Partial"){
+
+        $link = '/?book_status='.$status;
+    }
 }
 else{
     $head = 'Accepted';
@@ -12,8 +17,8 @@ else{
             <div class="d-flex align-items-center justify-between">
                 <h2 class="heading_title"><?php echo $head;?> Reservations(<?php echo $total_rows;?>)</h2>
                 <div class="viewGridButton">
-                    <a href="<?php echo site_url('admin/all_booking_list');?>" class="btn btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/list.svg">List View</a>
-                    <a href="<?php echo site_url('admin/all_booking_detail_list');?>" class="btn active btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/grid.svg">Detail View</a>
+                    <a href="<?php echo site_url('admin/all_booking_list'. $link);?>" class="btn btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/list.svg">List View</a>
+                    <a href="<?php echo site_url('admin/all_booking_detail_list'. $link);?>" class="btn active btn_add"><img src="<?php echo base_url(); ?>/uploads/assets/images/grid.svg">Detail View</a>
                 </div>    
             </div>
             <div class="wrap_table withLeftButtons action_class">

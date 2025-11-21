@@ -81,7 +81,7 @@
                                 <th>Day <?php echo $k;?> Status</th>
                                 <th>Day <?php echo $k;?> Role</th>
                                 <th>Day <?php echo $k;?> Date</th>
-                                <th>Day <?php echo $k;?> App Field</th>
+                                <th>Day <?php echo $k;?> Reservation</th>
                                 <!-- <th>Day <?php echo $k;?> Time (EST)</th>
                                 <th>Day <?php echo $k;?> Restaurant Name</th>
                                 <th>Day <?php echo $k;?> Property Type</th>

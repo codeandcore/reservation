@@ -220,6 +220,7 @@ a:hover {
     border-radius: 50%;
     animation: button-loading-spinner 1s ease infinite;
     font-size: 0;
+    filter: brightness(0) saturate(100%) invert(9%) sepia(23%) saturate(4768%) hue-rotate(192deg) brightness(97%) contrast(102%);
 }
 
 @keyframes button-loading-spinner {
@@ -1124,7 +1125,7 @@ html ::-webkit-scrollbar:horizontal {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 90px;
     transition: 0.5s;
 }
 
@@ -1153,6 +1154,10 @@ html ::-webkit-scrollbar:horizontal {
     color: var(--white);
     text-transform: uppercase;
     font-weight: 900;
+    text-align: center;
+}
+.topSiteTitle span{
+    display: block;
 }
 
 .userSetting {
@@ -1537,7 +1542,7 @@ html ::-webkit-scrollbar:horizontal {
 }
 
 .loginForm a {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid transparent;
 }
 
 .siteTitle {
@@ -3914,9 +3919,9 @@ body .swal2-title {
     color: #707070;
 }
 
-.loginForm a {
+/* .loginForm a {
     border-bottom: 1px solid;
-}
+} */
 
 .loginPages .small-text{
     font-size: 14px;

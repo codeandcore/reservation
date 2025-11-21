@@ -91,7 +91,7 @@
                                 $date = DateTime::createFromFormat('Y-m-d H:i:s', $data['timestamp'], new DateTimeZone('UTC'));
 
                                 // Set the target time zone (New York)
-                                $date->setTimezone(new DateTimeZone('America/New_York'));
+                                // $date->setTimezone(new DateTimeZone('America/New_York'));
 
                                 // Format the date in the target time zone
                                 $new_york_time = $date->format('Y-m-d H:i:s');
