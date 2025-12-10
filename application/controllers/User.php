@@ -903,7 +903,7 @@ class User extends CI_Controller {
 			else{
 				$data = array(
 					'response'=>'failure',
-					'message'=>'Your provided email doesn`t matched with our list-record of guests.'
+					'message'=>'That email is unavailable.'
 				);
 			}
 			echo json_encode($data);

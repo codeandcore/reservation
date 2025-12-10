@@ -79,11 +79,23 @@
           <?php
           $user_id = $this->session->userdata('mes_user_id');
           $notis = $this->user_model->get_notification_list($user_id);
+          $notis_count = 0;
           if (!empty($notis)):
+
+            foreach ($notis as $li) {
+              $booking_list_id = $li['booking_list_id'];
+              $booking_list_data = $this->user_model->get_booking_date_detail($booking_list_id);
+              $booking_restid = $booking_list_data['booking_restid'];
+              $booking_rest_data = $this->user_model->get_restaurant_detail($booking_restid);
+              $restaurant_name = $booking_rest_data['restaurant_name'];
+              if($restaurant_name){
+                $notis_count++;
+              }
+            }
           ?>
             <a href="javascript:void(0);" class="notificationBtn dropdownClick">
               <img src="<?php echo base_url(); ?>uploads/front/images/ball-icon.svg" alt="">
-              <span class="badge"> <?php echo count($notis); ?></span>
+              <span class="badge"> <?php echo $notis_count; ?></span>
             </a>
 
             <div class="dropdown-list">
@@ -104,6 +116,7 @@
                   $booking_restid = $booking_list_data['booking_restid'];
                   $booking_rest_data = $this->user_model->get_restaurant_detail($booking_restid);
                   $restaurant_name = $booking_rest_data['restaurant_name'];
+                  
                   $feature_image = $booking_rest_data['feature_image'];
                   $created_at = $li['created_at'];
                   // echo $created_at;
@@ -119,124 +132,126 @@
                   // print_r($booking_list_data);
                   // echo "</pre>";
                   $noti_status = $li['status'];
-                  if ($to_id == $user_id) {
-                    if ($noti_status == 'accept') {
-                      $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
-                    } else if ($noti_status == 'decline') {
-                      $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
-                    } else {
-                      $msg_status = 'Invited';
-                    }
-                ?>
-                    <li>
-                      <div class="two-column difference">
-                        <div class="action">
-                          <p><?php echo $user_data['full_name']; ?> <?php echo $msg_status; ?> at <?php echo $restaurant_name; ?></p>
-                        </div>
-                        <div class="hour-ago">
-                          <span><?php echo $day_ago; ?></span>
-                        </div>
-                      </div>
-                      <div class="gray-line"></div>
-                      <div class="two-column difference ">
-                        <div class="two-column restaurant-data">
-                          <div class="img">
-                              <?php
-                                if($feature_image):
-                              ?>
-                              <img src="<?php echo base_url(); ?>/uploads/assets/images/<?php echo $feature_image;?>" alt="">
-                              <?php
-                                else:
-                              ?>
-                                <img src="<?php echo base_url(); ?>/uploads/front/images/no-image.jpg" alt="">
-                                <?php
-                               endif;
-                              ?>
-                          </div>
-                          <div class="notification-head">
-                            <h5><?php echo $restaurant_name; ?></h5>
-                            <div class="two-column restaurant-data">
-                              <div class="noti-calendar">
-                                <div class="two-column difference restaurant-data">
-                                  <img src="<?php echo base_url(); ?>uploads/front/images/invite-calendar.svg" alt="">
-                                  <span><?php echo $date_formatted; ?></span>
-                                </div>
-                              </div>
-                              <div class="noti-time">
-                                <div class="two-column difference restaurant-data">
-                                  <img src="<?php echo base_url(); ?>uploads/front/images/invite-time.svg" alt="">
-                                  <span><?php echo $bookingtime; ?></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="view-btn">
-                          <a href="<?php echo site_url('user/check_invitation/' . $li['id']); ?>" class="view">View</a>
-                        </div>
-                      </div>
-                    </li>
-                  <?php
-                  } else {
-                    if ($noti_status == 'accept') {
-                      $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
-                    } else if ($noti_status == 'decline') {
-                      $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
-                    } else {
-                      $msg_status = 'Invited';
-                    }
+                  if($restaurant_name):
+                    if ($to_id == $user_id) {
+                      if ($noti_status == 'accept') {
+                        $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
+                      } else if ($noti_status == 'decline') {
+                        $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
+                      } else {
+                        $msg_status = 'Invited';
+                      }
                   ?>
-                    <!-- <li><a href="javascript:void(0)"><?php echo $to_user_data['full_name'] . ' ' . $msg_status; ?></a></li> -->
-                    <li>
-                      <div class="two-column difference">
-                        <div class="action">
-                          <p><?php echo $to_user_data['full_name']."'s"; ?> <?php echo $msg_status; ?> at <?php echo $restaurant_name; ?></p>
-                        </div>
-                        <div class="hour-ago">
-                          <span><?php echo $day_ago; ?></span>
-                        </div>
-                      </div>
-                      <div class="gray-line"></div>
-                      <div class="two-column difference ">
-                        <div class="two-column restaurant-data">
-                          <div class="img">
-                              <?php
-                                if($feature_image):
-                              ?>
-                              <img src="<?php echo base_url(); ?>/uploads/assets/images/<?php echo $feature_image;?>" alt="">
-                              <?php
-                                else:
-                              ?>
-                                <img src="<?php echo base_url(); ?>/uploads/front/images/no-image.jpg" alt="">
-                                <?php
-                               endif;
-                              ?>
+                      <li>
+                        <div class="two-column difference">
+                          <div class="action">
+                            <p><?php echo $user_data['full_name']; ?> <?php echo $msg_status; ?> to <?php echo $restaurant_name; ?></p>
                           </div>
-                          <div class="notification-head">
-                            <h5><?php echo $restaurant_name; ?></h5>
-                            <div class="two-column restaurant-data">
-                              <div class="noti-calendar">
-                                <div class="two-column difference restaurant-data">
-                                  <img src="<?php echo base_url(); ?>uploads/front/images/invite-calendar.svg" alt="">
-                                  <span><?php echo $date_formatted; ?></span>
+                          <div class="hour-ago">
+                            <span><?php echo $day_ago; ?></span>
+                          </div>
+                        </div>
+                        <div class="gray-line"></div>
+                        <div class="two-column difference ">
+                          <div class="two-column restaurant-data">
+                            <div class="img">
+                                <?php
+                                  if($feature_image):
+                                ?>
+                                <img src="<?php echo base_url(); ?>/uploads/assets/images/<?php echo $feature_image;?>" alt="">
+                                <?php
+                                  else:
+                                ?>
+                                  <img src="<?php echo base_url(); ?>/uploads/front/images/no-image.jpg" alt="">
+                                  <?php
+                                endif;
+                                ?>
+                            </div>
+                            <div class="notification-head">
+                              <h5><?php echo $restaurant_name; ?></h5>
+                              <div class="two-column restaurant-data">
+                                <div class="noti-calendar">
+                                  <div class="two-column difference restaurant-data">
+                                    <img src="<?php echo base_url(); ?>uploads/front/images/invite-calendar.svg" alt="">
+                                    <span><?php echo $date_formatted; ?></span>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="noti-time">
-                                <div class="two-column difference restaurant-data">
-                                  <img src="<?php echo base_url(); ?>uploads/front/images/invite-time.svg" alt="">
-                                  <span><?php echo $bookingtime; ?></span>
+                                <div class="noti-time">
+                                  <div class="two-column difference restaurant-data">
+                                    <img src="<?php echo base_url(); ?>uploads/front/images/invite-time.svg" alt="">
+                                    <span><?php echo $bookingtime; ?></span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          <div class="view-btn">
+                            <a href="<?php echo site_url('user/check_invitation/' . $li['id']); ?>" class="view">View</a>
+                          </div>
                         </div>
-                        <div class="view-btn">
-                          <a href="<?php echo site_url('reservation_confirmed/'); ?>" class="view">View</a>
+                      </li>
+                    <?php
+                    } else {
+                      if ($noti_status == 'accept') {
+                        $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
+                      } else if ($noti_status == 'decline') {
+                        $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
+                      } else {
+                        $msg_status = 'Invited';
+                      }
+                    ?>
+                      <!-- <li><a href="javascript:void(0)"><?php echo $to_user_data['full_name'] . ' ' . $msg_status; ?></a></li> -->
+                      <li>
+                        <div class="two-column difference">
+                          <div class="action">
+                            <p><?php echo $to_user_data['full_name']."'s"; ?> <?php echo $msg_status; ?> to <?php echo $restaurant_name; ?></p>
+                          </div>
+                          <div class="hour-ago">
+                            <span><?php echo $day_ago; ?></span>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  <?php
-                  }
+                        <div class="gray-line"></div>
+                        <div class="two-column difference ">
+                          <div class="two-column restaurant-data">
+                            <div class="img">
+                                <?php
+                                  if($feature_image):
+                                ?>
+                                <img src="<?php echo base_url(); ?>/uploads/assets/images/<?php echo $feature_image;?>" alt="">
+                                <?php
+                                  else:
+                                ?>
+                                  <img src="<?php echo base_url(); ?>/uploads/front/images/no-image.jpg" alt="">
+                                  <?php
+                                endif;
+                                ?>
+                            </div>
+                            <div class="notification-head">
+                              <h5><?php echo $restaurant_name; ?></h5>
+                              <div class="two-column restaurant-data">
+                                <div class="noti-calendar">
+                                  <div class="two-column difference restaurant-data">
+                                    <img src="<?php echo base_url(); ?>uploads/front/images/invite-calendar.svg" alt="">
+                                    <span><?php echo $date_formatted; ?></span>
+                                  </div>
+                                </div>
+                                <div class="noti-time">
+                                  <div class="two-column difference restaurant-data">
+                                    <img src="<?php echo base_url(); ?>uploads/front/images/invite-time.svg" alt="">
+                                    <span><?php echo $bookingtime; ?></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="view-btn">
+                            <a href="<?php echo site_url('reservation_confirmed/'); ?>" class="view">View</a>
+                          </div>
+                        </div>
+                      </li>
+                    <?php
+                    }
+                  endif;
                   ?>
 
                 <?php
