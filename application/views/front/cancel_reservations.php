@@ -74,10 +74,10 @@
                                                         <div class="detailInput"><?php echo $user_data['full_name'];?>
                                                         </div>
                                                     </li>
-                                                    <li>
+                                                    <!-- <li>
                                                         <div class="detailLabel">User contact:</div>
                                                         <div class="detailInput"><a href="tel:+tel:<?php echo preg_replace('/(\W*)/', '', $user_data['mobile_number'] ); ?>"><?php echo $user_data['mobile_number'];?></a></div>
-                                                    </li>
+                                                    </li> -->
                                                     <?php if($settings['restaurant_email_hide'] != 'yes'):?>
                                                         <?php if($hotel['email']):?>
                                                         <li>
