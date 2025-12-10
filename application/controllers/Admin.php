@@ -1688,7 +1688,7 @@ class Admin extends CI_Controller {
 					array_push($columns,'Day '.$k.' Status');
 					array_push($columns,'Day '.$k.' Role');
 					array_push($columns,'Day '.$k.' Date');
-					array_push($columns,'Day '.$k.' App Field');
+					array_push($columns,'Day '.$k.' Reservation ');
 					// array_push($columns,'Day '.$k.' Time');
 					// array_push($columns,'Day '.$k.' Restaurant Name');
 					// array_push($columns,'Day '.$k.' Property Type');
@@ -2299,6 +2299,7 @@ class Admin extends CI_Controller {
 			$min = $this->input->post('min'); 
 			$max = $this->input->post('max'); 
 			$length = $this->input->post('length'); 
+			$sort_order = $this->input->post('sort_order'); 
 			$book_status = $this->input->post('book_status'); 
 			$search_keyword = $this->input->post('search_keyword'); 
 			$conditions = [];
@@ -2314,6 +2315,12 @@ class Admin extends CI_Controller {
 			if($book_status != ''){
 				$conditions['book_status'] = $book_status;
 			}
+
+			// Add sort order to conditions
+			if($sort_order != ''){
+				$conditions['sort_order'] = $sort_order;
+			}
+			
 			$data['list'] = $this->admin_model->get_master_modification_logs($conditions);
 			if($length != ''){
 				$per_page = $length;
@@ -2713,7 +2720,7 @@ class Admin extends CI_Controller {
 			else{
 				$data = array(
 					'response'=>'failure',
-					'message'=>'Your provided email doesn`t matched with our list-record of guests.'
+					'message'=>'That email is unavailable.'
 				);
 			}
 			echo json_encode($data);

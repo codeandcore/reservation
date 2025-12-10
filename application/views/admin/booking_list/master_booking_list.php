@@ -187,7 +187,7 @@
                                                     $reservation_guests = '';
                                                 }
                                             }
-                                            $modify_date = date('m-d-Y H:i:s',strtotime($booking['modify_date']));
+                                            $modify_date = date('m-d-Y H:i:s A',strtotime($booking['modify_date']));
 
 
                                             //Convert time stamp to NY time zone
@@ -195,11 +195,11 @@
                                             $date = DateTime::createFromFormat('Y-m-d H:i:s', $booking['modify_date'], new DateTimeZone('UTC'));
 
                                             // Set the target time zone (New York)
-                                            $date->setTimezone(new DateTimeZone('America/New_York'));
+                                            // $date->setTimezone(new DateTimeZone('America/New_York'));
 
                                             // Format the date in the target time zone
                                             $new_york_time = $date->format('Y-m-d H:i:s');
-                                            $modify_date = date('m-d-Y h:i:s A',strtotime($new_york_time));
+                                            // $modify_date = date('m-d-Y h:i:s A',strtotime($new_york_time));
                                             //Convert time stamp to NY time zone END
 
                                             // Separate date and time

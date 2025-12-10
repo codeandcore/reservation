@@ -25,18 +25,18 @@
                             <tr>
                                 <td></td>
                                 <?php
-                                $modify_date = date('m-d-Y',strtotime($data['timestamp']));
+                                $modify_date = date('m-d-Y H:i:s A',strtotime($data['timestamp']));
 
                                 //Convert time stamp to NY time zone
                                 // Create a DateTime object from the timestamp string
-                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $data['timestamp'], new DateTimeZone('UTC'));
+                                // $date = DateTime::createFromFormat('Y-m-d H:i:s', $data['timestamp'], new DateTimeZone('UTC'));
 
                                 // Set the target time zone (New York)
-                                $date->setTimezone(new DateTimeZone('America/New_York'));
+                                // $date->setTimezone(new DateTimeZone('America/New_York'));
 
                                 // Format the date in the target time zone
-                                $new_york_time = $date->format('Y-m-d H:i:s');
-                                $modify_date = date('m-d-Y H:i:s',strtotime($new_york_time));
+                                // $new_york_time = $date->format('Y-m-d H:i:s');
+                                // $modify_date = date('m-d-Y H:i:s',strtotime($new_york_time));
                                 ?>
                                 <!-- <td><?php //echo date('m-d-Y h:i:s',strtotime($data['timestamp']));?></td> -->
                                 <td><?php echo $modify_date;?></td>

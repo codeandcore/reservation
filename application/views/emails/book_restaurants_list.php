@@ -231,7 +231,7 @@ if (!empty($date_list)):
                                                                 <?php
                                                                     if(round($hotel['deposite_amount']) > 0){
                                                                 ?>
-                                                                        <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0">A $<?php echo round($hotel['deposite_amount']); ?> cancellation fee may be incurred if reservations are not cancelled within two weeks of your selected reservation date. Any changes made within two weeks prior to the program start must be made when you arrive onsite.</p>
+                                                                        <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0">A $<?php echo round($hotel['deposite_amount']); ?> cancellation fee may be incurred if reservations are not cancelled prior to two weeks out from your selected reservation date. Any changes made within two weeks prior to the program start must be made when you arrive onsite.</p>
                                                                 <?php
                                                                     }else{
                                                                 ?>

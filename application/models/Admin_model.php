@@ -291,6 +291,16 @@ class Admin_model extends CI_Model {
         if(array_key_exists("keyword",$params)){
             $where .= " AND  (M.action LIKE '%".$params['keyword']."%' OR M.added_by LIKE '%".$params['keyword']."%' OR M.by_email LIKE '%".$params['keyword']."%' OR M.for_user LIKE '%".$params['keyword']."%' OR M.to_user LIKE '%".$params['keyword']."%' OR M.restaurant_name LIKE '%".$params['keyword']."%')";
         }
+
+         // Handle sort order parameter
+        if(array_key_exists("sort_order",$params)){
+            if($params['sort_order'] == 'oldest'){
+                $order = 'ASC';
+            } else {
+                $order = 'DESC'; // Most recent (newest)
+            }
+        }
+        
         if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
             $limit = ' LIMIT '.$params['limit'].','.$params['start']; 
         }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
@@ -301,10 +311,10 @@ class Admin_model extends CI_Model {
             $filedsToget = $params['selected_fields'];
             // $test = 'timestamp,booking_id';
             // exit($test);
-            $query = $this->db->query("SELECT M.$filedsToget From `ms-booking-logs` AS M $where ORDER BY M.timestamp DESC $limit");
+            $query = $this->db->query("SELECT M.$filedsToget From `ms-booking-logs` AS M $where ORDER BY M.timestamp $order $limit");
 
         }else{
-            $query = $this->db->query("SELECT M.* From `ms-booking-logs` AS M $where ORDER BY M.timestamp DESC $limit");
+            $query = $this->db->query("SELECT M.* From `ms-booking-logs` AS M $where ORDER BY M.timestamp $order $limit");
         }
         return $query->result_array();
     }
