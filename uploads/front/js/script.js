@@ -302,6 +302,30 @@ jQuery(document).ready(function(){
             }
         });
     });
+    $(document).on('click','a.confirmcancelinvite', function(e){
+        e.preventDefault();
+        var listid = $(this).attr('data-listid');
+        var userid = $(this).attr('data-userid');
+        var _btn = $(this);
+        $.ajax({
+            url: site_url+'confirm_cancel_invite',
+            type: 'post',
+            data: {
+                userid:userid,
+                listid:listid
+            },
+            dataType: 'json',
+            beforeSend: function(res) {
+                $(_btn).prop('disabled',true);
+                $(_btn).addClass('loading');
+            },
+            success: function(result) {
+                $(_btn).prop('disabled',false);
+                $(_btn).removeClass('loading');
+                window.location.reload();
+            }
+        });
+    });
     $(document).on('click','[data-target="NotConfirmRestaurant"]', function(e){
         e.preventDefault();
         var _date = $(this).attr('data-bookdate');
@@ -329,6 +353,22 @@ jQuery(document).ready(function(){
     });
 
     $(document).on('click','.remove_guest_btn', function(e){
+        var _listid = $(this).attr('data-listid');
+        var userid = $(this).attr('data-user_id');
+        var username = $(this).attr('data-username');
+        $('span#guestname_span').text(username);
+        $('a.confirmdeleteInvite').attr('data-listid',_listid);
+        $('a.confirmdeleteInvite').attr('data-userid',userid);
+    });
+    $(document).on('click','.invitation_decline_btn', function(e){
+        var _listid = $(this).attr('data-listid');
+        var userid = $(this).attr('data-user_id');
+        var username = $(this).attr('data-username');
+        $('span#guestname_span').text(username);
+        $('a.confirmcancelinvite').attr('data-listid',_listid);
+        $('a.confirmcancelinvite').attr('data-userid',userid);
+    });
+    $(document).on('click','.removePendingGuest', function(e){
         var _listid = $(this).attr('data-listid');
         var userid = $(this).attr('data-user_id');
         var username = $(this).attr('data-username');

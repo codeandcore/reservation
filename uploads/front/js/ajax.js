@@ -319,6 +319,69 @@ jQuery(document).ready(function(){
             }
         });
     });
+    $(document).on('submit', '#decline_reservation_form_byhost', function(e) {
+        e.preventDefault();
+        var form = $('#decline_reservation_form_byhost');
+        $.ajax({
+            url:  site_url+'invitation_modify_byhost',
+            type: 'post',
+            data: form.serialize(),
+            dataType: 'json',
+            beforeSend: function(res) {
+                $('#cancel_reservation_error').text('');
+                $('#share_invite_success').text('');
+                $('#decline_reservation_form [type="submit"]').prop('disabled',true);
+                $('#decline_reservation_form [type="submit"]').addClass('loading');
+            },
+            success: function(result) {
+                $('.innerLoader').hide();
+                $('#decline_reservation_form [type="submit"]').prop('disabled',false);
+                $('#decline_reservation_form [type="submit"]').removeClass('loading');
+                if(result.response == 'success'){
+                    $('#decline_reservation_success').text(result.message);
+                    window.location.href=site_url+'cancel_reservations/?invitecanelled=yes';
+                }
+                else{
+                    $('#decline_reservation_error').text(result.message);
+                }
+            }
+        });
+    });
+    $(document).on('click','.resendtheiviteemail',function(e){
+        e.preventDefault();
+        var email = $(this).attr('data-email');
+        var share_booking_listid = $(this).attr('data-share_booking_listid');
+        $.ajax({
+            url:  site_url+'resend_invitation_sendto_guest',
+            type: 'post',
+            data: {
+                email:email,
+                share_booking_listid:share_booking_listid
+            },
+            dataType: 'json',
+            beforeSend: function(res) {
+                $('#share_invite_error').text('');
+                $('#share_invite_error').html('');
+                $('#share_invite_success').text('');
+                $('#share_invite_form [type="submit"]').prop('disabled',true);
+                $('#share_invite_form [type="submit"]').addClass('loading');
+            },
+            success: function(result) {
+                $('.innerLoader').hide();
+                $('#share_invite_form [type="submit"]').prop('disabled',false);
+                $('#share_invite_form [type="submit"]').removeClass('loading');
+                if(result.response == 'success'){
+                    $('#share_invite_success').text(result.message);
+                    // $('#inviteModal').removeClass('modal-active');
+                    // location.reload();
+                }
+                else{
+                    $('#share_invite_error').html(result.message);
+                }
+            }
+        });
+    });
+
     $(document).on('submit', '#share_invite_form', function(e) {
         e.preventDefault();
         var form = $('#share_invite_form');
@@ -329,6 +392,7 @@ jQuery(document).ready(function(){
             dataType: 'json',
             beforeSend: function(res) {
                 $('#share_invite_error').text('');
+                $('#share_invite_error').html('');
                 $('#share_invite_success').text('');
                 $('#share_invite_form [type="submit"]').prop('disabled',true);
                 $('#share_invite_form [type="submit"]').addClass('loading');
@@ -340,9 +404,10 @@ jQuery(document).ready(function(){
                 if(result.response == 'success'){
                     $('#share_invite_success').text(result.message);
                     $('#inviteModal').removeClass('modal-active');
+                    location.reload();
                 }
                 else{
-                    $('#share_invite_error').text(result.message);
+                    $('#share_invite_error').html(result.message);
                 }
             }
         });

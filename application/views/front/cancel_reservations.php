@@ -4,7 +4,12 @@
         <div class="container">
             <div class="pageTitle">
                 <img src="<?php echo base_url(); ?>/uploads/front/images/cancel-title-icon.svg" alt="">
+                <?php $inviteCancelled = isset($_GET['invitecanelled']) ? $_GET['invitecanelled'] : null; ?>
+                <?php if( $inviteCancelled && $inviteCancelled == 'yes'):?>
+                    <h2>Invitation Cancelled</h2>
+                <?php else: ?>
                 <h2>Reservation Cancelled</h2>
+                <?php endif; ?>
             </div>
             <div class="reservationCancelled">
                 <?php if(!empty($cancel_list)):?>
