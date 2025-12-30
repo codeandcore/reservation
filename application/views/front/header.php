@@ -246,6 +246,28 @@
                           </div>
                           <div class="view-btn">
                             <a href="<?php echo site_url('reservation_confirmed/'); ?>" class="view">View</a>
+                            <?php 
+                            // echo('<pre>');
+                            // print_r($to_user_data);
+                            // echo('</pre>');
+                            if ($li['to_id'] != $user_id && $li['status'] == 'invite'){
+                              ?>
+<a href="javascript:void(0)" class="view modal-button invitation_decline_btn" data-username="<?php echo $to_user_data['full_name']; ?>"
+                                                                                            data-user_id="<?php echo($to_user_data['id']); ?>"
+                                                                                            data-listid="<?php echo $booking_list_id; ?>"
+                                                                                            data-target="cancleInvite"
+                                                                                            data-invite-id="<?php echo($li['id']); ?>">Cancel invitation</a>
+                              <?php
+                            }elseif ($li['to_id'] != $user_id && $li['status'] == 'accept'){
+                              ?>
+<a href="javascript:void(0)" class="view modal-button removeConfirmedGuest remove_guest_btn"
+data-username="<?php echo $to_user_data['full_name']; ?>"
+                                                                                            data-user_id="<?php echo($to_user_data['id']); ?>"
+                                                                                            data-listid="<?php echo $booking_list_id; ?>"
+                                                                                            data-target="deleteInvite">Remove guest</a>
+                                                                                            
+                              <?php
+                            } ?>
                           </div>
                         </div>
                       </li>

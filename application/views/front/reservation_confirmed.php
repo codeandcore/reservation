@@ -204,6 +204,12 @@
                                                                     }
                                                                 }
                                                                 if (!empty($guests)):
+                                                                    // echo($list['id'].'--'.$list['user_id']); 
+                                                                    // echo('<pre>');
+                                                                    // print_r($list);
+                                                                    // echo('</pre>');
+
+
                                                                     foreach ($guests as $key => $usr) {
                                                                         $usr_dtl = $this->user_model->get_user_detail_byuserid($usr);
                                                                 ?>
@@ -218,15 +224,15 @@
                                                                                             alt=""></span>
                                                                                 <?php } else { ?>
                                                                                     <?php if ($list['ref_id'] == '0') { ?>
-                                                                                        <span
+                                                                                        <!-- <span
                                                                                             class="starIcon cursor-pointer modal-button bg-danger remove_guest_btn tooltipBtn"
-                                                                                            data-username="<?php echo $usr_dtl['full_name']; ?>"
-                                                                                            data-user_id="<?php echo $usr; ?>"
-                                                                                            data-listid="<?php echo $list['id']; ?>"
+                                                                                            data-username="<?php //echo $usr_dtl['full_name']; ?>"
+                                                                                            data-user_id="<?php //echo $usr; ?>"
+                                                                                            data-listid="<?php //echo $list['id']; ?>"
                                                                                             data-target="deleteInvite"><img
-                                                                                                src="<?php echo base_url(); ?>/uploads/front/images/cross-white-icon.svg"
+                                                                                                src="<?php //echo base_url(); ?>/uploads/front/images/cross-white-icon.svg"
                                                                                                 alt=""> <span class="tooltipText">Remove Guest</span>
-                                                                                        </span>
+                                                                                        </span> -->
                                                                                     <?php } ?>
                                                                                 <?php } ?>
                                                                             </div>
@@ -237,9 +243,61 @@
                                                                                         } else {
                                                                                             echo 'Guest';
                                                                                         } ?></small>
+                                                                                        <?php if ($key != 0 && $user_id != $usr) { ?>
+                                                                                        <small class="text-danger cursor-pointer modal-button removeConfirmedGuest remove_guest_btn"
+                                                                                        data-username="<?php echo $usr_dtl['full_name']; ?>"
+                                                                                            data-user_id="<?php echo($usr); ?>"
+                                                                                            data-listid="<?php echo $list['id']; ?>"
+                                                                                            data-target="deleteInvite">Remove Guest</small>
+                                                                                    <?php } ?>
                                                                             </div>
                                                                         </li>
                                                                 <?php }
+
+                                                                    $pendingInvites = $this->user_model->get_pending_invites_by_booking_and_organiser_id($list['id'], $list['user_id']);
+                                                                    // echo('<pre>');
+                                                                    // print_r($pendingInvites);
+                                                                    // echo('</pre>');
+                                                                    /**Pending invites */
+                                                                    foreach ($pendingInvites as $usrs) {
+                                                                        $usr_dtl = $this->user_model->get_user_detail_byuserid($usrs['to_id']);
+                                                                ?>
+                                                                        <li>
+                                                                            <div class="personImg">
+                                                                                <?php echo strtoupper(mb_substr($usr_dtl['full_name'], 0, 1)); ?>
+                                                                              
+                                                                                        <!-- <span
+                                                                                            class="starIcon cursor-pointer modal-button bg-danger remove_guest_btn tooltipBtn"
+                                                                                            data-username="<?php //echo $usr_dtl['full_name']; ?>"
+                                                                                            data-user_id="<?php //echo($usrs['to_id']); ?>"
+                                                                                            data-listid="<?php //echo $list['id']; ?>"
+                                                                                            data-target="deleteInvite"><img
+                                                                                                src="<?php //echo base_url(); ?>/uploads/front/images/cross-white-icon.svg"
+                                                                                                alt=""> <span class="tooltipText">Remove Guest</span>
+                                                                                        </span> -->
+                                                                                
+                                                                            </div>
+                                                                            <div class="personName">
+                                                                                <span><?php echo $usr_dtl['full_name']; ?></span>
+                                                                                <small>Guest</small>
+                                                                                <small class="text-warning">(Not accepted yet)</small>
+                                                                                <!-- <small class="text-danger cursor-pointer modal-button invitation_decline_btn"
+                                                                                data-username="<?php //echo $usr_dtl['full_name']; ?>"
+                                                                                            data-user_id="<?php //echo($usrs['to_id']); ?>"
+                                                                                            data-listid="<?php //echo $list['id']; ?>"
+                                                                                            data-target="canclePendingInvite"
+                                                                                            data-invite-id="<?php //echo($usrs['id']); ?>">Cancel invitation</small> -->
+                                                                                <small class="text-danger cursor-pointer modal-button invitation_decline_btn"
+                                                                                data-username="<?php echo $usr_dtl['full_name']; ?>"
+                                                                                            data-user_id="<?php echo($usrs['to_id']); ?>"
+                                                                                            data-listid="<?php echo $list['id']; ?>"
+                                                                                            data-target="cancleInvite"
+                                                                                            data-invite-id="<?php echo($usrs['id']); ?>">Cancel invitation</small>
+                                                                            </div>
+                                                                        </li>
+                                                                <?php }
+
+
                                                                 endif;
                                                                 ?>
                                                                 <?php if (count($guests) < 4 && $list['ref_id'] == '0') { ?>

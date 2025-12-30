@@ -86,6 +86,7 @@
             <form action="#" class="form-inline" id="share_invite_form">
                 <input type="email" class="form-control" name="email" placeholder="Enter e-mail" required>
                 <input type="hidden" name="share_booking_listid" id="share_booking_listid">                
+                <input type="hidden" value="no" name="resendemailnotification" id="resendemailnotification">                
                 <button type="submit" class="btn">Send</button>
             </form>
             <p class="error error-text" id="share_invite_error"></p>
@@ -194,6 +195,65 @@
                 <a href="javascript:void(0);" class="btn btn-black" data-target="modalClose">Cancel</a>
                 <a href="javascript:void(0);" class="btn confirmdeleteInvite" data-target="confirmdeleteInvite">Confirm</a>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="cancleInvite">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper modal-transition">
+        <button class="modal-close" data-target="modalClose">
+            <img src="<?php echo base_url(); ?>uploads/front/images/cross-icon.svg" alt="Close Icon">
+        </button>
+        <div class="modal-body cmn-scroll text-center">
+            <div class="popupIcon">
+                <img src="<?php echo base_url(); ?>uploads/front/images/delete-user.svg" alt="">
+            </div>
+            <h4>Are you sure you want to cancel the invite for <span id="guestname_span"></span> from your guest list?</h4>
+            
+            <div class="modalButtonRow">
+                <a href="javascript:void(0);" class="btn btn-black" data-target="modalClose">Cancel</a>
+                <a href="javascript:void(0);" class="btn confirmcancelinvite" data-target="confirmcancelinvite">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal" id="canclePendingInvite">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper modal-transition">
+        <button class="modal-close" data-target="modalClose">
+            <img src="<?php //echo base_url(); ?>uploads/front/images/cross-icon.svg" alt="Close Icon">
+        </button>
+        <div class="modal-body cmn-scroll text-center">
+            <div class="popupIcon">
+                <img src="<?php //echo base_url(); ?>uploads/front/images/delete-user.svg" alt="">
+            </div>
+            <h4>Are you sure you want to cancel the invite for <span id="guestname_span"></span> from your guest list?</h4>
+            
+            <div class="modalButtonRow">
+                <a href="javascript:void(0);" class="btn btn-black" data-target="modalClose">Back</a>
+                <a href="javascript:void(0);" class="btn confirmdeleteInvite" data-target="confirmdeleteInvite">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal" id="canclePendingInvite">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper modal-transition">
+        <button class="modal-close" data-target="modalClose">
+            <img src="<?php echo base_url(); ?>uploads/front/images/cross-icon.svg" alt="Close Icon">
+        </button>
+        <div class="modal-body cmn-scroll">
+            <h4>Are you sure you want to cancel this reservation invite!</h4>
+            <form action="#" class="form-inline" id="decline_reservation_form_byhost">
+                <textarea class="form-control" name="decline_reason_host" placeholder="Add reason for decline" required></textarea>
+                <input type="hidden" name="invite_id" id="decline_invite_id">
+                <input type="hidden" name="status" value="decline">
+                <button type="submit" class="btn">Send</button>
+            </form>
+            <p class="error error-text" id="decline_reservation_error"></p>
+            <p class="success-text" id="decline_reservation_success"></p>
         </div>
     </div>
 </div>

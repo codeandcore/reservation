@@ -635,12 +635,73 @@ class User_model extends CI_Model {
             $this->db->update('ms-booking', $datain);
             return $data;
             }
-        }
-        else{
+        } else {
             return 1;
         }
     }
-    function check_timeslot_already_booked($booking_date,$booking_time,$booking_pax,$booking_restid){
+    function confirm_cancel_invite($from_id, $to_id, $listid)
+    {
+        $this->db->where('user_id', $from_id);
+        $this->db->where('id', $listid);
+        $query = $this->db->get('ms-booking-list');
+        if ($query->num_rows() > 0) {
+            $row = (array)$query->row();
+            $guests = $row['guests'];
+            $exp = explode(',', $guests);
+                
+            if (!empty($exp)) {
+                // exit('dfdffff');
+                $gst = [];
+                foreach ($exp as $usr) {
+                    if ($usr != $to_id) {
+                        array_push($gst, $usr);
+                    }
+                }
+                if (!empty($gst)) {
+                    $guests = implode(',', $gst);
+                } else {
+                    $guests = '';
+                }
+                $data = array('guests' => $guests);
+
+                $this->db->where('user_id', $from_id);
+                $this->db->where('id', $listid);
+                $this->db->update('ms-booking-list', $data);
+
+                $this->db->where('from_id', $from_id);
+                $this->db->where('to_id', $to_id);
+                $this->db->where('booking_list_id', $listid);
+                $this->db->delete('ms-guest-invite');
+
+                $data = array(
+                    'booking_status' => 'cancel',
+                    'booking_reason' => 'Primary cancelled invite.',
+                    'ref_id' => '0'
+                );
+                $this->db->where('user_id', $to_id);
+                $this->db->where('ref_id', $listid);
+                $this->db->update('ms-booking-list', $data);
+
+                $bookdata = $this->get_booking_date_detail($listid);
+                $der = array(
+                    'modify_date' => date('Y-m-d H:i:s'),
+                );
+                $this->db->where('id', $bookdata['booking_id']);
+                $this->db->update('ms-booking', $der);
+                $book_status = $this->check_booking_status($bookdata['booking_id']);
+                $datain = array(
+                    'booking_status' => $book_status
+                );
+                $this->db->where('id', $bookdata['booking_id']);
+                $this->db->update('ms-booking', $datain);
+                return $data;
+            }
+        } else {
+            return 1;
+        }
+    }
+    function check_timeslot_already_booked($booking_date, $booking_time, $booking_pax, $booking_restid)
+    {
         $return = 1;
         $this->db->where('restaurant_id',$booking_restid);
         $this->db->where('time',$booking_time);
@@ -755,7 +816,25 @@ class User_model extends CI_Model {
         $query = $this->db->get('ms-guest-invite');
         return (array)$query->row();
     }
-    function check_user_already_notify($list_id,$from_id,$to_id){
+    function get_pending_invites_by_booking_and_organiser_id($booking_id, $organiser_id)
+    {
+        $where = "(booking_list_id = '$booking_id' AND from_id = '$organiser_id' AND status = 'invite')";
+        $this->db->where($where);
+        $query = $this->db->get('ms-guest-invite');
+        return $query->result_array();
+    }
+
+    /**Get invite  by booking and from_ID */
+    function get_invite_by_invite_id($invite_id)
+    {
+        $where = "(id = '$invite_id')";
+        $this->db->where($where);
+        $query = $this->db->get('ms-guest-invite');
+        return $query->result_array();
+    }
+
+    function check_user_already_notify($list_id, $from_id, $to_id)
+    {
         $where = "(booking_list_id = '$list_id' AND from_id = '$from_id' AND to_id = '$to_id' AND status != 'decline')";
         $this->db->where($where);
         $query = $this->db->get('ms-guest-invite');
@@ -788,21 +867,29 @@ class User_model extends CI_Model {
         $query = $this->db->get('ms-guest-invite');
         return (array)$query->row();
     }
-    function set_notification_guest($list_id,$from_id,$to_id){
-        $this->db->where('booking_list_id',$list_id);
-        $this->db->where('from_id',$from_id);
-        $this->db->where('to_id',$to_id);
+    function get_guest_invite_detail_byid_hostid($id, $user_id)
+    {
+        $this->db->where('id', $id);
+        $this->db->where('from_id', $user_id);
+        $query = $this->db->get('ms-guest-invite');
+        return (array)$query->row();
+    }
+    function set_notification_guest($list_id, $from_id, $to_id)
+    {
+        $this->db->where('booking_list_id', $list_id);
+        $this->db->where('from_id', $from_id);
+        $this->db->where('to_id', $to_id);
         $query = $this->db->get('ms-guest-invite');
         if($query->num_rows() > 0){
             $data = array(
                 'status'=>'invite'
             );
-            $this->db->where('booking_list_id',$list_id);
-            $this->db->where('from_id',$from_id);
-            $this->db->where('to_id',$to_id);
-            $this->db->update('ms-guest-invite',$data);
-        }
-        else{
+            $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+            $this->db->where('booking_list_id', $list_id);
+            $this->db->where('from_id', $from_id);
+            $this->db->where('to_id', $to_id);
+            $this->db->update('ms-guest-invite', $data);
+        } else {
             $data = array(
                 'booking_list_id'=>$list_id,
                 'from_id'=>$from_id,
@@ -821,6 +908,7 @@ class User_model extends CI_Model {
         $this->db->where('from_id',$user_id);
         $this->db->or_where('to_id',$user_id);
         // $this->db->where('status','invite');
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('ms-guest-invite');
         return $query->result_array();
     }
@@ -974,8 +1062,136 @@ class User_model extends CI_Model {
                 $data['booking_id'] = $booking_id;
                 return $data;
             }
+        } else {
+            return 1;
         }
-        else{
+    }
+    function invitation_modify_byhost($invite_id, $status)
+    {
+        $user_id = $this->session->userdata('mes_user_id');
+        $invite_detail = $this->get_guest_invite_detail_byid_hostid($invite_id, $user_id);
+        $booking_list = $this->get_booking_date_detail($invite_detail['booking_list_id']);
+        $booking_id = $booking_list['booking_id'];
+        if ($invite_detail['status'] == 'invite') {
+            if ($status == 'accept') {
+                $this->db->where('user_id', $user_id);
+                $query = $this->db->get('ms-booking');
+
+                $book_date = $booking_list['booking_date'];
+                $guests = $booking_list['guests'];
+                if ($query->num_rows() > 0) {
+                    $booking_id = $query->row()->id;
+                    $this->db->where('booking_date', $book_date);
+                    $this->db->where('booking_id', $booking_id);
+                    $this->db->delete('ms-booking-list');
+                } else {
+                    $dt = array(
+                        'user_id' => $user_id,
+                        'booking_time' => date('Y-m-d h:i:s'),
+                        'modify_date' => date('Y-m-d h:i:s'),
+                    );
+                    $this->db->insert('ms-booking', $dt);
+                    $booking_id = $this->db->insert_id();
+                }
+                if ($guests != '') {
+                    $exp = explode(',', $guests);
+                    array_push($exp, $user_id);
+                    $guests = implode(',', $exp);
+                } else {
+                    $guests = $user_id;
+                }
+                $count = $this->get_user_already_book_date($user_id, $book_date);
+                if ($count > 0) {
+                    return 1;
+                } else {
+                    $this->db->select('id');
+                    $this->db->where('user_id', $user_id);
+                    $this->db->where('booking_date', $book_date);
+                    $query = $this->db->get('ms-booking-list');
+                    $cnt = $query->num_rows();
+                    $ret = array(
+                        'booking_id' => $booking_id,
+                        'user_id' => $user_id,
+                        'booking_date' => $booking_list['booking_date'],
+                        'booking_time' => $booking_list['booking_time'],
+                        'booking_pax' => $booking_list['booking_pax'],
+                        'booking_restid' => $booking_list['booking_restid'],
+                        'booking_status' => 'booked',
+                        'booking_deposite' => $booking_list['booking_deposite'],
+                        'ref_id' => $booking_list['id'],
+                        'guests' => '',
+                        'modify_date' => date('Y-m-d h:i:s'),
+                        'created_date' => date('Y-m-d H:i:s'),
+                    );
+                    if ($cnt > 0) {
+                        $this->db->update('ms-booking-list', $ret);
+                    } else {
+                        $this->db->insert('ms-booking-list', $ret);
+                    }
+                    //inserted log in create booking
+                    $book_status = 'Invitation Accepted';
+                    $fromuserdata = $this->get_user_detail_byuserid($invite_detail['from_id']);
+                    $touserdata = $this->get_user_detail_byuserid($user_id);
+                    $hoteldata = $this->get_restaurant_detail($booking_list['booking_restid']);
+                    $data = array(
+                        'timestamp' => date('Y-m-d h:i:s'),
+                        'booking_id' => $booking_id,
+                        'action' => $book_status,
+                        'added_by' => 'User',
+                        'by_email' => $fromuserdata['email'],
+                        'for_user' => $fromuserdata['email'],
+                        'to_user' => $touserdata['email'],
+                        'restaurant_name' => $hoteldata['restaurant_name'],
+                        'restaurant_date' => date('Y-m-d', strtotime($booking_list['booking_date'])),
+                        'restaurant_time' => $booking_list['booking_time'],
+                        'no_of_people' => $booking_list['booking_pax'],
+                        'reason' => '',
+                        'admin_note	' => '',
+                    );
+                    $this->db->insert('ms-booking-logs', $data);
+                    $decline_reason = $this->input->post('decline_reason');
+                    $data = array(
+                        'status' => $status,
+                        'decline_reason' => $decline_reason,
+                    );
+                    $this->db->where('id', $invite_id);
+                    $this->db->update('ms-guest-invite', $data);
+                    $der = array(
+                        'modify_date' => date('Y-m-d H:i:s'),
+                    );
+                    $this->db->where('id', $booking_id);
+                    $this->db->update('ms-booking', $der);
+                    $wer = array(
+                        'guests' => $guests,
+                        'modify_date' => date('Y-m-d h:i:s'),
+                    );
+                    $this->db->where('id', $invite_detail['booking_list_id']);
+                    $this->db->update('ms-booking-list', $wer);
+                    $data['booking_id'] = $booking_id;
+                    $data['from_id'] = $invite_detail['from_id'];
+                    $data['list_id'] = $invite_detail['booking_list_id'];
+                    $book_status = $this->check_booking_status($booking_id);
+                    $datain = array(
+                        'booking_status' => $book_status
+                    );
+                    $this->db->where('id', $booking_id);
+                    $this->db->update('ms-booking', $datain);
+                    return $data;
+                }
+            } else {
+                $decline_reason = $this->input->post('decline_reason_host');
+                $data = array(
+                    'status' => $status,
+                    'decline_reason' => $decline_reason
+                );
+                $this->db->where('id', $invite_id);
+                $this->db->update('ms-guest-invite', $data);
+                $data['from_id'] = $invite_detail['from_id'];
+                $data['list_id'] = $invite_detail['booking_list_id'];
+                $data['booking_id'] = $booking_id;
+                return $data;
+            }
+        } else {
             return 1;
         }
     }

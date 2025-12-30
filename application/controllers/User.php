@@ -811,7 +811,94 @@ class User extends CI_Controller {
 		echo json_encode($data);
 		exit;
 	}
-	public function invitation_sendto_guest(){
+	public function resend_invitation_sendto_guest(){
+		if ($this->session->userdata('mes_user_id') != '') {
+			$email = $this->input->post('email');
+			$user_id = $this->session->userdata('mes_user_id');
+			$list_id = $this->input->post('share_booking_listid');
+			$count = $this->user_model->get_email_exist_not_user($email);
+			if ($count > 0) {
+				$to_user = $this->user_model->get_user_detail_byemail($email);
+				$from_user = $this->user_model->get_user_detail_byuserid($user_id);
+				$user_data = $this->user_model->get_user_detail_byuserid($user_id);
+				if ($email == $user_data['email'] || $email == $user_data['alternate_email']) {
+					$data = array(
+						'response' => 'failure',
+						'message' => 'Please enter a different email from the one used to make the reservation.'
+					);
+					echo json_encode($data);
+					exit;
+				}
+				$check_already = $this->user_model->check_user_already_notify($list_id, $user_id, $to_user['id']);
+					$booking = $this->user_model->get_booking_date_detail($list_id);
+					$hoteldata = $this->user_model->get_restaurant_detail($booking['booking_restid']);
+					$data = array(
+						'timestamp' => date('Y-m-d h:i:s'),
+						'booking_id' => $booking['booking_id'],
+						'action' => 'Send Invitation',
+						'added_by' => 'User',
+						'by_email' => $from_user['email'],
+						'for_user' => $from_user['email'],
+						'to_user' => $to_user['email'],
+						'restaurant_name' => $hoteldata['restaurant_name'],
+						'restaurant_date' => $booking['booking_date'],
+						'restaurant_time' => $booking['booking_time'],
+						'no_of_people' => $booking['booking_pax'],
+						'reason' => '',
+						'admin_note	' => '',
+					);
+					// $this->db->insert('ms-booking-logs', $data);
+					$rest_id = $booking['booking_restid'];
+					$array['booking'] = $booking;
+					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
+					$array['user'] = $to_user;
+					$array['color1'] = $this->settings['color1'];
+					$array['color2'] = $this->settings['color2'];
+					$array['color3'] = $this->settings['color3'];
+					$notify = $this->user_model->set_notification_guest($list_id, $user_id, $to_user['id']);
+					$email_template = $this->admin_model->get_email_template('user_invitation_received');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{to_name}}', $to_user['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{from_name}}', $from_user['full_name'], $email_template);
+					$list = '';
+					$list .= $this->load->view('emails/invitation_email', $array, TRUE);
+					$email_template = str_replace('{{book_restaurants_list}}', $list, $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{trip_title}}', $this->settings['trip_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{notify_id}}', $notify['id'], $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					$this->email->to($email); // change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					$this->email->message($email_template);
+					$this->email->send();
+					$data = array(
+						'response' => 'success',
+						'message' => 'Invitation resent successfully.'
+					);
+			} else {
+				$data = array(
+					'response' => 'failure',
+					'message' => 'That email is unavailable.'
+				);
+			}
+			echo json_encode($data);
+			exit;
+		} else {
+			redirect('index');
+		}
+	}
+
+	public function invitation_sendto_guest()
+	{
 		$today = date('Y-m-d h:m:s');
 		$modify_date = $this->settings['modify_end_date'];
 		$modify_time = $this->settings['modify_end_time'];
@@ -839,8 +926,9 @@ class User extends CI_Controller {
 				$check_already = $this->user_model->check_user_already_notify($list_id,$user_id,$to_user['id']);
 				if($check_already > 0){
 					$data = array(
-						'response'=>'failure',
-						'message'=>'You already send invitation to this email for this date.'
+						'response' => 'failure',
+						'message' => '<small class="invitealreadysent">You already sent invitation to this email for this date.</small><br>
+						<small class="resendtheinvitetoguest">Would you like to resend the invitation? <a class="resendtheiviteemail" href="javascript:void(0);" data-email="'.$email.'" data-share_booking_listid="'.$list_id.'">Click here to resend</a></small>'
 					);
 				}
 				else{
@@ -1126,7 +1214,217 @@ class User extends CI_Controller {
 		echo json_encode($data);
 		exit;
 	}
-	public function confirm_delete_invite(){
+	public function invitation_modify_byhost()
+	{
+		$today = date('Y-m-d h:m:s');
+		$modify_date = $this->settings['modify_end_date'];
+		$modify_time = $this->settings['modify_end_time'];
+		$booking_end = date('Y-m-d H:i:s', strtotime($modify_date . ' ' . $modify_time));
+		if ($today >= $booking_end) {
+			redirect('home');
+		}
+		if ($this->session->userdata('mes_user_id') != '') {
+			$invite_id = $this->input->post('invite_id');
+			$status = $this->input->post('status');
+			$decline_reason = $this->input->post('decline_reason_host');
+			$invite_detail = $this->user_model->invitation_modify_byhost($invite_id, $status);
+			// echo('<pre>');
+			// print_r($invite_detail);
+			// echo('</pre>');
+			if (is_array($invite_detail)) {
+				if ($status == 'accept') {
+					$email_template = $this->admin_model->get_email_template('admin_invitation_accepted');
+					$admins = $this->user_model->get_admin_list_sendemail('admin_invitation_accepted');
+					$subject = $email_template['email_subject'];
+					$user_id = $this->session->userdata('mes_user_id');
+					$to_user_data = $this->user_model->get_user_detail_byuserid($user_id);
+					$from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template);
+					$email_template = str_replace('{{from_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{admin_url}}', site_url('admin'), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+
+					$list_id = $invite_detail['list_id'];
+					$booking = $this->user_model->get_booking_date_detail($list_id);
+					$rest_id = $booking['booking_restid'];
+					$array['booking'] = $booking;
+					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
+					$array['color1'] = $this->settings['color1'];
+					$array['color2'] = $this->settings['color2'];
+					$array['color3'] = $this->settings['color3'];
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}', $list, $email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					$this->email->to($this->settings['admin_email']); // change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					if (!empty($admins)) {
+						$this->email->cc($admins);
+					}
+					$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					$this->email->message($email_template);
+					$this->email->send();
+
+					//customer email send
+					$email_template = $this->admin_model->get_email_template('user_invitation_accepted');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template);
+					$email_template = str_replace('{{from_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}', $list, $email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					$this->email->to($from_user_data['email']); // change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					$this->email->message($email_template);
+					$this->email->send();
+				} else {
+					$inviteRecord = $this->user_model->get_invite_by_invite_id($invite_id);
+
+					// $email_template = $this->admin_model->get_email_template('admin_invitation_decline');
+					// $admins = $this->user_model->get_admin_list_sendemail('admin_invitation_decline');
+					// $subject = $email_template['email_subject'];
+					// $user_id = $this->session->userdata('mes_user_id');
+					// $to_user_data = $this->user_model->get_user_detail_byuserid($user_id);
+					// $email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					// $email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					// $email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					// $email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					// $email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					// $email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					// $email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					// $email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					// $email_template = str_replace('{{decline_reason}}', $decline_reason, $email_template);
+					// $email_template = str_replace('{{admin_url}}', site_url('admin'), $email_template);
+					// $email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					// $email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					// $list_id = $invite_detail['list_id'];
+					// $booking = $this->user_model->get_booking_date_detail($list_id);
+					// $rest_id = $booking['booking_restid'];
+					// $array['booking'] = $booking;
+					// $array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
+					// $array['color1'] = $this->settings['color1'];
+					// $array['color2'] = $this->settings['color2'];
+					// $array['color3'] = $this->settings['color3'];
+					// $list = '';
+					// $list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					// $email_template = str_replace('{{accepted_restaurant_list}}', $list, $email_template);
+					// $this->email->set_newline("\r\n");
+					// $this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					// $this->email->to($this->settings['admin_email']); // change it to yours
+					// $this->email->reply_to($this->settings['smtp_to_email']);
+					// if (!empty($admins)) {
+					// 	$this->email->cc($admins);
+					// }
+					// $this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					// $this->email->message($email_template);
+					// $this->email->send();
+
+					//customer email send
+					// echo('Invide data');
+					// echo('<pre>');
+					// print_r($inviteRecord);
+					// echo('</pre>');
+
+
+					$from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					// echo('from data');
+					// echo('<pre>');
+					// print_r($from_user_data);
+					// echo('</pre>');
+
+					$to_user_data = $this->user_model->get_user_detail_byuserid($inviteRecord[0]['to_id']);
+					// echo('Toooo data');
+					// echo('<pre>');
+					// print_r($to_user_data);
+					// echo('</pre>');
+
+					$email_template = $this->admin_model->get_email_template('host_cancelled_pending_invitation');
+
+					$from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					// $email_template = $this->admin_model->get_email_template('user_invitation_decline');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template['email_body']);
+					$email_template = str_replace('{{from_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+										$list_id = $invite_detail['list_id'];
+					$booking = $this->user_model->get_booking_date_detail($list_id);
+					$rest_id = $booking['booking_restid'];
+					$array['booking'] = $booking;
+					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{decline_reason}}', $decline_reason, $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}', $list, $email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					$this->email->to($to_user_data['email']); // change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					$this->email->message($email_template);
+					// echo($email_template);
+					$this->email->send();
+				}
+				$data = array(
+					'response' => 'success',
+					'message' => 'successfuly invitaion modified.'
+				);
+			} else {
+				$data = array(
+					'response' => 'failure',
+					'message' => 'You already have booking on this date please cancel current booking to accept the invitation.'
+				);
+			}
+		} else {
+			$data = array(
+				'response' => 'failure',
+				'message' => 'something went wrong, please try again later.'
+			);
+		}
+		echo json_encode($data);
+		exit;
+	}
+	public function confirm_delete_invite()
+	{
 		$today = date('Y-m-d h:m:s');
 		$modify_date = $this->settings['modify_end_date'];
 		$modify_time = $this->settings['modify_end_time'];
@@ -1142,41 +1440,66 @@ class User extends CI_Controller {
 			if(is_array($result)){
 				$book_data = $this->user_model->get_booking_date_detail($listid);
 				$rest_data = $this->user_model->get_restaurant_detail($book_data['booking_restid']);
-					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
-					$to_user_data = $this->user_model->get_user_detail_byuserid($to_id);
-					$email_template = $this->admin_model->get_email_template('host_removed_guest');
-					$subject = $email_template['email_subject'];
-					$email_template = str_replace('{{host_name}}',$from_user_data['full_name'],$email_template['email_body']);
-					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
-					$email_template = str_replace('{{booking_date}}',date('m-d-Y',strtotime($book_data['booking_date'])),$email_template);
-					$email_template = str_replace('{{restaurant_name}}',$rest_data['restaurant_name'],$email_template);
-					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
-					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
-					$this->email->set_newline("\r\n");
-					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
-					$this->email->to($from_user_data['email']);// change it to yours
-					$this->email->reply_to($this->settings['smtp_to_email']);
-					$this->email->subject($this->settings['site_title'].' - '.$subject);
-					$this->email->message($email_template);
-					$this->email->send();
+				// $from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+				// $to_user_data = $this->user_model->get_user_detail_byuserid($to_id);
+				// $email_template = $this->admin_model->get_email_template('host_removed_guest');
+				// $subject = $email_template['email_subject'];
+				// $email_template = str_replace('{{host_name}}',$from_user_data['full_name'],$email_template['email_body']);
+				// $email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
+				// $email_template = str_replace('{{booking_date}}',date('m-d-Y',strtotime($book_data['booking_date'])),$email_template);
+				// $email_template = str_replace('{{restaurant_name}}',$rest_data['restaurant_name'],$email_template);
+				// $email_template = str_replace('{{site_url}}',site_url(),$email_template);
+				// $email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
+				// $email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
+				// $email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
+				// $email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
+				// $this->email->set_newline("\r\n");
+				// $this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
+				// $this->email->to($from_user_data['email']);// change it to yours
+				// $this->email->reply_to($this->settings['smtp_to_email']);
+				// $this->email->subject($this->settings['site_title'].' - '.$subject);
+				// $this->email->message($email_template);
+				// $this->email->send();
 
-					$this->email->set_newline("\r\n");
-					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
-					$this->email->to($to_user_data['email']);// change it to yours
-					$this->email->reply_to($this->settings['smtp_to_email']);
-					$this->email->subject($this->settings['site_title'].' - '.$subject);
-					$this->email->message($email_template);
-					$this->email->send();
+				// $this->email->set_newline("\r\n");
+				// $this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
+				// $this->email->to($to_user_data['email']);// change it to yours
+				// $this->email->reply_to($this->settings['smtp_to_email']);
+				// $this->email->subject($this->settings['site_title'].' - '.$subject);
+				// $this->email->message($email_template);
+				// $this->email->send();
+
+				$from_data = $this->user_model->get_user_detail_byuserid($from_id);
+				$to_data = $this->user_model->get_user_detail_byuserid($to_id);
+				$from_name = $from_data['full_name'];
+				$to_name = $to_data['full_name'];
+				$to_email = $to_data['email'];
+				$email_template = $this->admin_model->get_email_template('host_removed_guest');
+				$subject = $email_template['email_subject'];
+				$email_template = str_replace('{{from_name}}', $from_name, $email_template['email_body']);
+				$email_template = str_replace('{{to_name}}', $to_name, $email_template);
+				$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+				$email_template = str_replace('{{admin_url}}', site_url('admin'), $email_template);
+				$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+				$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+								$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
+				$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
+				$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
+
+				$this->email->set_newline("\r\n");
+				$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+				$this->email->to($to_email); // change it to yours
+				$this->email->reply_to($this->settings['smtp_to_email']);
+				$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+				$this->email->message($email_template);
+				// echo $email_template;
+				$this->email->send();
 			}
 			$data = array(
-				'response'=>'success',
-				'message'=>'successfuly invitaion modified.'
+				'response' => 'success',
+				'message' => 'successfuly invitaion modified.'
 			);
-		}
-		else{
+		} else {
 			$data = array(
 				'response'=>'failure',
 				'message'=>'something went wrong, please try again later.'
@@ -1185,7 +1508,100 @@ class User extends CI_Controller {
 		echo json_encode($data);
 		exit;
 	}
-	public function cancel_reservations(){
+	public function confirm_cancel_invite()
+	{
+		$today = date('Y-m-d h:m:s');
+		$modify_date = $this->settings['modify_end_date'];
+		$modify_time = $this->settings['modify_end_time'];
+		$booking_end = date('Y-m-d H:i:s', strtotime($modify_date . ' ' . $modify_time));
+		if ($today >= $booking_end) {
+			redirect('home');
+		}
+		if ($this->session->userdata('mes_user_id') != '') {
+			$from_id = $this->session->userdata('mes_user_id');
+			$to_id = $this->input->post('userid');
+			$listid = $this->input->post('listid');
+			$result = $this->user_model->confirm_cancel_invite($from_id, $to_id, $listid);
+			if (is_array($result)) {
+					// $inviteRecord = $this->user_model->get_invite_by_invite_id($to_id);
+
+					//customer email send
+					// echo('Invide data');
+					// echo('<pre>');
+					// print_r($inviteRecord);
+					// echo('</pre>');
+
+
+					// $from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					// echo('from data');
+					// echo('<pre>');
+					// print_r($from_user_data);
+					// echo('</pre>');
+
+					$to_user_data = $this->user_model->get_user_detail_byuserid($to_id);
+					// echo('Toooo data');
+					// echo('<pre>');
+					// print_r($to_user_data);
+					// echo('</pre>');
+
+					$email_template = $this->admin_model->get_email_template('host_cancelled_pending_invitation');
+
+					// $from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					// $email_template = $this->admin_model->get_email_template('user_invitation_decline');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{order_id}}', $listid, $email_template['email_body']);
+					$email_template = str_replace('{{from_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+										// $list_id = $invite_detail['list_id'];
+					$booking = $this->user_model->get_booking_date_detail($listid);
+					// echo($list_id);
+					// echo('<pre>');
+					// print_r($booking);
+					// echo('</pre>');
+					// exit('fffffffff');
+					$rest_id = $booking['booking_restid'];
+					$array['booking'] = $booking;
+					$array['hotel'] = $this->user_model->get_restaurant_detail($rest_id);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $from_user_data['mobile_number'], $email_template);
+					// $email_template = str_replace('{{decline_reason}}', $decline_reason, $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}', $list, $email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'], $this->settings['site_title']); // change it to yours
+					$this->email->to($to_user_data['email']); // change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'] . ' - ' . $subject);
+					$this->email->message($email_template);
+					// echo($email_template);
+					$this->email->send();
+			}
+			$data = array(
+				'response' => 'success',
+				'message' => 'successfuly invitaion modified.'
+			);
+		} else {
+			$data = array(
+				'response' => 'failure',
+				'message' => 'something went wrong, please try again later.'
+			);
+		}
+		echo json_encode($data);
+		exit;
+	}
+	public function cancel_reservations()
+	{
 		$today = date('Y-m-d h:m:s');
 		$modify_date = $this->settings['modify_end_date'];
 		$modify_time = $this->settings['modify_end_time'];
