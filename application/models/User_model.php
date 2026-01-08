@@ -202,7 +202,7 @@ class User_model extends CI_Model {
         // 5. Difference in seconds
         $diffSeconds = max(0, $now->getTimestamp() - $dbTime->getTimestamp());
 
-        if ($diffSeconds < 5) {
+        if ($diffSeconds < 1) {
             return 'just now';
         }
 
@@ -210,7 +210,7 @@ class User_model extends CI_Model {
         $hours   = floor($diffSeconds / 3600);
         $days    = floor($diffSeconds / 86400);
 
-        if ($minutes < 5) {
+        if ($minutes < 1) {
             return 'just now';
         }
 

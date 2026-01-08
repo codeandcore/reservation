@@ -11,7 +11,16 @@
                             Download Report</button>
                     </div>
                     <div id="top_filter">
-                       
+                       <!-- New Sort Dropdown -->
+                        <div class="dataTables_sort dataTables_length " id="date_sort">
+                            <label>Sort By:
+                                <select name="sort_order" id="sort_order" style="width:150px;">
+                                    <option value="" selected>Select</option>
+                                    <option value="newest">Most Recent</option>
+                                    <option value="oldest">Oldest</option>
+                                </select>
+                            </label>
+                        </div>
                         <div class="dataTables_length" id="page_length">
                             <label>Show Entries:
                                 <select name="length" aria-controls="page_length" id="page_length" >

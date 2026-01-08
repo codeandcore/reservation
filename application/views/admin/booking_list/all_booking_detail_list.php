@@ -51,6 +51,16 @@ else{
                         </div>
                     </div>
                     <div id="top_filter">
+                        <!-- New Sort Dropdown -->
+                        <div class="dataTables_sort dataTables_length " id="date_sort">
+                            <label>Sort By:
+                                <select name="sort_order" id="sort_order" style="width:150px;">
+                                    <option value="" selected>Select</option>
+                                    <option value="newest">Most Recent</option>
+                                    <option value="oldest">Oldest</option>
+                                </select>
+                            </label>
+                        </div>
                         <div class="dataTables_length" id="book_status">
                             <label>Status:
                                 <select name="book_status" aria-controls="book_status" id="book_status"
