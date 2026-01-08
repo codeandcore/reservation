@@ -1317,7 +1317,7 @@ body .swal2-icon.swal2-info{border-color:var(--green);color:var(--green);}
   .btn_wrapper .btn_add{margin-right:10px;}
 
   .wrap_table .dataTables_filter label input{width: 250px !important;margin-top: 5px;}
-  .wrap_table .dataTables_length label select{width: 120px !important;}
+  .wrap_table .dataTables_length label select{width: 150px !important;}
   
   .wrap_table .table_class thead th .custom-checkbox .checkboxLabel:before{
     border-color: var(--white);

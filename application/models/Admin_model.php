@@ -271,12 +271,23 @@ class Admin_model extends CI_Model {
             $indate .= ' INNER JOIN `ms-admin` AS U ON U.id = M.user_id ';
             $where .= " AND  (U.full_name LIKE '%".$params['keyword']."%' OR U.email LIKE '%".$params['keyword']."%' OR U.alternate_email LIKE '%".$params['keyword']."%')";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit'].','.$params['start']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.* From `ms-booking` AS M $indate $where GROUP BY M.id ORDER BY M.modify_date DESC $limit");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'] . ',' . $params['start'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic for dropdown selection
+        $order_by = 'ORDER BY M.modify_date DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = 'ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = 'ORDER BY M.id DESC';
+            }
+        }
+
+        $sql = "SELECT M.* From `ms-booking` AS M $indate $where GROUP BY M.id $order_by $limit";
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
     function get_master_modification_logs($params = array()){
@@ -358,12 +369,21 @@ class Admin_model extends CI_Model {
         if(array_key_exists("keyword",$params)){
             $where .= " AND  (M.full_name LIKE '%".$params['keyword']."%' OR M.email LIKE '%".$params['keyword']."%' OR M.alternate_email LIKE '%".$params['keyword']."%')";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.* From `ms-admin` AS M $indate $where GROUP BY M.id $limit");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic
+        $order_by = ' ORDER BY M.id DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params)) {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = ' ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = ' ORDER BY M.id DESC';
+            }
+        }
+        $query = $this->db->query("SELECT M.* From `ms-admin` AS M $indate $where GROUP BY M.id $order_by $limit");
         return $query->result_array();
     }
 	function get_report_generate_list($params = array()){
@@ -2259,12 +2279,21 @@ class Admin_model extends CI_Model {
         if(array_key_exists("keyword",$params)){
             $where .= " AND  (M.full_name LIKE '%".$params['keyword']."%' OR M.email LIKE '%".$params['keyword']."%' OR M.alternate_email LIKE '%".$params['keyword']."%')";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.* From `ms-admin` AS M $indate $where GROUP BY M.id $limit");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic for dropdown selection
+        $order_by = 'ORDER BY M.id DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = 'ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = 'ORDER BY M.id DESC';
+            }
+        }
+        $query = $this->db->query("SELECT M.* From `ms-admin` AS M $indate $where GROUP BY M.id $order_by $limit");
         return $query->result_array();
     }
     function get_cancel_booking_list($params=array()){
@@ -2275,12 +2304,21 @@ class Admin_model extends CI_Model {
             $indate .= ' INNER JOIN `ms-admin` AS A ON A.id = M.user_id ';
             $where .= " AND  (A.full_name LIKE '%".$params['keyword']."%' OR A.email LIKE '%".$params['keyword']."%' OR A.alternate_email LIKE '%".$params['keyword']."%')";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.* From `ms-booking-list` AS M $indate $where ORDER BY M.modify_date DESC $limit ");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic for dropdown selection
+        $order_by = 'ORDER BY M.modify_date DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = 'ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = 'ORDER BY M.id DESC';
+            }
+        }
+        $query = $this->db->query("SELECT M.* From `ms-booking-list` AS M $indate $where $order_by $limit ");
         return $query->result_array();
     }
     function get_booking_detail($book_id){
@@ -2534,40 +2572,42 @@ class Admin_model extends CI_Model {
         if(array_key_exists("keyword",$params)){
             $where .= " AND  (M.restaurant_name LIKE '%".$params['keyword']."%')";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        if(array_key_exists("orderby",$params)){
-            if($params['order'] == 'name'){
-                $orderby = 'ORDER BY M.restaurant_name '.$params['orderby'];
-            }
-            else if($params['order'] == 'time'){
-                $orderby = 'ORDER BY MT.time '.$params['orderby'];
-            }
-            else if($params['order'] == 'date'){
-                $orderby = 'ORDER BY MT.date '.$params['orderby'];
-            }
-            else if($params['order'] == 'size'){
-                $orderby = 'ORDER BY MT.size '.$params['orderby'];
-            }
-            else if($params['order'] == 'capacity'){
-                $orderby = 'ORDER BY MT.capacity '.$params['orderby'];
-            }
-            else if($params['order'] == 'booked'){
-                $orderby = 'ORDER BY booking '.$params['orderby'];
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        if (array_key_exists("orderby", $params) && $params['orderby'] != '') {
+            if ($params['order'] == 'name') {
+                $orderby = 'ORDER BY M.restaurant_name ' . $params['orderby'];
+            } else if ($params['order'] == 'time') {
+                $orderby = 'ORDER BY MT.time ' . $params['orderby'];
+            } else if ($params['order'] == 'date') {
+                $orderby = 'ORDER BY MT.date ' . $params['orderby'];
+            } else if ($params['order'] == 'size') {
+                $orderby = 'ORDER BY MT.size ' . $params['orderby'];
+            } else if ($params['order'] == 'capacity') {
+                $orderby = 'ORDER BY MT.capacity ' . $params['orderby'];
+            } else if ($params['order'] == 'booked') {
+                $orderby = 'ORDER BY booking ' . $params['orderby'];
                 $query = $this->db->query("SELECT MT.*,M.restaurant_name,M.property_type,
                 (select count(id) from `ms-booking-list` AS L where L.booking_restid = MT.restaurant_id AND L.booking_pax = MT.size AND L.booking_status = 'booked' AND L.booking_date = MT.date AND L.booking_time = MT.time AND L.ref_id=0) AS booking
                 From `ms-restaurant-tables` AS MT $indate $where $orderby $limit");
                 return $query->result_array();
-            }
-            else if($params['order'] == 'remaining'){
-                $orderby = 'ORDER BY remaining '.$params['orderby'];
+            } else if ($params['order'] == 'remaining') {
+                $orderby = 'ORDER BY remaining ' . $params['orderby'];
                 $query = $this->db->query("SELECT MT.*,M.restaurant_name,M.property_type,
                 (MT.capacity - (select count(id) from `ms-booking-list` AS L where L.booking_restid = MT.restaurant_id AND L.booking_pax = MT.size AND L.booking_status = 'booked' AND L.booking_date = MT.date AND L.booking_time = MT.time AND L.ref_id=0)) AS remaining
                 From `ms-restaurant-tables` AS MT $indate $where $orderby $limit");
                 return $query->result_array(); 
+            }
+        }
+        // Sort order logic for dropdown selection (independent of orderby)
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $orderby = 'ORDER BY MT.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $orderby = 'ORDER BY MT.id DESC';
             }
         }
         $query = $this->db->query("SELECT MT.*,M.restaurant_name,M.property_type From `ms-restaurant-tables` AS MT $indate $where $orderby $limit");
@@ -2580,12 +2620,21 @@ class Admin_model extends CI_Model {
         if(array_key_exists("keyword",$params)){
             $where .= " AND  (M.email LIKE '%".$params['keyword']."%' OR M.ip LIKE '%".$params['keyword']."%' )";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.* From `ms-unauthorize-email` AS M $indate $where GROUP BY M.id ORDER BY M.id DESC $limit");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic for dropdown selection
+        $order_by = 'ORDER BY M.id DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = 'ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = 'ORDER BY M.id DESC';
+            }
+        }
+        $query = $this->db->query("SELECT M.* From `ms-unauthorize-email` AS M $indate $where GROUP BY M.id $order_by $limit");
         return $query->result_array();
     }
     function get_invite_guest_list($params=array()){
@@ -2596,12 +2645,21 @@ class Admin_model extends CI_Model {
             $indate .= ' INNER JOIN `ms-admin` AS U ON (U.id = M.from_id OR U.id = M.to_id)';
             $where .= " AND  (U.email LIKE '%".$params['keyword']."%' OR U.alternate_email LIKE '%".$params['keyword']."%' OR U.full_name LIKE '%".$params['keyword']."%' )";
         }
-        if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['start'].','.$params['limit']; 
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
-            $limit = ' LIMIT '.$params['limit']; 
-        } 
-        $query = $this->db->query("SELECT M.*,B.booking_date,B.booking_time,B.booking_pax,B.booking_restid From `ms-guest-invite` AS M $indate $where GROUP BY M.id ORDER BY M.id DESC $limit");
+        if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['start'] . ',' . $params['limit'];
+        } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
+            $limit = ' LIMIT ' . $params['limit'];
+        }
+        // Sort order logic for dropdown selection
+        $order_by = 'ORDER BY M.id DESC'; // Default: newest first
+        if (array_key_exists("sort_order", $params) && $params['sort_order'] != '') {
+            if ($params['sort_order'] == 'oldest') {
+                $order_by = 'ORDER BY M.id ASC';
+            } elseif ($params['sort_order'] == 'newest') {
+                $order_by = 'ORDER BY M.id DESC';
+            }
+        }
+        $query = $this->db->query("SELECT M.*,B.booking_date,B.booking_time,B.booking_pax,B.booking_restid From `ms-guest-invite` AS M $indate $where GROUP BY M.id $order_by $limit");
         return $query->result_array();
     }
     function count_booked_tablle_byrestid_date($rest_id,$date,$time,$size){

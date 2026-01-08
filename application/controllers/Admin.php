@@ -1597,12 +1597,13 @@ class Admin extends CI_Controller {
 	public function ajax_master_booking_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$min = $this->input->post('min'); 
-			$max = $this->input->post('max'); 
-			$length = $this->input->post('length'); 
-			$book_status = $this->input->post('book_status'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$min = $this->input->post('min');
+			$max = $this->input->post('max');
+			$sort_order = $this->input->post('sort_order');
+			$length = $this->input->post('length');
+			$book_status = $this->input->post('book_status');
+			$search_keyword = $this->input->post('search_keyword');
 			$conditions = [];
 			if($min != '' && $max != ''){
 				$conditions = array( 
@@ -1615,6 +1616,10 @@ class Admin extends CI_Controller {
 			}
 			if($book_status != ''){
 				$conditions['book_status'] = $book_status;
+			}
+
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_master_booking_list($conditions);
 			if($length != ''){
@@ -1904,12 +1909,16 @@ class Admin extends CI_Controller {
 	public function ajax_pending_booking_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$length = $this->input->post('length'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$length = $this->input->post('length');
+			$search_keyword = $this->input->post('search_keyword');
+			$sort_order = $this->input->post('sort_order');
 			$conditions = [];
 			if($search_keyword != ''){
 				$conditions['keyword'] = $search_keyword;
+			}
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_pending_booking_list($conditions);
 			if($length != ''){
@@ -1996,12 +2005,16 @@ class Admin extends CI_Controller {
 	public function ajax_cancel_booking_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$length = $this->input->post('length'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$length = $this->input->post('length');
+			$search_keyword = $this->input->post('search_keyword');
+			$sort_order = $this->input->post('sort_order');
 			$conditions = [];
 			if($search_keyword != ''){
 				$conditions['keyword'] = $search_keyword;
+			}
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_cancel_booking_list($conditions);
 			if($length != ''){
@@ -2118,12 +2131,13 @@ class Admin extends CI_Controller {
 	public function ajax_all_booking_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$min = $this->input->post('min'); 
-			$max = $this->input->post('max'); 
-			$length = $this->input->post('length'); 
-			$book_status = $this->input->post('book_status'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$min = $this->input->post('min');
+			$max = $this->input->post('max');
+			$sort_order = $this->input->post('sort_order');
+			$length = $this->input->post('length');
+			$book_status = $this->input->post('book_status');
+			$search_keyword = $this->input->post('search_keyword');
 			$conditions = [];
 			if($min != '' && $max != ''){
 				$conditions = array( 
@@ -2136,6 +2150,9 @@ class Admin extends CI_Controller {
 			}
 			if($book_status != ''){
 				$conditions['book_status'] = $book_status;
+			}
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_master_booking_list($conditions);
 			if($length != ''){
@@ -2484,12 +2501,13 @@ class Admin extends CI_Controller {
 	public function ajax_all_booking_detail_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$min = $this->input->post('min'); 
-			$max = $this->input->post('max'); 
-			$length = $this->input->post('length'); 
-			$book_status = $this->input->post('book_status'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$min = $this->input->post('min');
+			$max = $this->input->post('max');
+			$sort_order = $this->input->post('sort_order');
+			$length = $this->input->post('length');
+			$book_status = $this->input->post('book_status');
+			$search_keyword = $this->input->post('search_keyword');
 			$conditions = [];
 			if($min != '' && $max != ''){
 				$conditions = array( 
@@ -2503,6 +2521,11 @@ class Admin extends CI_Controller {
 			if($book_status != ''){
 				$conditions['book_status'] = $book_status;
 			}
+
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
+			}
+
 			$data['list'] = $this->admin_model->get_all_booking_detail_list($conditions);
 			if($length != ''){
 				$per_page = $length;
@@ -2938,11 +2961,12 @@ class Admin extends CI_Controller {
 	}
 	public function ajax_restaurant_slot_report_list(){
 		$per_page = 10;
-		$page = $this->input->post('page'); 
-		$length = $this->input->post('length'); 
-		$search_keyword = $this->input->post('search_keyword'); 
-		$order = $this->input->post('order'); 
-		$orderby = $this->input->post('orderby'); 
+		$page = $this->input->post('page');
+		$length = $this->input->post('length');
+		$search_keyword = $this->input->post('search_keyword');
+		$sort_order = $this->input->post('sort_order');
+		$order = $this->input->post('order');
+		$orderby = $this->input->post('orderby');
 		$conditions = [];
 		if($search_keyword != ''){
 			$conditions['keyword'] = $search_keyword;
@@ -2959,20 +2983,25 @@ class Admin extends CI_Controller {
 			$data['order'] = $order;
 			$data['orderby'] = $orderby;
 		}
-		if(!$page){ 
-			$offset = 0; 
-		}else{ 
-			$offset = $page; 
-		} 
-		$config['target']      = '#total_master_reservation'; 
-		$config['base_url']    = base_url('admin/ajax_restaurant_slot_report_list'); 
-		$config['total_rows']  = count($data['list']); 
-		$config['per_page']    = $per_page; 
-		$config['cur_page']    = $offset; 
-		$config['link_func']    = 'ajax_filter_form_complete_booking'; 
-		$this->ajax_pagination->initialize($config); 
-		$conditions ['limit'] = $per_page; 
-		if($offset > 0){
+		if (!$page) {
+			$offset = 0;
+		} else {
+			$offset = $page;
+		}
+
+
+		if ($sort_order != '') {
+			$conditions['sort_order'] = $sort_order;
+		}
+		$config['target'] = '#total_master_reservation';
+		$config['base_url'] = base_url('admin/ajax_restaurant_slot_report_list');
+		$config['total_rows'] = count($data['list']);
+		$config['per_page'] = $per_page;
+		$config['cur_page'] = $offset;
+		$config['link_func'] = 'ajax_filter_form_complete_booking';
+		$this->ajax_pagination->initialize($config);
+		$conditions['limit'] = $per_page;
+		if ($offset > 0) {
 			$conditions['start'] = $offset;
 		}
 		$data['list'] = $this->admin_model->get_restaurant_slot_report_list($conditions);
@@ -3134,12 +3163,16 @@ class Admin extends CI_Controller {
 	public function ajax_unauthorize_user_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$length = $this->input->post('length'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$length = $this->input->post('length');
+			$search_keyword = $this->input->post('search_keyword');
+			$sort_order = $this->input->post('sort_order');
 			$conditions = [];
 			if($search_keyword != ''){
 				$conditions['keyword'] = $search_keyword;
+			}
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_unauthorize_user_list($conditions);
 			if($length != ''){
@@ -3363,12 +3396,16 @@ class Admin extends CI_Controller {
 	public function ajax_invite_guest_list(){
 		if($this->session->userdata('mes_admin_id') != '' && $this->session->userdata('admin_role') == '0'){
 			$per_page = 10;
-			$page = $this->input->post('page'); 
-			$length = $this->input->post('length'); 
-			$search_keyword = $this->input->post('search_keyword'); 
+			$page = $this->input->post('page');
+			$length = $this->input->post('length');
+			$search_keyword = $this->input->post('search_keyword');
+			$sort_order = $this->input->post('sort_order');
 			$conditions = [];
 			if($search_keyword != ''){
 				$conditions['keyword'] = $search_keyword;
+			}
+			if ($sort_order != '') {
+				$conditions['sort_order'] = $sort_order;
 			}
 			$data['list'] = $this->admin_model->get_invite_guest_list($conditions);
 			if($length != ''){
