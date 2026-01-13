@@ -145,7 +145,9 @@
                       <li>
                         <div class="two-column difference">
                           <div class="action">
-                            <p><?php echo $user_data['full_name']; ?> <?php echo $msg_status; ?> to <?php echo $restaurant_name; ?></p>
+                            <p><?php echo $user_data['full_name'] . "'s"; ?>         <?php echo $msg_status; ?> to
+                              <?php echo $restaurant_name; ?>
+                            </p>
                           </div>
                           <div class="hour-ago">
                             <span><?php echo $day_ago; ?></span>
@@ -204,7 +206,9 @@
                       <li>
                         <div class="two-column difference">
                           <div class="action">
-                            <p><?php echo $to_user_data['full_name']."'s"; ?> <?php echo $msg_status; ?> to <?php echo $restaurant_name; ?></p>
+                            <p><?php echo $to_user_data['full_name']; ?>         <?php echo $msg_status; ?> to
+                              <?php echo $restaurant_name; ?>
+                            </p>
                           </div>
                           <div class="hour-ago">
                             <span><?php echo $day_ago; ?></span>
