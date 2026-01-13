@@ -3084,7 +3084,7 @@ span.filterIcon img {
 
 .comfirmedDetails .reservationAddress .userDetailsBox ul li .detailLabel {
     font-weight: 600;
-    width: 55%;
+    width: 30%;
     color: var(--primary);
 }
 
