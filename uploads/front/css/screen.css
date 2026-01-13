@@ -4050,11 +4050,11 @@ max-width: 340px;
    font-family: var(--primary-font);
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 16px;
     text-transform: uppercase;
     color: var(--white);
-    padding: 7px 24px;
+    padding: 7px 18px;
     background-color: var(--primary);
 }
 .userNotification .dropdown-list ul li a.view:hover {
@@ -4062,4 +4062,56 @@ max-width: 340px;
     color: var(--primary);
     border-color: var(--secondary);
 }
+
+.userNotification .dropdown-list ul li .view-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inviteblock .personList ul li .personName .text-warning {
+    color: var(--textColor) !important;
+    font-size: 12px;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.inviteblock .personList ul li .personName .invitation_decline_btn,
+.inviteblock .personList ul li .personName .remove_guest_btn {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.userNotification .dropdown-list ul li a.invitation_decline_btn,
+.inviteblock .personList ul li .personName .invitation_decline_btn,
+.inviteblock .personList ul li .personName .remove_guest_btn,
+.userNotification .dropdown-list ul li a.remove_guest_btn {
+    background-color: #ef5b5b;
+    color: white !important;
+}
+
+.userNotification .dropdown-list ul li a.invitation_decline_btn:hover,
+.inviteblock .personList ul li .personName .invitation_decline_btn:hover,
+.inviteblock .personList ul li .personName .remove_guest_btn:hover,
+.userNotification .dropdown-list ul li a.remove_guest_btn:hover {
+    background-color: #c23636;
+    color: white;
+}
+.userNotification .dropdown-list ul li a.view.modal-button.invitation_decline_btn{margin-top: 10px; background-color: #dc3545 !important;}
+.userNotification .dropdown-list ul li a.view.modal-button.invitation_decline_btn:hover{color: #fff;}
+
+#inviteModal .modal-body .resendtheinvitetoguest {
+    color: var(--primary);
+}
+
+#inviteModal .modal-body .resendtheinvitetoguest a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+#inviteModal .modal-body .resendtheinvitetoguest a:hover {
+    color: var(--textColor);
+}
+
 /** Notification Css End Here **/

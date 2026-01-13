@@ -1,4 +1,4 @@
-@media (max-width:1750px) {
+@media (max-width:1800px) {
     .main-wrap .banner-section.inner-banner.user-management .user-icon{width: 90px;height: 90px;}
     .booking_list_wrapper .booking_list_box h4 {font-size: 26px;margin-top: 30px;}
     .booking_list_wrapper .booking_list_box{padding: 33px 30px;min-height: auto;}
@@ -10,6 +10,17 @@
     .booking_list_wrapper .booking_list_box .eye_button{width: 53px;height: 53px;}
     .booking_list_wrapper .booking_list_box span img{width: 50px;height: 50px;}
         input, select, optgroup, textarea { font-size: 15px; padding: 13px 20px;}
+
+
+         .wrap_table .dataTables_length label select { width: 130px !important; font-size: 14px;}
+    .wrap_table .dataTables_filter label input { width: 200px !important; font-size: 14px; }
+    .btn_add{font-size: 14px;padding: 10px 15px;}
+    .startToendSearch{margin-left: 10px;}
+    .startToendSearch .innerSearchDate .searchDate .searchDateInput{max-width: 120px;}
+
+     input, select, optgroup, textarea, .startToendSearch .innerSearchDate .searchDateButton .btn{font-size: 14px;}
+    .admin_setting_skip_reasons .tag{font-size: 14px !important;}
+    .withLeftButtons.wrap_table #top_filter .dataTables_length{margin-right: 12px;}
 
 }
 @media (max-width: 1620px) {
@@ -111,6 +122,15 @@
     .faq-section .col-3{max-width: 22%;}
     .faq-section .col-9{max-width: 78%;}
     .menubar-section .col-3{width: 25%;}
+    .withLeftButtons.wrap_table #top_filter .dataTables_length { margin-right: 10px; }
+    .wrap_table .dataTables_length label select { width: 120px !important; font-size: 12px;}
+    .wrap_table .dataTables_filter label input { width: 190px !important; font-size: 12px; }
+    .btn_add{font-size: 12px;padding: 10px 12px;}
+    .startToendSearch{margin-left: 10px;}
+    .startToendSearch .innerSearchDate .searchDate .searchDateInput{max-width: 110px;}
+
+     input, select, optgroup, textarea, .startToendSearch .innerSearchDate .searchDateButton .btn{font-size: 12px;}
+    .admin_setting_skip_reasons .tag{font-size: 12px !important;}
 }
 
 @media (max-width:1550px){
@@ -120,12 +140,17 @@
     .wrap_reservation_list .reservation_box{padding: 40px 30px 48px;}
     input, select, optgroup, textarea{font-size: 13px;}
     .admin_setting_skip_reasons .tag{font-size: 13px !important;}
+.startToendSearch .innerSearchDate .searchDate .searchDateInput{max-width: 110px;}
+    .wrap_table .dataTables_filter label input{width: 163px !important; font-size: 11px;}
+    .startToendSearch{margin-left: 10px;}
+    .startToendSearch .innerSearchDate .searchDate .searchDateInput input, .startToendSearch .innerSearchDate .searchDateButton .btn {font-size: 11px;}
+    .btn, .auth_screen .form_group .btn, input.btn { padding: 11px 10px;}
 }
 
 @media (max-width:1460px){
     h1,.h1{font-size:40px;}
     h2,.h2{font-size: 24px;}
-    .btn, .auth_screen .form_group .btn, input.btn{font-size: 14px; letter-spacing: 1px;}
+    .btn, .auth_screen .form_group .btn, input.btn{font-size: 12px; letter-spacing: 1px;}
     .form-group{margin-bottom: 20px;}
     /* Login Screen */
     .auth_screen .logo{width: 120px;}
@@ -158,7 +183,7 @@
     .withLeftButtons.wrap_table #top_filter .dataTables_length { margin-right: 10px; }
 
     .withLeftButtons.wrap_table #top_filter{top: 30px;}
-    .wrap_table .dataTables_length label select{width: 110px !important;font-size: 13px;}
+    .wrap_table .dataTables_length label select{width: 110px !important;font-size: 11px;}
 
     .input-group-text{right: 28% !important;}
     input, select, optgroup, textarea{font-size: 11px;}
@@ -229,6 +254,11 @@
     .no-report-found{padding: 40px;}
     .menubar-section .col-3{width: 33.33%;}
     .menubar-section .col-9{width: 66.66%;}
+
+    .withLeftButtons .leftButtonsRow {margin-bottom: 20px;}
+    .withLeftButtons.wrap_table #top_filter{justify-content: flex-start;}
+    
+    
 }
 
 @media (max-width:1300px){
@@ -286,7 +316,8 @@
    /* .withLeftButtons.wrap_table #top_filter { margin-top: 50px; } */
     
    .withLeftButtons.wrap_table #top_filter{top: 85px;}
-   .wrap_table .table_class, .commonTable{margin-top: 85px;}
+   .wrap_table .table_class, .commonTable{margin-top: 30px;}
+   /* .wrap_table .table_class, .commonTable{margin-top: 85px;} */
    .reports-step{display: block;}
    .reports-step .left-col, .reports-step .right-col{width: 100%;padding:0 39px 40px;}
    #report-step-form .restroBookProgress .progressStep .stepItem:not(:last-child) .stepImgbox::before{width: 100%;}
@@ -301,6 +332,27 @@
    .portal-section .portal-card { padding: 30px 65px 50px 30px;}
    .report-section .report-info {padding: 40px;}
    .report-section .report-info .report-top { padding-bottom: 12px; margin-bottom: 36px;}
+    .wrap_table #total_master_reservation .pagination { width: calc(100% - 100px); }
+}
+
+@media (max-width:1024px) {
+    .main-content .container-fluid { padding: 30px 10px; }
+    .viewGridButton{display: inline-flex;gap: 6px;}
+
+  
+    .wrap_table .table_class, .commonTable{margin-top: 35px;}
+    .wrap_table .dataTables_length label select{width: 97px !important;font-size: 10px;}
+    .withLeftButtons.wrap_table #complete_booking #top_filter{flex-wrap: nowrap;}
+    .wrap_table .dataTables_length label select{padding: 0px 7px;}
+    .wrap_table .dataTables_filter{margin-top: 0px;}
+    .btn, .auth_screen .form_group .btn, input.btn{font-size: 11px;letter-spacing: 0.8px;}
+    .wrap_reservation_list .reservation_box .res_details .action{display: inline-flex;gap: 7px;}
+    .wrap_reservation_list .reservation_box .res_details .action .btn{font-size: 11px;min-width: 95px;margin-right: 1px;}
+    .wrap_reservation .head_top_reservation {gap: 7px;}
+    .startToendSearch .innerSearchDate .searchDateButton .btn , .startToendSearch .innerSearchDate .searchDate .searchDateInput input{font-size: 11px; }
+    .startToendSearch{margin-left: 15px;}
+
+      
 }
 
 @media (max-width:991px) {
@@ -342,9 +394,9 @@
     #top_filter .dataTables_length { margin-bottom: 0; }
 
 
-    .main-content h2.heading_title{font-size: 20px;}
-    .wrap_table .table_class, .commonTable{margin-top: 145px;}
-    .wrap_table .dataTables_filter{margin-top: 15px;}
+    .main-content h2.heading_title{font-size: 16px;}
+    /* .wrap_table .table_class, .commonTable{margin-top: 145px;} */
+    /* .wrap_table .dataTables_filter{margin-top: 15px;} */
     .wrap_table #bottom_page .dataTables_info {font-size: 13px;}
     .reports-step .right-col .start-step{padding: 50px 25px;}
     .reports-step .right-col .file-icon svg{width: 70px;height: 70px;}

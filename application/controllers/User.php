@@ -1057,21 +1057,38 @@ class User extends CI_Controller {
 					$to_user_data = $this->user_model->get_user_detail_byuserid($user_id);
 					$from_id = $invite_detail['from_id'];
 					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
-					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'],$email_template['email_body']);
-					$email_template = str_replace('{{order_id}}',$invite_detail['booking_id'],$email_template);
-					$email_template = str_replace('{{from_name}}',$from_user_data['full_name'],$email_template);
-					$email_template = str_replace('{{from_email}}',$from_user_data['email'],$email_template);
-					$email_template = str_replace('{{from_phone}}',$from_user_data['mobile_number'],$email_template);
-					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
-					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
-					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
-					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
-					$email_template = str_replace('{{admin_url}}',site_url('admin'),$email_template);
-					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
-					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template);
+					$email_template = str_replace('{{from_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+
+					$email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{admin_url}}', site_url('admin'), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+
+					$from_guest_contact = '';
+					if (!empty($from_user_data['mobile_number'])) {
+
+						$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{from_guest_contact}}', $from_guest_contact, $email_template);
+
+					$to_guest_contact = '';
+					if (!empty($to_user_data['mobile_number'])) {
+
+						$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{to_guest_contact}}', $to_guest_contact, $email_template);
 
 					$list_id = $invite_detail['list_id'];
 					$booking = $this->user_model->get_booking_date_detail($list_id);
@@ -1098,20 +1115,37 @@ class User extends CI_Controller {
 					//customer email send
 					$email_template = $this->admin_model->get_email_template('user_invitation_accepted');
 					$subject = $email_template['email_subject'];
-					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'],$email_template['email_body']);
-					$email_template = str_replace('{{order_id}}',$invite_detail['booking_id'],$email_template);
-					$email_template = str_replace('{{from_name}}',$from_user_data['full_name'],$email_template);
-					$email_template = str_replace('{{from_email}}',$from_user_data['email'],$email_template);
-					$email_template = str_replace('{{from_phone}}',$from_user_data['mobile_number'],$email_template);
-					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
-					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
-					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
-					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
-					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
-					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
-					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
-					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
-					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template);
+					$email_template = str_replace('{{from_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+
+					$from_guest_contact = '';
+					if (!empty($from_user_data['mobile_number'])) {
+
+						$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{from_guest_contact}}', $from_guest_contact, $email_template);
+
+					$to_guest_contact = '';
+					if (!empty($to_user_data['mobile_number'])) {
+
+						$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{to_guest_contact}}', $to_guest_contact, $email_template);
+
 					$list = '';
 					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
 					$email_template = str_replace('{{accepted_restaurant_list}}',$list,$email_template);
