@@ -143,15 +143,15 @@
                                     <?php endif; ?>
                                     
                                     <?php if($user_data['mobile_number'] != ''):?>
-                                    <tr>
+                                    <!-- <tr>
                                         <td width="50%" style="padding: 5px 0;">
-                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">User contact:
+                                            <p style="color:<?php //echo $color1; ?>;font-size:12px;font-weight:900;margin: 0">User contact:
                                             </p>
                                         </td>
                                         <td width="50%">
-                                            <p style="color:<?php echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php echo $user_data['mobile_number'];?></p>
+                                            <p style="color:<?php //echo $color1; ?>;font-size:12px;font-weight:400;margin: 0"><?php //echo $user_data['mobile_number'];?></p>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <?php endif; ?>
                                     <?php if($restaurant_email_hide != 'yes'): ?>
                                         <?php if($hotel['email'] != ''):?>

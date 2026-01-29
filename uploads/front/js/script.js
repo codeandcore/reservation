@@ -1,5 +1,54 @@
 /* Window Load functions */
 jQuery(document).ready(function(){
+
+    /**
+     * Hide visited notification on click of view button clicked
+     */
+  const COOKIE_NAME = 'viewed_invites';
+
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    try {
+      return match ? JSON.parse(decodeURIComponent(match[2])) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function setCookie(name, value, days = 375) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie =
+      name + '=' + encodeURIComponent(JSON.stringify(value)) +
+      '; expires=' + expires + '; path=/';
+  }
+
+  $(document).on('click', '.view-invite-notice-btn', function (e) {
+    e.preventDefault();
+
+    const inviteId   = $(this).data('inviteid');
+    const createdAt  = $(this).data('created-ts'); // DB value
+    const redirectTo = $(this).attr('href');
+
+    if (!inviteId || !createdAt) {
+      window.location.href = redirectTo;
+      return;
+    }
+
+    // Convert created_at to timestamp ONCE (browser side)
+    const createdTs = parseInt($(this).data('created-ts'), 10);
+
+    let viewed = getCookie(COOKIE_NAME);
+
+    viewed[inviteId] = createdTs;
+
+    setCookie(COOKIE_NAME, viewed);
+
+    window.location.href = redirectTo;
+  });
+    /**
+     * Hide visited notification on click of view button clicked END
+     */
+
     let site_url = $('#global_base_url').val();
     var headerHeight = $('header').outerHeight();
     $(window).scroll(function () {
