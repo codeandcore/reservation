@@ -77,8 +77,48 @@
       <div class="userSetting">
         <div class="userNotification dropdown">
           <?php
+
+          /**
+           * Read visited notices from cookie and show only unvisited ones
+           */
+          $viewed_invites = [];
+
+          if (!empty($_COOKIE['viewed_invites'])) {
+              $decoded = json_decode($_COOKIE['viewed_invites'], true);
+              if (is_array($decoded)) {
+                  // normalize types
+                  $viewed_invites = array_map('intval', $decoded);
+              }
+          }
+          /**
+           * Read cookies end
+           */
+
+
           $user_id = $this->session->userdata('mes_user_id');
           $notis = $this->user_model->get_notification_list($user_id);
+
+          if (!empty($notis) && !empty($viewed_invites)) {
+
+              $notis = array_values(array_filter($notis, function ($li) use ($viewed_invites) {
+
+                  $id = (int) $li['id'];
+
+                  if (!isset($viewed_invites[$id])) {
+                      return true; // not viewed
+                  }
+
+                  // Convert DB time to timestamp (same value as stored)
+                  $createdTs = strtotime($li['created_at']);
+
+                  // Exclude only if viewed timestamp >= created timestamp
+                  return $createdTs > (int) $viewed_invites[$id];
+              }));
+          }
+
+
+
+
           $notis_count = 0;
           if (!empty($notis)):
 
@@ -135,26 +175,47 @@
                   if($restaurant_name):
                     if ($to_id == $user_id) {
                       if ($noti_status == 'accept') {
-                        $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
+                        $msg_status = '<span class="invite-accept"> accepted </span>';
                       } else if ($noti_status == 'decline') {
-                        $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
+                        $msg_status = ' <span class="invite-decline"> declined </span>';
+                      } else if ($noti_status == 'cancel') {
+                        $msg_status = ' <span class="invite-decline"> cancelled </span>';
                       } else {
                         $msg_status = 'Invited';
                       }
                   ?>
-                      <li>
-                        <div class="two-column difference">
+                      <li class="invitedata" data-inviteid="<?php echo($li['id']); ?>">
+                        <div class="two-column difference dddoo <?php echo($li['id']); ?>" data-inviteid="<?php echo($li['id']); ?>">
                           <div class="action">
-                            <p><?php echo $user_data['full_name'] . "'s"; ?>         <?php echo $msg_status; ?> to
+                            <?php 
+                            if($noti_status == 'cancel'){
+                              ?>
+                            <p>You have <?php echo $msg_status; ?> the invite from <span class="user-name"><?php echo $user_data['full_name'] . "'s"; ?></span>  for
                               <?php echo $restaurant_name; ?>
                             </p>
+                              <?php
+                            }else if($noti_status == 'invite'){
+                              ?>
+                            <p>You have received an invite from <span class="user-name"><?php echo $user_data['full_name']; ?></span> for
+                              <?php echo $restaurant_name; ?>
+                            </p>
+                              <?php
+                            }else{
+                              ?>
+                            <p>You have <?php echo $msg_status; ?> the <span class="user-name"><?php echo $user_data['full_name'] . "'s"; ?></span> invitation to
+                              <?php echo $restaurant_name; ?>
+                            </p>
+                              <?php
+                            }
+                            ?>
+
                           </div>
                           <div class="hour-ago">
                             <span><?php echo $day_ago; ?></span>
                           </div>
                         </div>
                         <div class="gray-line"></div>
-                        <div class="two-column difference ">
+                        <div class="two-column difference <?php echo($li['id']); ?>">
                           <div class="two-column restaurant-data">
                             <div class="img">
                                 <?php
@@ -188,25 +249,27 @@
                             </div>
                           </div>
                           <div class="view-btn">
-                            <a href="<?php echo site_url('user/check_invitation/' . $li['id']); ?>" class="view">View</a>
+                            <a href="<?php echo site_url('user/check_invitation/' . $li['id']); ?>" class="view view-invite-notice-btn" data-inviteid="<?php echo($li['id']); ?>" data-created-ts="<?php echo strtotime($li['created_at']); ?>">View</a>
                           </div>
                         </div>
                       </li>
                     <?php
                     } else {
                       if ($noti_status == 'accept') {
-                        $msg_status = 'Invitation <span class="invite-accept"> Accepted </span>';
+                        $msg_status = '<span class="invite-accept">accepted </span> the Invitation ';
                       } else if ($noti_status == 'decline') {
-                        $msg_status = 'Invitation <span class="invite-decline"> Declined </span>';
+                        $msg_status = '<span class="invite-decline">declined </span> the Invitation ';
+                      } else if ($noti_status == 'cancel') {
+                        $msg_status = ' <span class="invite-decline"> cancelled </span>';
                       } else {
                         $msg_status = 'Invited';
                       }
                     ?>
                       <!-- <li><a href="javascript:void(0)"><?php echo $to_user_data['full_name'] . ' ' . $msg_status; ?></a></li> -->
-                      <li>
-                        <div class="two-column difference">
+                      <li class="invitedata" data-inviteid="<?php echo($li['id']); ?>">
+                        <div class="two-column difference sdsd <?php echo($li['id']); ?>">
                           <div class="action">
-                            <p><?php echo $to_user_data['full_name']; ?>         <?php echo $msg_status; ?> to
+                            <p><span class="user-name"><?php echo $to_user_data['full_name']; ?></span>         has <?php echo $msg_status; ?> to
                               <?php echo $restaurant_name; ?>
                             </p>
                           </div>
@@ -249,7 +312,7 @@
                             </div>
                           </div>
                           <div class="view-btn">
-                            <a href="<?php echo site_url('reservation_confirmed/'); ?>" class="view">View</a>
+                            <a href="<?php echo site_url('reservation_confirmed/'); ?>" class="view view-invite-notice-btn" data-inviteid="<?php echo($li['id']); ?>" data-created-ts="<?php echo strtotime($li['created_at']); ?>">View</a>
                             <?php 
                             // echo('<pre>');
                             // print_r($to_user_data);

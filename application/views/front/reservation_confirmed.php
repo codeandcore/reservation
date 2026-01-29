@@ -191,6 +191,8 @@
                                                                     } else {
                                                                         $guests = array($user_id);
                                                                     }
+
+                                                                    $main_user_id = $user_id;
                                                                 } else {
                                                                     $ref_booking = $this->user_model->get_booking_date_detail($list['ref_id']);
                                                                     $main_user_id = $ref_booking['user_id'];
@@ -243,7 +245,8 @@
                                                                                         } else {
                                                                                             echo 'Guest';
                                                                                         } ?></small>
-                                                                                        <?php if ($key != 0 && $user_id != $usr) { ?>
+                                                                                        <?php //if ($key != 0 && $user_id != $usr) { ?>
+                                                                                        <?php if ($key != 0 && $main_user_id == $user_id) { ?>
                                                                                         <small class="text-danger cursor-pointer modal-button removeConfirmedGuest remove_guest_btn"
                                                                                         data-username="<?php echo $usr_dtl['full_name']; ?>"
                                                                                             data-user_id="<?php echo($usr); ?>"

@@ -1024,6 +1024,8 @@ class User_model extends CI_Model {
                         'status'=>$status,
                         'decline_reason'=>$decline_reason,
                     );
+            $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+
                     $this->db->where('id',$invite_id);
                     $this->db->update('ms-guest-invite',$data);
                     $der = array(
@@ -1056,6 +1058,8 @@ class User_model extends CI_Model {
                     'decline_reason'=>$decline_reason
                 );
                 $this->db->where('id',$invite_id);
+                            $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+
                 $this->db->update('ms-guest-invite',$data);
                 $data['from_id'] = $invite_detail['from_id'];
                 $data['list_id'] = $invite_detail['booking_list_id'];
@@ -1155,6 +1159,8 @@ class User_model extends CI_Model {
                         'decline_reason' => $decline_reason,
                     );
                     $this->db->where('id', $invite_id);
+                                $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+
                     $this->db->update('ms-guest-invite', $data);
                     $der = array(
                         'modify_date' => date('Y-m-d H:i:s'),
@@ -1185,6 +1191,8 @@ class User_model extends CI_Model {
                     'decline_reason' => $decline_reason
                 );
                 $this->db->where('id', $invite_id);
+                            $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+
                 $this->db->update('ms-guest-invite', $data);
                 $data['from_id'] = $invite_detail['from_id'];
                 $data['list_id'] = $invite_detail['booking_list_id'];
@@ -1221,7 +1229,18 @@ class User_model extends CI_Model {
         );
         $this->db->insert('ms-booking-logs',$data);
 
-
+        /**Update the  ms-guest-invite first as we will set the ref_id to 0 in table ms-booking-list*/
+        $this->db->where('id',$id);
+        $inquery = $this->db->get('ms-booking-list');
+        $inrow = $inquery->row();
+        $data = array(
+            'status'=>'cancel'
+        );
+        $this->db->set('created_at', 'CURRENT_TIMESTAMP', false);
+        $this->db->where('booking_list_id', $inrow->ref_id);
+        $this->db->where('to_id', $user_id);
+        $this->db->update('ms-guest-invite', $data);
+        /**Update the  ms-guest-invite first as we will set the ref_id to 0 in table ms-booking-list END*/
 
         $this->modify_invited_guests_list($id);
         $data = array(

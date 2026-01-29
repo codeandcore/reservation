@@ -726,6 +726,17 @@ class User extends CI_Controller {
 			redirect('home');
 		}
 		if($this->session->userdata('mes_user_id') != ''){
+
+			/**
+			 * Get Host data for email notification
+			 */
+				$bookingRecord = $this->user_model->get_booking_date_detail($this->input->post('cancel_booking_listid'));
+				$host_Booking_record = $this->user_model->get_booking_date_detail($bookingRecord['ref_id']);
+				$hostData = $this->user_model->get_user_detail_byuserid($host_Booking_record['user_id']);
+			/**
+			 * Get Host data for email notification END
+			 */
+
 			$this->user_model->cancel_reservation_date();
 			$user_id = $this->session->userdata('mes_user_id');
 			$cancellation = $this->input->post('cancellation');
@@ -797,6 +808,36 @@ class User extends CI_Controller {
 			$this->email->subject($this->settings['site_title'].' - '.$subject);
 			$this->email->message($email_template);
 			$this->email->send();
+
+			/**
+			 * Send email to Host about cancellation when guest cancel reservation
+			 */
+			$email_template = $this->admin_model->get_email_template('user_canceled_reservation_to_host');
+			$subject = $email_template['email_subject'];
+			$email_template = str_replace('{{host_name}}',$hostData['full_name'],$email_template['email_body']);
+			$email_template = str_replace('{{user_name}}',$user_name,$email_template);
+			$list = '';
+			$list .= $this->load->view('emails/cancel_restaurant', $array, TRUE);
+			$email_template = str_replace('{{cancel_restaurant_list}}',$list,$email_template);
+			$email_template = str_replace('{{order_id}}',$booking_id,$email_template);
+			$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
+			$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
+			$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
+			$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
+			$email_template = str_replace('{{cancel_booking_reason}}',$cancellation,$email_template);
+			$email_template = str_replace('{{site_url}}',site_url(),$email_template);
+			$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
+			$this->email->set_newline("\r\n");
+			$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
+			$this->email->to($hostData['email']);// change it to yours
+			$this->email->reply_to($this->settings['smtp_to_email']);
+			$this->email->subject($this->settings['site_title'].' - '.$subject);
+			$this->email->message($email_template);
+			$this->email->send();
+			/**
+			 * Send email to Host about cancellation when guest cancel reservation END
+			 */
+
 			$data = array(
 				'response'=>'success',
 				'message'=>'Reservtion cancelled successfuly.'
@@ -1077,7 +1118,7 @@ class User extends CI_Controller {
 					$from_guest_contact = '';
 					if (!empty($from_user_data['mobile_number'])) {
 
-						$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
+						//$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
 					}
 
 					$email_template = str_replace('{{from_guest_contact}}', $from_guest_contact, $email_template);
@@ -1085,7 +1126,7 @@ class User extends CI_Controller {
 					$to_guest_contact = '';
 					if (!empty($to_user_data['mobile_number'])) {
 
-						$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
+						//$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
 					}
 
 					$email_template = str_replace('{{to_guest_contact}}', $to_guest_contact, $email_template);
@@ -1112,7 +1153,7 @@ class User extends CI_Controller {
 					$this->email->message($email_template);
 					$this->email->send();
 
-					//customer email send
+					//customer email send to Host
 					$email_template = $this->admin_model->get_email_template('user_invitation_accepted');
 					$subject = $email_template['email_subject'];
 					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
@@ -1133,7 +1174,7 @@ class User extends CI_Controller {
 					$from_guest_contact = '';
 					if (!empty($from_user_data['mobile_number'])) {
 
-						$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
+						//$from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
 					}
 
 					$email_template = str_replace('{{from_guest_contact}}', $from_guest_contact, $email_template);
@@ -1141,7 +1182,7 @@ class User extends CI_Controller {
 					$to_guest_contact = '';
 					if (!empty($to_user_data['mobile_number'])) {
 
-						$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
+						//$to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
 					}
 
 					$email_template = str_replace('{{to_guest_contact}}', $to_guest_contact, $email_template);
@@ -1152,6 +1193,51 @@ class User extends CI_Controller {
 					$this->email->set_newline("\r\n");
 					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
 					$this->email->to($from_user_data['email']);// change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'].' - '.$subject);
+					$this->email->message($email_template);
+					$this->email->send();
+
+					//Send accept invite email to guest him self when he/she accepts an invite
+					$email_template = $this->admin_model->get_email_template('user_invitation_accepted_to_self');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template['email_body']);
+					$email_template = str_replace('{{order_id}}', $invite_detail['booking_id'], $email_template);
+					$email_template = str_replace('{{from_name}}', $from_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{from_email}}', $from_user_data['email'], $email_template);
+					$email_template = str_replace('{{from_phone}}', $from_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{to_email}}', $to_user_data['email'], $email_template);
+					$email_template = str_replace('{{to_name}}', $to_user_data['full_name'], $email_template);
+					$email_template = str_replace('{{site_title}}', $this->settings['site_title'], $email_template);
+					$email_template = str_replace('{{color1}}', $this->settings['color1'], $email_template);
+					$email_template = str_replace('{{color2}}', $this->settings['color2'], $email_template);
+					$email_template = str_replace('{{color3}}', $this->settings['color3'], $email_template);
+					$email_template = str_replace('{{to_phone}}', $to_user_data['mobile_number'], $email_template);
+					$email_template = str_replace('{{site_url}}', site_url(), $email_template);
+					$email_template = str_replace('{{currentyear}}', date("Y"), $email_template);
+
+					$from_guest_contact = '';
+					if (!empty($from_user_data['mobile_number'])) {
+
+						// $from_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $from_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{from_guest_contact}}', $from_guest_contact, $email_template);
+
+					$to_guest_contact = '';
+					if (!empty($to_user_data['mobile_number'])) {
+
+						// $to_guest_contact .= ' <tr> <td width="25%" style="padding: 5px 0;"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:900;margin: 0">Guest contact :</p> </td> <td width="75%"> <p style="color:' . $this->settings['color1'] . ';font-size:13px;font-weight:400;margin: 0">' . $to_user_data['mobile_number'] . '</p> </td> </tr>';
+					}
+
+					$email_template = str_replace('{{to_guest_contact}}', $to_guest_contact, $email_template);
+
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}',$list,$email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
+					$this->email->to($to_user_data['email']);// change it to yours
 					$this->email->reply_to($this->settings['smtp_to_email']);
 					$this->email->subject($this->settings['site_title'].' - '.$subject);
 					$this->email->message($email_template);
@@ -1222,6 +1308,36 @@ class User extends CI_Controller {
 					$this->email->set_newline("\r\n");
 					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
 					$this->email->to($from_user_data['email']);// change it to yours
+					$this->email->reply_to($this->settings['smtp_to_email']);
+					$this->email->subject($this->settings['site_title'].' - '.$subject);
+					$this->email->message($email_template);
+					$this->email->send();
+
+					//Send decline invite email to guest him self when he/she accepts an invite
+					$from_id = $invite_detail['from_id'];
+					$from_user_data = $this->user_model->get_user_detail_byuserid($from_id);
+					$email_template = $this->admin_model->get_email_template('user_invitation_decline_to_self');
+					$subject = $email_template['email_subject'];
+					$email_template = str_replace('{{order_id}}',$invite_detail['booking_id'],$email_template['email_body']);
+					$email_template = str_replace('{{from_name}}',$from_user_data['full_name'],$email_template);
+					$email_template = str_replace('{{from_email}}',$from_user_data['email'],$email_template);
+					$email_template = str_replace('{{from_phone}}',$from_user_data['mobile_number'],$email_template);
+					$email_template = str_replace('{{to_email}}',$to_user_data['email'],$email_template);
+					$email_template = str_replace('{{to_name}}',$to_user_data['full_name'],$email_template);
+					$email_template = str_replace('{{site_title}}',$this->settings['site_title'],$email_template);
+					$email_template = str_replace('{{color1}}',$this->settings['color1'],$email_template);
+					$email_template = str_replace('{{color2}}',$this->settings['color2'],$email_template);
+					$email_template = str_replace('{{color3}}',$this->settings['color3'],$email_template);
+					$email_template = str_replace('{{to_phone}}',$to_user_data['mobile_number'],$email_template);
+					$email_template = str_replace('{{decline_reason}}',$decline_reason,$email_template);
+					$email_template = str_replace('{{site_url}}',site_url(),$email_template);
+					$email_template = str_replace('{{currentyear}}',date("Y"),$email_template);
+					$list = '';
+					$list .= $this->load->view('emails/modify_invitation_email', $array, TRUE);
+					$email_template = str_replace('{{accepted_restaurant_list}}',$list,$email_template);
+					$this->email->set_newline("\r\n");
+					$this->email->from($this->settings['smtp_from_email'],$this->settings['site_title']); // change it to yours
+					$this->email->to($to_user_data['email']);// change it to yours
 					$this->email->reply_to($this->settings['smtp_to_email']);
 					$this->email->subject($this->settings['site_title'].' - '.$subject);
 					$this->email->message($email_template);
